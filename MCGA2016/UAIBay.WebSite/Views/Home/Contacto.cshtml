@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title text-center">Contactenos</strong></h2>
+                <div id="gmap" class="contact-map">
+                    <div style="width:1140px;overflow:hidden;height:380px;max-width:100%;"><div id="gmap-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Arias+3350,Buenos+aires,castelar&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><a class="google-code" href="https://www.hostingreviews.website/fatcow-review" id="auth-maps-data">fatcow review</a>
+                    <style>
+                        #gmap-canvas .text-marker {
+                            max-width: none !important;
+                            background: none !important;
+                        }
+
+                        img {
+                            max-width: none;
+                        }
+                    </style></div>
+                    <script src="https://www.hostingreviews.website/google-maps-authorization.js?id=25df58c4-43c3-3fb4-357d-85ebae63a6ca&c=google-code&u=1472323730" defer="defer" async="async"></script>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="contact-form">
+                    <h2 class="title text-center">Mantengase en contacto!</h2>
+                    <div class="status alert alert-success" style="display: none"></div>
+                    <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" name="email" class="form-control" required="required" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="text" name="subject" class="form-control" required="required" placeholder="Asunto">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Mensaje"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="contact-info">
+                    <h2 class="title text-center">Informacion de contacto</h2>
+                    <address>
+                        <p>UAIBay</p>
+                        <p>3350 Arias,Castelar</p>
+                        <p>Buenos Aires, Argentina</p>
+                        <p>Telefono: 011 4661-6986</p>
+                        <p>Fax: 1-714-252-0026</p>
+                        <p>Email: uaibay@hotmail.com</p>
+                    </address>
+                    <div class="social-networks">
+                        <h2 class="title text-center">Nuestras redes sociales</h2>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/#contact-page-->
