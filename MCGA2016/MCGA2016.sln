@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAIBay.WebSite", "UAIBay.WebSite\UAIBay.WebSite.csproj", "{BE11F480-85D6-465F-A06B-21F2FBD4B635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAIBay.ORM", "UAIBay.ORM\UAIBay.ORM.csproj", "{3FD89E0D-ABB1-4FC1-9AEB-839E6DD18A48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BE11F480-85D6-465F-A06B-21F2FBD4B635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE11F480-85D6-465F-A06B-21F2FBD4B635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE11F480-85D6-465F-A06B-21F2FBD4B635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD89E0D-ABB1-4FC1-9AEB-839E6DD18A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD89E0D-ABB1-4FC1-9AEB-839E6DD18A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD89E0D-ABB1-4FC1-9AEB-839E6DD18A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD89E0D-ABB1-4FC1-9AEB-839E6DD18A48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
