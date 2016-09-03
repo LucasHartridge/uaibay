@@ -8,5 +8,10 @@ namespace UAIBay.WebSite.Models
 {
     public class ActivityLogViewModels
     {
+
+
+
+
+
     }
 }
