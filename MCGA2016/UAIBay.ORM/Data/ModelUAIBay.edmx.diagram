@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fcb0d34b42a42acac79fa9beca5df6e" Name="Diagram1">
+        <EntityTypeShape EntityType="UAIBayBD.ActivityLog" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Categoria" Width="1.5" PointX="6" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Compra" Width="1.5" PointX="10" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.DataLog" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.DetalleCompra" Width="1.5" PointX="12.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.DetalleVenta" Width="1.5" PointX="10.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Direccion" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.ErrorLog" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.History" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Producto" Width="1.5" PointX="8.25" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Promocion" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Proveedor" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Roles" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.TarjetaCredito" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Usuario" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.Venta" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <AssociationConnector Association="UAIBayBD.FK_ActivityLog_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_Compra_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_DetalleCompra_Compra" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_DataLog_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_DetalleCompra_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_DetalleVenta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_DetalleVenta_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_Direccion_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_ErrorLog_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_History_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_Venta_Promocion" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_TarjetaCredito_Usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.FK_Venta_Usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="UAIBayBD.UsuarioRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
