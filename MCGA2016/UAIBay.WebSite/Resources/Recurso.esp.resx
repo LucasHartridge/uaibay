@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcercaDe" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="AgregarAlCarrito" xml:space="preserve">
+    <value>Agregar al carrito</value>
+  </data>
+  <data name="Apellido" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Asunto" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="BannerslideCalidadParrafo" xml:space="preserve">
+    <value>Poseemos mas de 500 productos con el precio mas bajo y la mejor calidad del mercado.</value>
+  </data>
+  <data name="BannerslideCalidadTitulo" xml:space="preserve">
+    <value>Contamos con la mejor calidad</value>
+  </data>
+  <data name="BannerslideComprasParrafo" xml:space="preserve">
+    <value>Poseemos mas de 200 unidades de transporte para realizar envios sin a cargo a traves del todo el país</value>
+  </data>
+  <data name="BannerslideComprasTitulo" xml:space="preserve">
+    <value>Disfruta de tus compras sin moverte de tu casa</value>
+  </data>
+  <data name="BannerslideComunidadParrafo" xml:space="preserve">
+    <value>Nuestro objetivo es que hagas tus compras desde la comodidad de tu casa y recibiendo promociones diarias al unirte a nuestra comunidad.</value>
+  </data>
+  <data name="BannerslideComunidadTitulo" xml:space="preserve">
+    <value>Bienvenido a nuestra comunidad</value>
+  </data>
+  <data name="Buscar" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Carrito" xml:space="preserve">
+    <value>Carrito</value>
+  </data>
+  <data name="Catalogo" xml:space="preserve">
+    <value>Catalogo</value>
+  </data>
+  <data name="Categorias" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
+  <data name="Colaboradores" xml:space="preserve">
+    <value>Colaboradores</value>
+  </data>
+  <data name="ColaboradoresParrafo" xml:space="preserve">
+    <value>Para UAI-BAY es fundamental cuidar su capital humano porque sus colaboradores son la cara visible de la empresa y del servicio que se entrega. Uno de los ejes centrales es que ellos se sientan bien, recompensados y motivados para lo cual nos hemos propuesto desarrollar el talento y mejorar la calidad de vida de cada uno de ellos</value>
+  </data>
+  <data name="Comunidad" xml:space="preserve">
+    <value>Comunidad</value>
+  </data>
+  <data name="ComunidadParrafo" xml:space="preserve">
+    <value>Apoyamos el emprendimiento ya que creemos que es la mejor vía para superar la pobreza, ademas porque este valor esta incorporado en el ADN de la empresa, ya que nuestro presidente es un emprendedor innato. Esto quiere decir que nuestro compromiso esta en apoyar al emprendimiento nacional, local y a los pequeños productores, para generar un impacto social positivo. Por esto, en Agosto de 2007, concretamos una alianza con Fondo Esperanza, fundación sin fines de lucro que entrega créditos y educación emprendedora a personas de escasos recursos.</value>
+  </data>
+  <data name="Contactenos" xml:space="preserve">
+    <value>Contactenos</value>
+  </data>
+  <data name="Contacto" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="Contraseña" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright © 2016 UAIBay Todos los derechos reservados.</value>
+  </data>
+  <data name="CuartaPreguntaFrecuente" xml:space="preserve">
+    <value>¿COMO RECUPERO MI CONTRASEÑA?</value>
+  </data>
+  <data name="CuartaRespuesta" xml:space="preserve">
+    <value>Una vez registrado en el sistema, en caso de no recordar su contraseña, se puede solicitar una nueva contraseña. Para esto se debe ingresar a la pestaña de Login y elegir la opción "Olvidaste tu contraseña?". Se debe ingresar el email de su cuenta y hacer click en "Recuperar contraseña".En unos instantes llegara un email a su casilla de correo con su nueva contraseña.</value>
+  </data>
+  <data name="Cuenta" xml:space="preserve">
+    <value>Cuenta</value>
+  </data>
+  <data name="Diseñado" xml:space="preserve">
+    <value>Diseñado por los 4 Fantasticos</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Enviar" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Español" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="FAQS" xml:space="preserve">
+    <value>FAQ'S</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Femenino" xml:space="preserve">
+    <value>Femenino</value>
+  </data>
+  <data name="Frances" xml:space="preserve">
+    <value>Frances</value>
+  </data>
+  <data name="InformacionContacto" xml:space="preserve">
+    <value>Informacion de contacto</value>
+  </data>
+  <data name="Ingles" xml:space="preserve">
+    <value>Ingles</value>
+  </data>
+  <data name="IniciarSesion" xml:space="preserve">
+    <value>Iniciar sesion</value>
+  </data>
+  <data name="IniciaSesion" xml:space="preserve">
+    <value>Inicia sesión</value>
+  </data>
+  <data name="Inicio" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Mantenganseencontacto" xml:space="preserve">
+    <value>Mantenganse en contacto!</value>
+  </data>
+  <data name="Masculino" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="Medioambiente" xml:space="preserve">
+    <value>Medioambiente</value>
+  </data>
+  <data name="MedioambienteParrafo" xml:space="preserve">
+    <value>Operar de manera respetuosa con el medioambiente y generar conciencia, ya que el medioambiente es un tema que no puede esperar.</value>
+  </data>
+  <data name="Mensaje" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="Mision" xml:space="preserve">
+    <value>Mision</value>
+  </data>
+  <data name="MisionParrafo" xml:space="preserve">
+    <value>Satisfacer las necesidades del cliente interno y externo: desarrollando, fabricando y comercializando productos y servicios de excelente calidad. Con un personal capacitado para dar soluciones integrales que generen bienestar, compromiso y trabajo en equipo.</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Nuestrainformacion" xml:space="preserve">
+    <value>Nuestra informacion</value>
+  </data>
+  <data name="NuestrasNovedadesParrafo" xml:space="preserve">
+    <value>Obtene nuestras mas recientes novedades de nuestro sitio...</value>
+  </data>
+  <data name="NuestrasNovedadesTitulo" xml:space="preserve">
+    <value>Nuestras novedades</value>
+  </data>
+  <data name="NuestrasRedesSociales" xml:space="preserve">
+    <value>Nuestras redes sociales</value>
+  </data>
+  <data name="NuestrosUltimosProductos" xml:space="preserve">
+    <value>Nuestros ultimos productos</value>
+  </data>
+  <data name="PreguntasFrecuentes" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="PrimeraPreguntaFrecuente" xml:space="preserve">
+    <value>¿HAY QUE PAGAR PARA UNIRSE A LA COMUNIDAD UAY-BAY?</value>
+  </data>
+  <data name="PrimeraRespuesta" xml:space="preserve">
+    <value>No,en absoluto.Para unirse a nuestra comunidad basta con algunos datos personales.</value>
+  </data>
+  <data name="QuintaPreguntaFrecuente" xml:space="preserve">
+    <value>¿COMO CAMBIAR MI CONTRASEÑA?</value>
+  </data>
+  <data name="QuintaRespuesta" xml:space="preserve">
+    <value>Una vez registrado y logeado en el sistema, ingresar a la pestaña de "Cuenta" y clickear en la opcion "Cambiar contraseña". Por ultimo,escriba su nueva contraseña y confirmela.</value>
+  </data>
+  <data name="Registrarse" xml:space="preserve">
+    <value>Registrarse!</value>
+  </data>
+  <data name="Registrese" xml:space="preserve">
+    <value>Registrese</value>
+  </data>
+  <data name="RepetirContraseña" xml:space="preserve">
+    <value>Repita la contraseña</value>
+  </data>
+  <data name="SegundaPreguntaFrecuente" xml:space="preserve">
+    <value>¿CUAL ES EL COSTO DE ENVIO?</value>
+  </data>
+  <data name="SegundaRespuesta" xml:space="preserve">
+    <value>Ninguno, el envio es gratuito.</value>
+  </data>
+  <data name="SeptimaPreguntaFrecuente" xml:space="preserve">
+    <value>¿COMO APLICAR UN CODIGO DE DESCUENTO?</value>
+  </data>
+  <data name="SeptimaRespuesta" xml:space="preserve">
+    <value>Los codigos de descuento se deben aplicar al final de la compra insertando el codigo que le sera enviado por mail. Recuerde que estos codigos poseen una fecha de vencimiento</value>
+  </data>
+  <data name="SextaPreguntaFrecuente" xml:space="preserve">
+    <value>¿COMO COMPRAR?</value>
+  </data>
+  <data name="SextaRespuesta" xml:space="preserve">
+    <value>Comprar es muy sencillo, una vez logeado en la pagina, usted podra ver un Catalago con los productos que contamos y seleccionar todos aquellos productos que quiera comprar. Al final de la seleccion podra ver un listado con los productos seleecionados y el total a abonar</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="TerceraPreguntaFrecuente" xml:space="preserve">
+    <value>¿QUE FORMAS DE PAGO DISPONE UAI-BAY?</value>
+  </data>
+  <data name="TerceraRespuesta" xml:space="preserve">
+    <value>Usted podra abonar por tarjeta de credito a traves de nuestra pagina web o directamente abonar en efectivo cuando reciba sus productos en su domicilio.</value>
+  </data>
+  <data name="Tienda" xml:space="preserve">
+    <value>Tienda</value>
+  </data>
+  <data name="Vision" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+  <data name="VisionParrafo" xml:space="preserve">
+    <value>Ser el supermercado más importante en todo el litoral central, logrando la distinción tanto de clientes como de proveedores y competidores. Mantener y aumentar, las ventas y el número de clientes, año a año.</value>
+  </data>
+</root>
