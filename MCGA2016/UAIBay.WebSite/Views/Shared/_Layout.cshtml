@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    HttpCookie cookie = HttpContext.Current.Request.Cookies["Lenguaje"];
 }
 
 <!DOCTYPE html>
@@ -66,33 +67,51 @@
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    Español
-                                    @*@if (HttpContext.Current.Request.Cookies["Lenguaje"].Value = null)
+                                @*<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                        Español
+
+                                        <span class="caret"></span>
+                                    </button>*@
+
+                                @if (cookie != null)
+                                {
+                                    if (cookie.Value == "en")
                                     {
-                                       Español
+                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                            @UAIBay.WebSite.Resources.Recurso.Ingles
+                                            <span class="caret"></span>
+                                        </button>
                                     }
                                     else
                                     {
-                                      if(HttpContext.Current.Request.Cookies["Lenguaje"] = "en")
-                                      {
-                                          English
-                                      }
-                                      else
-                                         if(HttpContext.Current.Request.Cookies["Lenguaje"] = "fr")
-                                      {
-                                          Français
-                                      }  
-                                         else
-                                         {
-                                             Español
-                                         }
-                                    }*@
-                                    <span class="caret"></span>
-                                </button>
+                                        if (cookie.Value == "es")
+                                        {
+                                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                @UAIBay.WebSite.Resources.Recurso.Español
+                                                <span class="caret"></span>
+                                            </button>
+                                        }
+                                        else
+                                            if (cookie.Value == "fr")
+                                            {
+                                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                    @UAIBay.WebSite.Resources.Recurso.Frances
+                                                    <span class="caret"></span>
+                                                </button>
+                                            }
+
+                                    }
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                        @UAIBay.WebSite.Resources.Recurso.Español
+                                        <span class="caret"></span>
+                                    </button>
+                                }
+
+
                                 <ul class="dropdown-menu">
-                                    @*<li><a href="">Ingles</a></li>
-                                        <li><a href="#">Frances</a></li>*@
                                     <li>@Html.ActionLink(UAIBay.WebSite.Resources.Recurso.Ingles, "Change", "Language", new { LanguageAbbreviation = "en" }, null)</li>
                                     <li>@Html.ActionLink(UAIBay.WebSite.Resources.Recurso.Español, "Change", "Language", new { LanguageAbbreviation = "es" }, null)</li>
                                     <li>@Html.ActionLink(UAIBay.WebSite.Resources.Recurso.Frances, "Change", "Language", new { LanguageAbbreviation = "fr" }, null)</li>

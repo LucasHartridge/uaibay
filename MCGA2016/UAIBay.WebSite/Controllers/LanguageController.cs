@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading;
 using System.Globalization;
+using System.Net.Mail;
+using System.Configuration;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -18,7 +20,7 @@ namespace UAIBay.WebSite.Controllers
 
         public ActionResult Change(string LanguageAbbreviation)
         {
-            if(LanguageAbbreviation != null)
+            if (LanguageAbbreviation != null)
             {
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(LanguageAbbreviation);
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(LanguageAbbreviation);
@@ -27,7 +29,10 @@ namespace UAIBay.WebSite.Controllers
             HttpCookie cookie = new HttpCookie("Lenguaje");
             cookie.Value = LanguageAbbreviation;
             Response.Cookies.Add(cookie);
-            return RedirectToAction("Index","Home");
+
+           
+
+            return Redirect(Request.UrlReferrer.PathAndQuery);
         }
     }
 }
