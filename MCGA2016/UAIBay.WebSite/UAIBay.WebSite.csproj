@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -241,21 +245,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActivityLogViewModels.cs" />
-    <Compile Include="Models\CategoriaViewModels.cs" />
-    <Compile Include="Models\CompraViewModels.cs" />
-    <Compile Include="Models\DataLogViewModels.cs" />
-    <Compile Include="Models\DetalleCompraViewModels.cs" />
-    <Compile Include="Models\DetalleVentaViewModels.cs" />
-    <Compile Include="Models\DireccionViewModels.cs" />
-    <Compile Include="Models\ErrorLogViewModels.cs" />
-    <Compile Include="Models\HistoryViewModels.cs" />
-    <Compile Include="Models\ProductoViewModels.cs" />
-    <Compile Include="Models\ProveedorViewModels.cs" />
-    <Compile Include="Models\RolesViewModels.cs" />
-    <Compile Include="Models\TarjetaCreditoViewModels.cs" />
-    <Compile Include="Models\UsuarioViewModels.cs" />
-    <Compile Include="Models\VentaViewModels.cs" />
+    <Compile Include="ViewModel\ActivityLogViewModels.cs" />
+    <Compile Include="ViewModel\CategoriaViewModels.cs" />
+    <Compile Include="ViewModel\CompraViewModels.cs" />
+    <Compile Include="ViewModel\DataLogViewModels.cs" />
+    <Compile Include="ViewModel\DetalleCompraViewModels.cs" />
+    <Compile Include="ViewModel\DetalleVentaViewModels.cs" />
+    <Compile Include="ViewModel\DireccionViewModels.cs" />
+    <Compile Include="ViewModel\ErrorLogViewModels.cs" />
+    <Compile Include="ViewModel\HistoryViewModels.cs" />
+    <Compile Include="ViewModel\ProductoViewModels.cs" />
+    <Compile Include="ViewModel\PromocionViewModels.cs" />
+    <Compile Include="ViewModel\ProveedorViewModels.cs" />
+    <Compile Include="ViewModel\RolesViewModels.cs" />
+    <Compile Include="ViewModel\TarjetaCreditoViewModels.cs" />
+    <Compile Include="ViewModel\UsuarioViewModels.cs" />
+    <Compile Include="ViewModel\VentaViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Resources\Recurso.fr.Designer.cs">
@@ -293,6 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>

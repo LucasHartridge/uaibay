@@ -123,6 +123,7 @@
       <DependentUpon>ModelUAIBay.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Context\UAIBayContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Data\ModelUAIBay.edmx">
