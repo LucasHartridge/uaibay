@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
+using UAIBay.WebSite.App_Start;
+
 
 namespace UAIBay.WebSite
 {
@@ -11,6 +14,7 @@ namespace UAIBay.WebSite
     {
         protected void Application_Start()
         {
+            AutoMapperWebConfiguration.Configure();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
