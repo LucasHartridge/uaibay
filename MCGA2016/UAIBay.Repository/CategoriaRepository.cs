@@ -14,6 +14,7 @@ namespace UAIBay.Repository
 
        private readonly UAIBayContext contexto = new UAIBayContext();
 
+      
 
        public  List<Categoria> ObtenerTodos()
        {
@@ -22,27 +23,27 @@ namespace UAIBay.Repository
 
        public  Categoria TraerPorId(int id)
        {
-           throw new NotImplementedException();
+           return contexto.Categorias.Find(id);
        }
 
        public  void Insertar(Categoria objeto)
        {
-           throw new NotImplementedException();
+           contexto.Categorias.Add(objeto);
        }
 
        public  void Actualizar(Categoria objeto)
        {
-           throw new NotImplementedException();
+           contexto.Entry(objeto).State= System.Data.Entity.EntityState.Modified;
        }
 
        public  void Eliminar(Categoria objeto)
        {
-           throw new NotImplementedException();
+           contexto.Categorias.Remove(objeto);
        }
 
        public  void Save()
        {
-           throw new NotImplementedException();
+           contexto.SaveChanges();
        }
     }
 }

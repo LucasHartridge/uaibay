@@ -238,8 +238,10 @@
     <Content Include="Views\Home\FAQS.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperWebConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -289,6 +291,9 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Producto\VerProducto.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -318,6 +323,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UAIBay.ORM\UAIBay.ORM.csproj">
+      <Project>{3fd89e0d-abb1-4fc1-9aeb-839e6dd18a48}</Project>
+      <Name>UAIBay.ORM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UAIBay.Repository\UAIBay.Repository.csproj">
+      <Project>{dcd7e671-dc94-4301-a9af-56368dae3f1c}</Project>
+      <Name>UAIBay.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

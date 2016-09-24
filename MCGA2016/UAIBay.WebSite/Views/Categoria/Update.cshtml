@@ -1,0 +1,26 @@
+﻿@model UAIBay.WebSite.ViewModel.CategoriaViewModels
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <h2>Modificar categoria</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(x=>x.IdCategoria)
+                        @Html.TextBoxFor(x => x.Nombre, new { @placeholder = "Nombre" })
+                        @Html.ValidationMessageFor(x => x.Nombre)
+                        <button type="submit" class="btn btn-default">Modificar</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
