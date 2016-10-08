@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -171,15 +175,21 @@
     <Content Include="Content\js\contact.js" />
     <Content Include="Content\js\gmaps.js" />
     <Content Include="Content\js\html5shiv.js" />
+    <Content Include="Content\js\init.js" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\jquery.prettyPhoto.js" />
     <Content Include="Content\js\jquery.scrollUp.min.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\materialize.js" />
+    <Content Include="Content\js\materialize.min.js" />
     <Content Include="Content\js\price-range.js" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\materialize.css" />
+    <Content Include="Content\materialize.min.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -215,6 +225,26 @@
     <Content Include="Content\scss\_screen-reader.scss" />
     <Content Include="Content\scss\_stacked.scss" />
     <Content Include="Content\scss\_variables.scss" />
+    <Content Include="Content\fonts\Roboto-Bold.eot" />
+    <Content Include="Content\fonts\Roboto-Bold.ttf" />
+    <Content Include="Content\fonts\Roboto-Bold.woff" />
+    <Content Include="Content\fonts\Roboto-Bold.woff2" />
+    <Content Include="Content\fonts\Roboto-Light.eot" />
+    <Content Include="Content\fonts\Roboto-Light.ttf" />
+    <Content Include="Content\fonts\Roboto-Light.woff" />
+    <Content Include="Content\fonts\Roboto-Light.woff2" />
+    <Content Include="Content\fonts\Roboto-Medium.eot" />
+    <Content Include="Content\fonts\Roboto-Medium.ttf" />
+    <Content Include="Content\fonts\Roboto-Medium.woff" />
+    <Content Include="Content\fonts\Roboto-Medium.woff2" />
+    <Content Include="Content\fonts\Roboto-Regular.eot" />
+    <Content Include="Content\fonts\Roboto-Regular.ttf" />
+    <Content Include="Content\fonts\Roboto-Regular.woff" />
+    <Content Include="Content\fonts\Roboto-Regular.woff2" />
+    <Content Include="Content\fonts\Roboto-Thin.eot" />
+    <Content Include="Content\fonts\Roboto-Thin.ttf" />
+    <Content Include="Content\fonts\Roboto-Thin.woff" />
+    <Content Include="Content\fonts\Roboto-Thin.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -234,28 +264,31 @@
     <Content Include="Views\Home\FAQS.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperWebConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActivityLogViewModels.cs" />
-    <Compile Include="Models\CategoriaViewModels.cs" />
-    <Compile Include="Models\CompraViewModels.cs" />
-    <Compile Include="Models\DataLogViewModels.cs" />
-    <Compile Include="Models\DetalleCompraViewModels.cs" />
-    <Compile Include="Models\DetalleVentaViewModels.cs" />
-    <Compile Include="Models\DireccionViewModels.cs" />
-    <Compile Include="Models\ErrorLogViewModels.cs" />
-    <Compile Include="Models\HistoryViewModels.cs" />
-    <Compile Include="Models\ProductoViewModels.cs" />
-    <Compile Include="Models\ProveedorViewModels.cs" />
-    <Compile Include="Models\RolesViewModels.cs" />
-    <Compile Include="Models\TarjetaCreditoViewModels.cs" />
-    <Compile Include="Models\UsuarioViewModels.cs" />
-    <Compile Include="Models\VentaViewModels.cs" />
+    <Compile Include="ViewModel\ActivityLogViewModels.cs" />
+    <Compile Include="ViewModel\CategoriaViewModels.cs" />
+    <Compile Include="ViewModel\CompraViewModels.cs" />
+    <Compile Include="ViewModel\DataLogViewModels.cs" />
+    <Compile Include="ViewModel\DetalleCompraViewModels.cs" />
+    <Compile Include="ViewModel\DetalleVentaViewModels.cs" />
+    <Compile Include="ViewModel\DireccionViewModels.cs" />
+    <Compile Include="ViewModel\ErrorLogViewModels.cs" />
+    <Compile Include="ViewModel\HistoryViewModels.cs" />
+    <Compile Include="ViewModel\ProductoViewModels.cs" />
+    <Compile Include="ViewModel\PromocionViewModels.cs" />
+    <Compile Include="ViewModel\ProveedorViewModels.cs" />
+    <Compile Include="ViewModel\RolesViewModels.cs" />
+    <Compile Include="ViewModel\TarjetaCreditoViewModels.cs" />
+    <Compile Include="ViewModel\UsuarioViewModels.cs" />
+    <Compile Include="ViewModel\VentaViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Resources\Recurso.fr.Designer.cs">
@@ -284,6 +317,11 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Producto\VerProducto.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\Update.cshtml" />
+    <Content Include="Views\Categoria\Details.cshtml" />
+    <Content Include="Views\Categoria\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -293,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +351,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UAIBay.BLL\UAIBay.BLL.csproj">
+      <Project>{77c4cb03-c4b6-4d51-b3a1-4d759ee9316b}</Project>
+      <Name>UAIBay.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
