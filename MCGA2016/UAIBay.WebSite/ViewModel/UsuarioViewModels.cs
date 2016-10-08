@@ -19,21 +19,37 @@ namespace UAIBay.WebSite.ViewModel
             this.Venta = new HashSet<VentaViewModels>();
             this.Roles = new HashSet<RolesViewModels>();
         }
-    
+
         public int UserId { get; set; }
+
+        [Required]
         public int DNI { get; set; }
+
+        [Required]
         public string Nombre { get; set; }
+
+        [Required]
         public string Apellido { get; set; }
+
+        [Required]
         public int Telefono { get; set; }
+
+        [Required]
         public bool Sexo { get; set; }
-        public System.DateTime FechaNacimiento { get; set; }
+
+        [Required]
+        public DateTime FechaNacimiento { get; set; }
+
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+
         public bool EmailConfirmed { get; set; }
+
+        [Required]
         public string Password { get; set; }
         public string PasswordHash { get; set; }
         public int AccessFailedCount { get; set; }
-        public System.DateTime DeleteOn { get; set; }
-        public bool IsDeleted { get; set; }
 
         public virtual ICollection<ActivityLogViewModels> ActivityLog { get; set; }
         public virtual ICollection<DataLogViewModels> DataLog { get; set; }

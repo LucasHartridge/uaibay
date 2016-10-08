@@ -11,12 +11,18 @@ namespace UAIBay.WebSite.ViewModel
 
         public int IDDireccion { get; set; }
         public int UserId { get; set; }
+
+        [Required]
         public string Domicilio { get; set; }
+
+        [Required]
         public string Localidad { get; set; }
+
+        [Required]
         public string Provincia { get; set; }
+
+        [Required]
         public string CodigoPostal { get; set; }
-        public System.DateTime DeletedOn { get; set; }
-        public bool IsDeleted { get; set; }
 
         public virtual UsuarioViewModels Usuario { get; set; }
 

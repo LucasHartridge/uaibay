@@ -14,6 +14,8 @@ namespace UAIBay.WebSite.ViewModel
         }
     
         public int IdCategoria { get; set; }
+
+        [Required]
         public string Nombre { get; set; }
 
         public virtual ICollection<ProductoViewModels> Producto { get; set; }
