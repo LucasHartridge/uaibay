@@ -56,12 +56,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaRepository.cs" />
+    <Compile Include="CompraRepository.cs" />
+    <Compile Include="DetalleCompraRepository.cs" />
+    <Compile Include="DetalleVentaRepository.cs" />
+    <Compile Include="DireccionRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Mapeador\AutoMapperORMConfiguration.cs" />
+    <Compile Include="ProductoRepository.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="PromocionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorRepository.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="RolesRepository.cs" />
+    <Compile Include="TarjetaCreditoRepository.cs" />
+    <Compile Include="UsuarioRepository.cs" />
+    <Compile Include="VentaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UAIBay.BIZ\UAIBay.BIZ.csproj">
+      <Project>{5c0acabf-385e-4cfa-8969-73a72274ac67}</Project>
+      <Name>UAIBay.BIZ</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UAIBay.ORM\UAIBay.ORM.csproj">
       <Project>{3fd89e0d-abb1-4fc1-9aeb-839e6dd18a48}</Project>
       <Name>UAIBay.ORM</Name>
@@ -71,6 +87,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

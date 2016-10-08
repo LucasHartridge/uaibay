@@ -1,0 +1,37 @@
+﻿@model UAIBay.WebSite.ViewModel.CategoriaViewModels
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h2>¿Desea eliminar la categoría?</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dd>
+                @Html.HiddenFor(model => model.IdCategoria)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+        </dl>
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "Index") |
+            <input type="submit" value="Delete" class="btn btn-default" />
+
+        </div>
+    }
+</div>

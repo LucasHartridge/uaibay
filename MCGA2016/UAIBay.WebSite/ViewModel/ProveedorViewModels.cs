@@ -12,21 +12,29 @@ namespace UAIBay.WebSite.ViewModel
         {
             this.Compra = new HashSet<CompraViewModels>();
         }
-    
+
+        [Required]
         public string CUIT { get; set; }
+
+        [Required]
         public string Nombre { get; set; }
+
+        [Required]
         public string Domicilio { get; set; }
+
+        [Required]
         public string Localidad { get; set; }
+
+        [Required]
         public string CodigoPostal { get; set; }
+
+        [Required]
         public string Email { get; set; }
+
+        [Required]
         public int Telefono { get; set; }
-        public System.DateTime CreatedOn { get; set; }
-        public int CreatedBy { get; set; }
-        public System.DateTime ChangedOn { get; set; }
-        public int ChangedBy { get; set; }
-        public System.DateTime DeletedOn { get; set; }
-        public bool IsDeleted { get; set; }
-    
+
+
         public virtual ICollection<CompraViewModels> Compra { get; set; }
     }
 }

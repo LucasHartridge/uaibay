@@ -12,11 +12,15 @@ namespace UAIBay.WebSite.ViewModel
         {
             this.Venta = new HashSet<VentaViewModels>();
         }
-    
+
         public string CodPromocion { get; set; }
+
+        [Required]
         public int Descuento { get; set; }
-        public System.DateTime FechaVencimiento { get; set; }
-    
+
+        [Required]
+        public DateTime FechaVencimiento { get; set; }
+
         public virtual ICollection<VentaViewModels> Venta { get; set; }
     }
 }

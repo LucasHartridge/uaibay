@@ -12,10 +12,12 @@ namespace UAIBay.WebSite.ViewModel
         {
             this.Usuario = new HashSet<UsuarioViewModels>();
         }
-    
+
         public int IdRol { get; set; }
+
+        [Required]
         public string Nombre { get; set; }
-    
+
         public virtual ICollection<UsuarioViewModels> Usuario { get; set; }
     }
 }

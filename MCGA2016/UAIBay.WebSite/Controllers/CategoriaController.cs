@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using UAIBay.ORM.Business;
-using UAIBay.Repository;
 using UAIBay.WebSite.ViewModel;
+using UAIBay.BLL.DTO;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -16,12 +15,15 @@ namespace UAIBay.WebSite.Controllers
         // GET: /Categoria/
         public ActionResult Index()
         {
-            var cp = new CategoriaRepository();
-            var categorias = cp.ObtenerTodos();
+            var bllCategoria = new dtoCategoria();
+            var categorias = bllCategoria.TraerCategorias();
+            App_Start.AutoMapperWebConfiguration.Configure();
+
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categorias);
             return View(categoriasViewmodel);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -32,42 +34,11 @@ namespace UAIBay.WebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                Categoria dtoCategoria = Mapper.Map<CategoriaViewModels, Categoria>(categoria);
-                CategoriaRepository cp = new CategoriaRepository();
-                cp.Insertar(dtoCategoria);
-                cp.Save();
-                return RedirectToAction("Index");  
-            }
-            else
-            {
-                return View(categoria);
-            }
-        }
+                var dtoCategoria = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
 
-        public ActionResult Update(int id)
-        {
-            //Crear Repository
-            CategoriaRepository cp = new CategoriaRepository();
+                var bllCategoria = new dtoCategoria();
+                bllCategoria.Crear(dtoCategoria);
 
-            //Creas un View Model con el Id del Update
-            Categoria dtoCategoria = new Categoria();
-            dtoCategoria = cp.TraerPorId(id);
-
-            //Transformo a ModelView
-            CategoriaViewModels categoria = Mapper.Map<Categoria, CategoriaViewModels>(dtoCategoria);
-           
-            return View(categoria);
-        }
-
-        [HttpPost]
-        public ActionResult Update(CategoriaViewModels categoria)
-        {
-            if (ModelState.IsValid)
-            {
-                Categoria dtoCategoria = Mapper.Map<CategoriaViewModels, Categoria>(categoria);
-                CategoriaRepository cp = new CategoriaRepository();
-                cp.Actualizar(dtoCategoria);
-                cp.Save();
                 return RedirectToAction("Index");
             }
             else
@@ -76,7 +47,68 @@ namespace UAIBay.WebSite.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var bllCategoria = new dtoCategoria();
+            var categoria = bllCategoria.BuscarCategoria(id);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var categoriasViewmodel = Mapper.Map<dtoCategoria,CategoriaViewModels>(categoria);
+            return View(categoriasViewmodel);
+        }
+
+        [HttpPost]
+        public ActionResult Update(CategoriaViewModels categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                App_Start.AutoMapperWebConfiguration.Configure();
+                dtoCategoria dtoCategoria = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+
+                var bllCategoria = new dtoCategoria();
+                bllCategoria.Actualizar(dtoCategoria);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(categoria);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var bllCategoria = new dtoCategoria();
+            var categoria = bllCategoria.BuscarCategoria(id);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var categoriasViewmodel = Mapper.Map<dtoCategoria, CategoriaViewModels>(categoria);
+            return View(categoriasViewmodel);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var bllCategoria = new dtoCategoria();
+            var categoria = bllCategoria.BuscarCategoria(id);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var categoriasViewmodel = Mapper.Map<dtoCategoria, CategoriaViewModels>(categoria);
+            return View(categoriasViewmodel);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(CategoriaViewModels categoria)
+        {
+                App_Start.AutoMapperWebConfiguration.Configure();
+                dtoCategoria dtoCategoria = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+
+                var bllCategoria = new dtoCategoria();
+                bllCategoria.Eliminar(dtoCategoria);
+
+                return RedirectToAction("Index");
+        }
 
 
-	}
+
+    }
 }

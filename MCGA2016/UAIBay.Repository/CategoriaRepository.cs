@@ -6,44 +6,63 @@ using System.Threading.Tasks;
 using UAIBay.ORM.Business;
 using UAIBay.ORM.Context;
 using System.Data.Entity;
+using UAIBay.BIZ;
+using AutoMapper;
 
 namespace UAIBay.Repository
 {
-   public class CategoriaRepository: Repository<Categoria>
+    public class CategoriaRepository : Repository<Categoria>
     {
 
-       private readonly UAIBayContext contexto = new UAIBayContext();
+        private readonly UAIBayContext contexto = new UAIBayContext();
 
-      
 
-       public  List<Categoria> ObtenerTodos()
-       {
-           return contexto.Categorias.ToList();
-       }
 
-       public  Categoria TraerPorId(int id)
-       {
-           return contexto.Categorias.Find(id);
-       }
+        public List<bizCategoria> ObtenerTodos()
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var categoriasORM = contexto.Categorias.ToList();
+            var categoriasBIZ = Mapper.Map<List<bizCategoria>>(categoriasORM);
 
-       public  void Insertar(Categoria objeto)
-       {
-           contexto.Categorias.Add(objeto);
-       }
+            return categoriasBIZ;
+        }
 
-       public  void Actualizar(Categoria objeto)
-       {
-           contexto.Entry(objeto).State= System.Data.Entity.EntityState.Modified;
-       }
+        public bizCategoria TraerPorId(int id)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var categoriaORM = contexto.Categorias.Find(id);
+            var categoriaBIZ = Mapper.Map<Categoria, bizCategoria>(categoriaORM);
 
-       public  void Eliminar(Categoria objeto)
-       {
-           contexto.Categorias.Remove(objeto);
-       }
+            return categoriaBIZ;
+        }
 
-       public  void Save()
-       {
-           contexto.SaveChanges();
-       }
+        public void Insertar(bizCategoria objeto)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var categoriaORM = Mapper.Map<bizCategoria, Categoria>(objeto);
+
+            contexto.Categorias.Add(categoriaORM);
+        }
+
+        public void Actualizar(bizCategoria objeto)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var categoriaORM = Mapper.Map<bizCategoria, Categoria>(objeto);
+            contexto.Entry(categoriaORM).State = System.Data.Entity.EntityState.Modified;
+        }
+
+        public void Eliminar(bizCategoria objeto)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+
+            Categoria categoria = (Categoria)contexto.Categorias.Where(b => b.IdCategoria == objeto.IdCategoria).First();
+            contexto.Categorias.Remove(categoria);
+            contexto.SaveChanges();
+        }
+
+        public void Save()
+        {
+            contexto.SaveChanges();
+        }
     }
 }
