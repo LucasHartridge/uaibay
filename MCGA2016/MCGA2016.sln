@@ -15,6 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAIBay.BIZ", "UAIBay.BIZ\UA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAIBay.BLL", "UAIBay.BLL\UAIBay.BLL.csproj", "{77C4CB03-C4B6-4D51-B3A1-4D759EE9316B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{70C47A1D-C48D-4072-A08C-54D972EA534C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,8 +53,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{DCD7E671-DC94-4301-A9AF-56368DAE3F1C} = {BBBD874D-AA77-4192-B0FB-89838D894EBB}
 		{5C0ACABF-385E-4CFA-8969-73A72274AC67} = {BBBD874D-AA77-4192-B0FB-89838D894EBB}
 		{77C4CB03-C4B6-4D51-B3A1-4D759EE9316B} = {BBBD874D-AA77-4192-B0FB-89838D894EBB}
-		{DCD7E671-DC94-4301-A9AF-56368DAE3F1C} = {BBBD874D-AA77-4192-B0FB-89838D894EBB}
 	EndGlobalSection
 EndGlobal

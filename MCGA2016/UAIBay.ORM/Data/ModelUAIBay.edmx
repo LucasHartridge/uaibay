@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UAIBayBD.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UAIBayBD.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,9 +37,9 @@
           <Property Name="Total" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="int" Nullable="false" />
-          <Property Name="Changedon" Type="datetime" Nullable="false" />
-          <Property Name="ChangedBy" Type="int" Nullable="false" />
-          <Property Name="DeletedOn" Type="datetime" Nullable="false" />
+          <Property Name="Changedon" Type="datetime" />
+          <Property Name="ChangedBy" Type="int" />
+          <Property Name="DeletedOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DataLog">
@@ -144,9 +144,9 @@
           <Property Name="Imagen" Type="varchar(max)" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="ChangedOn" Type="datetime" Nullable="false" />
-          <Property Name="ChangedBy" Type="int" Nullable="false" />
-          <Property Name="DeletedOn" Type="datetime" Nullable="false" />
+          <Property Name="ChangedOn" Type="datetime" />
+          <Property Name="ChangedBy" Type="int" />
+          <Property Name="DeletedOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Promocion">
@@ -170,9 +170,9 @@
           <Property Name="Telefono" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="ChangedOn" Type="datetime" Nullable="false" />
-          <Property Name="ChangedBy" Type="int" Nullable="false" />
-          <Property Name="DeletedOn" Type="datetime" Nullable="false" />
+          <Property Name="ChangedOn" Type="datetime" />
+          <Property Name="ChangedBy" Type="int" />
+          <Property Name="DeletedOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
@@ -241,9 +241,9 @@
           <Property Name="Total" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="ChangedOn" Type="datetime" Nullable="false" />
-          <Property Name="ChangedBy" Type="int" Nullable="false" />
-          <Property Name="DeletedOn" Type="datetime" Nullable="false" />
+          <Property Name="ChangedOn" Type="datetime" />
+          <Property Name="ChangedBy" Type="int" />
+          <Property Name="DeletedOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_ActivityLog_Usuario">
@@ -553,8 +553,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UAIBayBD" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -592,9 +591,9 @@
           <Property Name="Total" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreateBy" Type="Int32" Nullable="false" />
-          <Property Name="Changedon" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ChangedBy" Type="Int32" Nullable="false" />
-          <Property Name="DeletedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Changedon" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Int32" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Proveedor" Relationship="Self.FK_Compra_Proveedor" FromRole="Compra" ToRole="Proveedor" />
           <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_Compra" FromRole="Compra" ToRole="DetalleCompra" />
@@ -709,9 +708,9 @@
           <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ChangedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ChangedBy" Type="Int32" Nullable="false" />
-          <Property Name="DeletedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Int32" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
           <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_Producto" FromRole="Producto" ToRole="DetalleCompra" />
@@ -739,9 +738,9 @@
           <Property Name="Telefono" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ChangedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ChangedBy" Type="Int32" Nullable="false" />
-          <Property Name="DeletedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Int32" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Compra" Relationship="Self.FK_Compra_Proveedor" FromRole="Proveedor" ToRole="Compra" />
         </EntityType>
@@ -813,9 +812,9 @@
           <Property Name="Total" Type="Int32" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ChangedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ChangedBy" Type="Int32" Nullable="false" />
-          <Property Name="DeletedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Int32" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DetalleVenta" Relationship="Self.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
           <NavigationProperty Name="Promocion" Relationship="Self.FK_Venta_Promocion" FromRole="Venta" ToRole="Promocion" />

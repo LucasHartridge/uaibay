@@ -20,11 +20,14 @@ namespace UAIBay.Repository
 
         public List<bizCategoria> ObtenerTodos()
         {
-            Mapeador.AutoMapperORMConfiguration.Configure();
-            var categoriasORM = contexto.Categorias.ToList();
-            var categoriasBIZ = Mapper.Map<List<bizCategoria>>(categoriasORM);
 
-            return categoriasBIZ;
+                Mapeador.AutoMapperORMConfiguration.Configure();
+                var categoriasORM = contexto.Categorias.ToList();
+
+                var categoriasBIZ = Mapper.Map<List<bizCategoria>>(categoriasORM);
+
+                return categoriasBIZ;
+
         }
 
         public bizCategoria TraerPorId(int id)

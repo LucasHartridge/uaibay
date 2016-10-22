@@ -1,0 +1,59 @@
+﻿@model IEnumerable<UAIBay.WebSite.ViewModel.ProductoViewModels>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo producto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodProducto)
+        </th>
+        <th>
+            @Html.DisplayName("Descripción")
+        </th>
+        <th>
+            @Html.DisplayName("Precio de compra")
+        </th>
+        <th>
+            @Html.DisplayName("Precio de venta")
+        </th>
+        <th>
+            @Html.DisplayName("Categoría")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.CodProducto }) |
+                @Html.ActionLink("Ver", "Details", new { id = item.CodProducto }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.CodProducto })
+            </td>
+        </tr>
+    }
+
+</table>
