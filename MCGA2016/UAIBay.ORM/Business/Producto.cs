@@ -28,9 +28,9 @@ namespace UAIBay.ORM.Business
         public string Imagen { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
-        public System.DateTime ChangedOn { get; set; }
-        public int ChangedBy { get; set; }
-        public System.DateTime DeletedOn { get; set; }
+        public Nullable<System.DateTime> ChangedOn { get; set; }
+        public Nullable<int> ChangedBy { get; set; }
+        public Nullable<System.DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Categoria Categoria { get; set; }

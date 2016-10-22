@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="UAIBayBD.Promocion" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayBD.Proveedor" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayBD.Roles" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UAIBayBD.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAIBayBD.sysdiagrams" Width="2.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayBD.TarjetaCredito" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayBD.Usuario" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayBD.Venta" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />

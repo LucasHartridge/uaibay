@@ -12,7 +12,6 @@ namespace UAIBay.BIZ
         public int IdCategoria { get; set; }
         public string Nombre { get; set; }
 
-        public virtual ICollection<bizProducto> Producto { get; set; }
 
     }
 }
