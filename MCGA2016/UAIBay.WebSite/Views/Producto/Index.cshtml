@@ -16,19 +16,16 @@
             @Html.DisplayNameFor(model => model.CodProducto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayName("Descripción")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrecioCompra)
+            @Html.DisplayName("Precio de compra")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PrecioVenta)
+            @Html.DisplayName("Precio de venta")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
+            @Html.DisplayName("Categoría")
         </th>
         <th></th>
     </tr>
@@ -49,10 +46,7 @@
                 @Html.DisplayFor(modelItem => item.PrecioVenta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
+                @Html.DisplayFor(modelItem => item.Categoria.Nombre)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.CodProducto }) |

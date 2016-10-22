@@ -45,5 +45,37 @@ namespace UAIBay.BLL.DTO
 
             return DTO;
         }
+
+        public dtoProducto BuscarUnProducto(int id)
+        {
+            var Repository = new ProductoRepository();
+            var BIZ = Repository.TraerPorId(id);
+
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var DTO = Mapper.Map<bizProducto, dtoProducto>(BIZ);
+
+            return DTO;
+        }
+
+        public void Actualizar(dtoProducto DTO)
+        {
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var BIZ = Mapper.Map<dtoProducto, bizProducto>(DTO);
+
+            var repo = new ProductoRepository();
+            repo.Actualizar(BIZ);
+            repo.Save();
+        }
+
+        public void Eliminar(dtoProducto dtopro)
+        {
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+
+            var BIZ = Mapper.Map<dtoProducto, bizProducto>(dtopro);
+
+            var repo = new ProductoRepository();
+            repo.Eliminar(BIZ);
+            repo.Save();
+        }
     }
 }

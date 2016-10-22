@@ -17,13 +17,19 @@ namespace UAIBay.WebSite.Controllers
         {
             var bll = new dtoProducto();
             var productos = bll.TraerProductos();
+
+            var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+            var categoriasDTO = bllcat.TraerCategorias();
+
             App_Start.AutoMapperWebConfiguration.Configure();
 
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
+            var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+
+            ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
+
             return View(productosVM);
         }
-
-
 
 
         [HttpGet]
@@ -43,29 +49,88 @@ namespace UAIBay.WebSite.Controllers
         [HttpPost]
         public ActionResult Create(ProductoViewModels producto, HttpPostedFileBase imagen)
         {
-            producto.Imagen = "prueba";
-
             var bll = new dtoProducto();
 
             App_Start.AutoMapperWebConfiguration.Configure();
             var DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
             bll.Crear(DTO);
-
-
             return RedirectToAction("Index");
         }
 
 
 
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var bll = new dtoProducto();
+            var producto = bll.BuscarUnProducto(id);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var vmodel = Mapper.Map<dtoProducto, ProductoViewModels>(producto);
+            return View(vmodel);
+        }
 
 
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var bll = new dtoProducto();
+            var pr = bll.BuscarUnProducto(id);
+
+            var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+            var categoriasDTO = bllcat.TraerCategorias();
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var vmodel = Mapper.Map<dtoProducto, ProductoViewModels>(pr);
+            var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+
+            ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
+            return View(vmodel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ProductoViewModels producto)
+        {
+            if (ModelState.IsValid)
+            {
+                App_Start.AutoMapperWebConfiguration.Configure();
+                dtoProducto DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
+
+                var bll = new dtoProducto();
+                bll.Actualizar(DTO);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(producto);
+            }
+        }
 
 
 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var bll = new dtoProducto();
+            var producto = bll.BuscarUnProducto(id);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var vmodel = Mapper.Map<dtoProducto, ProductoViewModels>(producto);
+            return View(vmodel);
+        }
 
+        [HttpPost]
+        public ActionResult Delete(ProductoViewModels producto)
+        {
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var dtopro = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
+            var bll = new dtoProducto();
+            bll.Eliminar(dtopro);
+
+            return RedirectToAction("Index");
+        }
 
 
 
