@@ -5,10 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@*@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<BIZ.Libro>*@
+
+<h2>Categorías</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nueva categoría", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,11 +34,13 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Update", new { id=item.IdCategoria }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdCategoria }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdCategoria })
+            @Html.ActionLink("Editar", "Update", new { id=item.IdCategoria }) |
+            @Html.ActionLink("Ver", "Details", new { id = item.IdCategoria }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCategoria })
         </td>
     </tr>
 }
 
 </table>
+
+@*@Html.PagedListPager(Model, Page => Url.Action("LibroIndex", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)*@
