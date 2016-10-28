@@ -14,7 +14,7 @@ namespace UAIBay.BIZ
         public string Localidad { get; set; }
         public string Provincia { get; set; }
         public string CodigoPostal { get; set; }
-        public System.DateTime DeletedOn { get; set; }
+        public Nullable<DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
 
         public virtual bizUsuario Usuario { get; set; }

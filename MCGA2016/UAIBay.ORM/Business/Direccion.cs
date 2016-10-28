@@ -20,7 +20,7 @@ namespace UAIBay.ORM.Business
         public string Localidad { get; set; }
         public string Provincia { get; set; }
         public string CodigoPostal { get; set; }
-        public System.DateTime DeletedOn { get; set; }
+        public Nullable<System.DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Usuario Usuario { get; set; }

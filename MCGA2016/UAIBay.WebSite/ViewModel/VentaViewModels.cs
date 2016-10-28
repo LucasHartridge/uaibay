@@ -18,7 +18,7 @@ namespace UAIBay.WebSite.ViewModel
         public int UserId { get; set; }
         public DateTime Fecha { get; set; }
         public string CodPromocion { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
 
         public virtual ICollection<DetalleVentaViewModels> DetalleVenta { get; set; }
         public virtual PromocionViewModels Promocion { get; set; }

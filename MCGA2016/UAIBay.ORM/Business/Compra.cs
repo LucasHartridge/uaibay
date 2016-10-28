@@ -22,7 +22,7 @@ namespace UAIBay.ORM.Business
         public int NroCompra { get; set; }
         public System.DateTime Fecha { get; set; }
         public string CUIT { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreateBy { get; set; }
         public Nullable<System.DateTime> Changedon { get; set; }

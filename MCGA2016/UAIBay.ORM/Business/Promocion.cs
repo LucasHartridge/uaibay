@@ -14,15 +14,9 @@ namespace UAIBay.ORM.Business
     
     public partial class Promocion
     {
-        public Promocion()
-        {
-            this.Venta = new HashSet<Venta>();
-        }
-    
         public string CodPromocion { get; set; }
+        public string Nro { get; set; }
         public int Descuento { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
-    
-        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

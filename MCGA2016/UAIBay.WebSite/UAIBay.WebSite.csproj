@@ -53,6 +53,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -188,6 +196,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
@@ -271,6 +280,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ComprarController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -279,6 +289,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ActivityLogViewModels.cs" />
+    <Compile Include="ViewModel\CarritoViewModels.cs" />
     <Compile Include="ViewModel\CategoriaViewModels.cs" />
     <Compile Include="ViewModel\CompraViewModels.cs" />
     <Compile Include="ViewModel\DataLogViewModels.cs" />
@@ -287,6 +298,7 @@
     <Compile Include="ViewModel\DireccionViewModels.cs" />
     <Compile Include="ViewModel\ErrorLogViewModels.cs" />
     <Compile Include="ViewModel\HistoryViewModels.cs" />
+    <Compile Include="ViewModel\ItemCarritoViewModels.cs" />
     <Compile Include="ViewModel\ProductoViewModels.cs" />
     <Compile Include="ViewModel\PromocionViewModels.cs" />
     <Compile Include="ViewModel\ProveedorViewModels.cs" />
@@ -339,6 +351,9 @@
     <Content Include="Views\Producto\Delete.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Comprar\Catalogo.cshtml" />
+    <Content Include="Views\Comprar\Carrito.cshtml" />
+    <Content Include="Views\Comprar\CompraFinalizada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

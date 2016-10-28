@@ -18,5 +18,9 @@ namespace UAIBay.ORM.Context
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Proveedor> Proveedores { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Carrito> Carritos { get; set; }
+        public virtual DbSet<ItemCarrito> ItemCarrito { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
+        public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
     }
 }

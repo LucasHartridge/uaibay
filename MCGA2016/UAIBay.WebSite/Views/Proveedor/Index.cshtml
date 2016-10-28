@@ -1,9 +1,13 @@
-﻿@model IEnumerable<UAIBay.WebSite.ViewModel.ProveedorViewModels>
+﻿@*@model IEnumerable<UAIBay.WebSite.ViewModel.ProveedorViewModels>*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<UAIBay.WebSite.ViewModel.ProveedorViewModels>
 
 <h2>Proveedores</h2>
 
@@ -14,25 +18,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CUIT)
+            @Html.DisplayName("CUIT")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Nombre")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Domicilio)
+            @Html.DisplayName("Domicilio")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localidad)
+            @Html.DisplayName("Localidad")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoPostal)
+            @Html.DisplayName("Codigo postal")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayName("E-mail")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayName("Teléfono")
         </th>
         <th></th>
     </tr>
@@ -70,3 +74,5 @@
     }
 
 </table>
+
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

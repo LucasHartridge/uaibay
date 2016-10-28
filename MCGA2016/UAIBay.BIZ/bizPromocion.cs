@@ -10,7 +10,7 @@ namespace UAIBay.BIZ
     {
         public string CodPromocion { get; set; }
         public int Descuento { get; set; }
-        public System.DateTime FechaVencimiento { get; set; }
+        public DateTime FechaVencimiento { get; set; }
 
         public virtual ICollection<bizVenta> Venta { get; set; }
     }

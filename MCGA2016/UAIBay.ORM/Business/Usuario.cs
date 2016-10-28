@@ -38,7 +38,7 @@ namespace UAIBay.ORM.Business
         public string Password { get; set; }
         public string PasswordHash { get; set; }
         public int AccessFailedCount { get; set; }
-        public System.DateTime DeleteOn { get; set; }
+        public Nullable<System.DateTime> DeleteOn { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<ActivityLog> ActivityLog { get; set; }

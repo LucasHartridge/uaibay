@@ -13,14 +13,17 @@ namespace UAIBay.BLL.DTO
     {
         public int CodProducto { get; set; }
         public string Descripcion { get; set; }
-        public int PrecioCompra { get; set; }
-        public int PrecioVenta { get; set; }
+        public double PrecioCompra { get; set; }
+        public double PrecioVenta { get; set; }
         public int IdCategoria { get; set; }
         public string Imagen { get; set; }
 
         public virtual dtoCategoria Categoria { get; set; }
         public virtual ICollection<dtoDetalleCompra> DetalleCompra { get; set; }
         public virtual ICollection<dtoDetalleVenta> DetalleVenta { get; set; }
+        public virtual ICollection<dtoItemCarrito> ItemCarrito { get; set; }
+
+
 
         public void Crear(dtoProducto producto)
         {
@@ -31,9 +34,6 @@ namespace UAIBay.BLL.DTO
             repository.Insertar(BIZ);
             repository.Save();
         }
-
-
-
 
         public object TraerProductos()
         {

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UAIBay.BLL.DTO;
 using AutoMapper;
 using UAIBay.WebSite.ViewModel;
+using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -13,14 +14,16 @@ namespace UAIBay.WebSite.Controllers
     {
         //
         // GET: /Proveedor/
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var bllProveedor = new dtoProveedor();
             var proveedores = bllProveedor.TraerProveedores();
             App_Start.AutoMapperWebConfiguration.Configure();
 
             var proveedorViewmodel = Mapper.Map<List<ProveedorViewModels>>(proveedores);
-            return View(proveedorViewmodel);
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+
+            return View(proveedorViewmodel.ToPagedList(pageNumber, 9));
         }
 
         [HttpGet]
