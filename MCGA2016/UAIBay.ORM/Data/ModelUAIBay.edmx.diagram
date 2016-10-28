@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="UAIBayModel.History" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayModel.ItemCarrito" Width="1.5" PointX="7.5" PointY="35.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayModel.Producto" Width="1.5" PointX="5.25" PointY="31.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UAIBayModel.Promocion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayModel.Proveedor" Width="1.5" PointX="3" PointY="36.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayModel.Roles" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UAIBayModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -40,6 +39,7 @@
         <AssociationConnector Association="UAIBayModel.FK_TarjetaCredito_Usuario1" ManuallyRouted="false" />
         <AssociationConnector Association="UAIBayModel.FK_Venta_Usuario1" ManuallyRouted="false" />
         <AssociationConnector Association="UAIBayModel.UsuarioRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UAIBayModel.Promocion" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

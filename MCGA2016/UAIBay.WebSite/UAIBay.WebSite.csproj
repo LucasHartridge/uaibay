@@ -284,6 +284,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\PromocionController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -354,6 +355,11 @@
     <Content Include="Views\Comprar\Catalogo.cshtml" />
     <Content Include="Views\Comprar\Carrito.cshtml" />
     <Content Include="Views\Comprar\CompraFinalizada.cshtml" />
+    <Content Include="Views\Promocion\Index.cshtml" />
+    <Content Include="Views\Promocion\Create.cshtml" />
+    <Content Include="Views\Promocion\Details.cshtml" />
+    <Content Include="Views\Promocion\Edit.cshtml" />
+    <Content Include="Views\Promocion\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

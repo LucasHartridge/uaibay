@@ -37,12 +37,12 @@ namespace UAIBay.ORM.Business
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<ItemCarrito> ItemCarrito { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
-        public virtual DbSet<Promocion> Promocion { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TarjetaCredito> TarjetaCredito { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<Promocion> Promocion { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace UAIBay.ORM.Business
     
     public partial class Promocion
     {
-        public string CodPromocion { get; set; }
+        public int CodPromocion { get; set; }
         public string Nro { get; set; }
         public int Descuento { get; set; }
         public System.DateTime FechaVencimiento { get; set; }

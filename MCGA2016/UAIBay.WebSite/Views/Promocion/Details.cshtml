@@ -1,0 +1,47 @@
+﻿@model UAIBay.WebSite.ViewModel.PromocionViewModels
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+            @Html.HiddenFor(model => model.CodPromocion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descuento) %
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaVencimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaVencimiento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.CodPromocion }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

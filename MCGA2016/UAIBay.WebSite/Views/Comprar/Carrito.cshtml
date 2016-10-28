@@ -46,6 +46,8 @@
 }
 
 </table>
+
+
 @Html.Label("Código de descuento:")
 @Html.TextBox("cod", null, new { placeholder="Ingrese el código de descuento" })
 @Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })

@@ -173,7 +173,7 @@
           <Key>
             <PropertyRef Name="CodPromocion" />
           </Key>
-          <Property Name="CodPromocion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodPromocion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nro" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descuento" Type="int" Nullable="false" />
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
@@ -748,15 +748,6 @@
           <NavigationProperty Name="DetalleVenta" Relationship="Self.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
           <NavigationProperty Name="ItemCarrito" Relationship="Self.FK_ItemCarrito_Producto" FromRole="Producto" ToRole="ItemCarrito" />
         </EntityType>
-        <EntityType Name="Promocion">
-          <Key>
-            <PropertyRef Name="CodPromocion" />
-          </Key>
-          <Property Name="CodPromocion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descuento" Type="Int32" Nullable="false" />
-          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
         <EntityType Name="Proveedor">
           <Key>
             <PropertyRef Name="CUIT" />
@@ -1048,7 +1039,6 @@
           <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="ItemCarrito" EntityType="Self.ItemCarrito" />
           <EntitySet Name="Producto" EntityType="Self.Producto" />
-          <EntitySet Name="Promocion" EntityType="Self.Promocion" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -1119,7 +1109,17 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <EntitySet Name="Promocion" EntityType="UAIBayModel.Promocion" />
         </EntityContainer>
+        <EntityType Name="Promocion">
+          <Key>
+            <PropertyRef Name="CodPromocion" />
+          </Key>
+          <Property Name="CodPromocion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descuento" Type="Int32" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1298,16 +1298,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Promocion">
-            <EntityTypeMapping TypeName="UAIBayModel.Promocion">
-              <MappingFragment StoreEntitySet="Promocion">
-                <ScalarProperty Name="CodPromocion" ColumnName="CodPromocion" />
-                <ScalarProperty Name="Nro" ColumnName="Nro" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Proveedor">
             <EntityTypeMapping TypeName="UAIBayModel.Proveedor">
               <MappingFragment StoreEntitySet="Proveedor">
@@ -1403,6 +1393,16 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Promocion">
+            <EntityTypeMapping TypeName="UAIBayModel.Promocion">
+              <MappingFragment StoreEntitySet="Promocion">
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Nro" ColumnName="Nro" />
+                <ScalarProperty Name="CodPromocion" ColumnName="CodPromocion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
