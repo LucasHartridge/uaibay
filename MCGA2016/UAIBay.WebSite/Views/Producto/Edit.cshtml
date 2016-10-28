@@ -46,8 +46,8 @@
         <div class="form-group">
             @Html.Label("Categoría", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.IdCategoria, ViewBag.Categorias as List<SelectListItem>, "Seleccionar", new { @class = "control-label col-md-2" })
-                @Html.ValidationMessageFor(model => model.IdCategoria)
+                @Html.DropDownListFor(x => x.IdCategoria, ViewBag.Categorias as List<SelectListItem>, "Seleccionar", new { @class = "col-md-2" })
+                @Html.ValidationMessageFor(model => model.IdCategoria, null, new { @class = "control-label", style = "padding-left:10px" })
             </div>
         </div>
 

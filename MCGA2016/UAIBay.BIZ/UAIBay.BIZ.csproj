@@ -39,11 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bizCarrito.cs" />
     <Compile Include="bizCategoria.cs" />
     <Compile Include="bizCompra.cs" />
     <Compile Include="bizDetalleCompra.cs" />
     <Compile Include="bizDetalleVenta.cs" />
     <Compile Include="bizDireccion.cs" />
+    <Compile Include="bizItemCarrito.cs" />
     <Compile Include="bizProducto.cs" />
     <Compile Include="bizPromocion.cs" />
     <Compile Include="bizProveedor.cs" />

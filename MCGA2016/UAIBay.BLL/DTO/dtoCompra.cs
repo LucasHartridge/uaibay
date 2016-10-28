@@ -11,9 +11,10 @@ namespace UAIBay.BLL.DTO
         public int NroCompra { get; set; }
         public DateTime Fecha { get; set; }
         public string CUIT { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
 
         public virtual dtoProveedor Proveedor { get; set; }
         public virtual ICollection<dtoDetalleCompra> DetalleCompra { get; set; }
+
     }
 }

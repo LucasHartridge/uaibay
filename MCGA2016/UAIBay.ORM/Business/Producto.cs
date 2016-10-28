@@ -18,12 +18,13 @@ namespace UAIBay.ORM.Business
         {
             this.DetalleCompra = new HashSet<DetalleCompra>();
             this.DetalleVenta = new HashSet<DetalleVenta>();
+            this.ItemCarrito = new HashSet<ItemCarrito>();
         }
     
         public int CodProducto { get; set; }
         public string Descripcion { get; set; }
-        public int PrecioCompra { get; set; }
-        public int PrecioVenta { get; set; }
+        public double PrecioCompra { get; set; }
+        public double PrecioVenta { get; set; }
         public int IdCategoria { get; set; }
         public string Imagen { get; set; }
         public System.DateTime CreatedOn { get; set; }
@@ -36,5 +37,6 @@ namespace UAIBay.ORM.Business
         public virtual Categoria Categoria { get; set; }
         public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+        public virtual ICollection<ItemCarrito> ItemCarrito { get; set; }
     }
 }

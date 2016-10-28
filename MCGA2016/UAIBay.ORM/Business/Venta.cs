@@ -22,8 +22,8 @@ namespace UAIBay.ORM.Business
         public int NroVenta { get; set; }
         public int UserId { get; set; }
         public System.DateTime Fecha { get; set; }
-        public string CodPromocion { get; set; }
-        public int Total { get; set; }
+        public string NroComprobante { get; set; }
+        public double Total { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ChangedOn { get; set; }
@@ -32,7 +32,6 @@ namespace UAIBay.ORM.Business
         public bool IsDeleted { get; set; }
     
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
-        public virtual Promocion Promocion { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }
