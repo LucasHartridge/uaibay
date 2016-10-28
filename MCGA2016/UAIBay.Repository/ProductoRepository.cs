@@ -22,7 +22,7 @@ namespace UAIBay.Repository
         public List<bizProducto> ObtenerTodos()
         {
 
-            var orm = contexto.Productos.ToList().Where(x => x.IsDeleted == false);
+            var orm = contexto.Productos.Where(x => x.IsDeleted == false).ToList();
 
             Mapeador.AutoMapperORMConfiguration.Configure();
             var BIZ = Mapper.Map<List<bizProducto>>(orm);

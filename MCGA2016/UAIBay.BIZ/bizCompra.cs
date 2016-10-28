@@ -9,14 +9,14 @@ namespace UAIBay.BIZ
     public class bizCompra
     {
         public int NroCompra { get; set; }
-        public System.DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string CUIT { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreateBy { get; set; }
-        public DateTime? Changedon { get; set; }
-        public int? ChangedBy { get; set; }
-        public DateTime? DeletedOn { get; set; }
+        public Nullable<DateTime> ChangedOn { get; set; }
+        public Nullable<int> ChangedBy { get; set; }
+        public Nullable<DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
 
         public virtual bizProveedor Proveedor { get; set; }

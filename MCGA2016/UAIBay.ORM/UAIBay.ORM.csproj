@@ -55,6 +55,9 @@
     <Compile Include="Business\ActivityLog.cs">
       <DependentUpon>ModelUAIBay.tt</DependentUpon>
     </Compile>
+    <Compile Include="Business\Carrito.cs">
+      <DependentUpon>ModelUAIBay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Business\Categoria.cs">
       <DependentUpon>ModelUAIBay.tt</DependentUpon>
     </Compile>
@@ -79,6 +82,9 @@
     <Compile Include="Business\History.cs">
       <DependentUpon>ModelUAIBay.tt</DependentUpon>
     </Compile>
+    <Compile Include="Business\ItemCarrito.cs">
+      <DependentUpon>ModelUAIBay.tt</DependentUpon>
+    </Compile>
     <Compile Include="Business\ModelUAIBay.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,12 +105,6 @@
       <DependentUpon>ModelUAIBay.tt</DependentUpon>
     </Compile>
     <Compile Include="Business\Roles.cs">
-      <DependentUpon>ModelUAIBay.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Business\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelUAIBay.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Business\sp_helpdiagrams_Result.cs">
       <DependentUpon>ModelUAIBay.tt</DependentUpon>
     </Compile>
     <Compile Include="Business\sysdiagrams.cs">

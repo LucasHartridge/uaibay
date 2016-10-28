@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UAIBay.WebSite.ViewModel;
 using AutoMapper;
 using UAIBay.BLL.DTO;
+using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -13,7 +14,7 @@ namespace UAIBay.WebSite.Controllers
     {
         //
         // GET: /Home/
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var bll = new dtoProducto();
             var productos = bll.TraerProductos();
@@ -28,7 +29,9 @@ namespace UAIBay.WebSite.Controllers
 
             ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
 
-            return View(productosVM);
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+
+            return View(productosVM.ToPagedList(pageNumber, 9));
         }
 
 

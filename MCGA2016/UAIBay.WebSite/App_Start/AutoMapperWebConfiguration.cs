@@ -35,6 +35,8 @@ namespace UAIBay.WebSite.App_Start
             base.CreateMap<TarjetaCreditoViewModels, dtoTarjetaCredito>().ReverseMap();
             base.CreateMap<UsuarioViewModels, dtoUsuario>().ReverseMap();
             base.CreateMap<VentaViewModels, dtoVenta>().ReverseMap();
+            base.CreateMap<CarritoViewModels, dtoCarrito>().ReverseMap();
+            base.CreateMap<ItemCarritoViewModels, dtoItemCarrito>().ReverseMap();
         }
     }
 }

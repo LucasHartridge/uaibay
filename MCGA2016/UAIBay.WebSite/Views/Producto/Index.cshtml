@@ -1,9 +1,13 @@
-﻿@model IEnumerable<UAIBay.WebSite.ViewModel.ProductoViewModels>
+﻿@*@model IEnumerable<UAIBay.WebSite.ViewModel.ProductoViewModels>*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<UAIBay.WebSite.ViewModel.ProductoViewModels>
 
 <h2>Productos</h2>
 
@@ -12,9 +16,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CodProducto)
-        </th>
         <th>
             @Html.DisplayName("Descripción")
         </th>
@@ -34,16 +35,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodProducto)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrecioCompra)
+               $ @Html.DisplayFor(modelItem => item.PrecioCompra)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrecioVenta)
+               $ @Html.DisplayFor(modelItem => item.PrecioVenta)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Categoria.Nombre)
@@ -57,3 +55,4 @@
     }
 
 </table>
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

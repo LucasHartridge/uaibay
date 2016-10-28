@@ -16,7 +16,7 @@ namespace UAIBay.WebSite.ViewModel
         public int NroCompra { get; set; }
         public DateTime Fecha { get; set; }
         public string CUIT { get; set; }
-        public int Total { get; set; }
+        public double Total { get; set; }
     
         public virtual ProveedorViewModels Proveedor { get; set; }
         public virtual ICollection<DetalleCompraViewModels> DetalleCompra { get; set; }

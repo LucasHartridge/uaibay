@@ -17,9 +17,9 @@ namespace UAIBay.BIZ
         public int Telefono { get; set; }
         public DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
-        public DateTime? ChangedOn { get; set; }
-        public int? ChangedBy { get; set; }
-        public DateTime? DeletedOn { get; set; }
+        public Nullable<DateTime> ChangedOn { get; set; }
+        public Nullable<int> ChangedBy { get; set; }
+        public Nullable<DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
 
         public virtual ICollection<bizCompra> Compra { get; set; }

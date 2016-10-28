@@ -8,19 +8,19 @@ namespace UAIBay.WebSite.ViewModel
 {
     public class PromocionViewModels
     {
-        public PromocionViewModels()
-        {
-            this.Venta = new HashSet<VentaViewModels>();
-        }
 
-        public string CodPromocion { get; set; }
+        public int CodPromocion { get; set; }
+
+        [Required]
+        public string Nro { get; set; }
 
         [Required]
         public int Descuento { get; set; }
 
         [Required]
+        [Display(Name="Fecha de vencimiento")]
         public DateTime FechaVencimiento { get; set; }
 
-        public virtual ICollection<VentaViewModels> Venta { get; set; }
+ 
     }
 }

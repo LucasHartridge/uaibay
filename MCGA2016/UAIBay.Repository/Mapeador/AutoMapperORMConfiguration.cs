@@ -38,6 +38,8 @@ namespace UAIBay.Repository.Mapeador
             base.CreateMap<TarjetaCredito, bizTarjetaCredito>().ReverseMap();
             base.CreateMap<Usuario, bizUsuario>().ReverseMap();
             base.CreateMap<Venta, bizVenta>().ReverseMap();
+            base.CreateMap<Carrito, bizCarrito>().ReverseMap();
+            base.CreateMap<ItemCarrito, bizItemCarrito>().ReverseMap();
         }
     }
 }

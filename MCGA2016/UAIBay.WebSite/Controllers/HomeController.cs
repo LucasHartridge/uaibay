@@ -12,9 +12,6 @@ namespace UAIBay.WebSite.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-
-
-
             return View();
         }
         public ActionResult Contacto()

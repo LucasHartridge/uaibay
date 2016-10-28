@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarritoRepository.cs" />
     <Compile Include="CategoriaRepository.cs" />
     <Compile Include="CompraRepository.cs" />
     <Compile Include="DetalleCompraRepository.cs" />
