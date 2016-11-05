@@ -42,8 +42,8 @@ namespace UAIBay.Repository
 
             if (ORM != null)
             {
-                 var BIZ = Mapper.Map<Carrito, bizCarrito>(ORM);
-                 return BIZ;
+                var BIZ = Mapper.Map<Carrito, bizCarrito>(ORM);
+                return BIZ;
             }
 
             return null;
@@ -56,13 +56,19 @@ namespace UAIBay.Repository
 
             contexto.ItemCarrito.Add(ORM);
 
+            var repoProducto = new ProductoRepository();
+            var producto = repoProducto.BuscarUnORMProducto(objeto.CodProducto);
+            producto.Cantidad -= 1;
+            repoProducto.Actualizar(producto);
+            repoProducto.Save();
+
         }
 
 
         public void QuitarProducto(int codProducto, int nroCarrito)
         {
 
-            ItemCarrito item = (ItemCarrito)contexto.ItemCarrito.Where(b => b.IdCarrito ==nroCarrito && b.CodProducto==codProducto).First();
+            ItemCarrito item = (ItemCarrito)contexto.ItemCarrito.Where(b => b.IdCarrito == nroCarrito && b.CodProducto == codProducto).First();
 
             contexto.ItemCarrito.Remove(item);
         }
@@ -89,24 +95,11 @@ namespace UAIBay.Repository
             {
                 contexto.SaveChanges();
             }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            catch (Exception e)
             {
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting  
-                        // the current instance as InnerException  
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
+                string texto = e.ToString();
+                throw e;
             }
-
         }
 
 

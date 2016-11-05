@@ -25,11 +25,19 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
             @Html.DisplayName("Precio de compra")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PrecioCompra)
+            $ @Html.DisplayFor(model => model.PrecioCompra)
         </dd>
 
         <dt>
@@ -37,7 +45,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PrecioVenta)
+            $ @Html.DisplayFor(model => model.PrecioVenta)
         </dd>
 
         <dt>
