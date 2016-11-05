@@ -7,7 +7,7 @@
 
 <h2>Carrito</h2>
 
-<table class="table">
+<table class="table" id="TablaCarrito">
     <tr>
         <th>
             @Html.DisplayName("Nombre del producto")
@@ -32,11 +32,13 @@
             </td>
             <td>
 
-                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                <a href="#"  @*class="btn btn-flat"*@ class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
 
-                @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
+                @*@Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })*@
+                @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad" ,id="cantidad"})
 
-                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+                <a href="#" @*class="btn btn-flat"*@ class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
             </td>
             <td>
@@ -67,34 +69,80 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#restar').click(function () {
-            //get txtAmt value
-            var valorProducto = $('#cantidad').val();
-            valorProducto -= 1;
-           
-            if (valorProducto < 1) {
+    //$(document).ready(function () {
+    //    $('#restar').click(function () {
+    //        //get txtAmt value
+    //        var valorProducto = $('#cantidad').val();
+    //        //var valorProducto = $('.cantidad').val();
 
-            }
-            else {
-                //change txtInterest% value
-                $('#cantidad').val(valorProducto);
-            }
-            
+    //        valorProducto -= 1;
+
+    //        if (valorProducto < 1) {
+
+    //        }
+    //        else {
+    //            //change txtInterest% value
+    //            $('#cantidad').val(valorProducto);
+    //        }
+
+    //    });
+    //});
+
+    //$(document).ready(function () {
+    //    $('#sumar').click(function () {
+    //        //get txtAmt value
+    //        var valorProducto = $('#cantidad').val();
+    //        valorProducto = parseInt(1) + parseInt(valorProducto);
+
+    //        if (valorProducto > 9) {}
+    //        else {
+    //            //change txtInterest% value
+    //            $('#cantidad').val(valorProducto);
+    //        }
+    //    });
+    //});
+
+
+
+
+
+
+
+
+    function calculate(obj) {
+        var price = parseFloat($(obj).parent().parent().parent().find('.cantidad').text()) || 0;
+        var quantity = parseInt($(obj).parent().find('.cantidad').val());
+        var total = price * quantity;
+
+        $(obj).parent().parent().parent().find('.cantidad').text(quantity);;
+    }
+
+    function changeQuantity(num, obj) {
+        var value_to_set = parseInt($(obj).parent().find('.cantidad').val()) + num;
+        if (value_to_set <= 1) { $(obj).parent().find('.cantidad').val(1); return; }
+        if (value_to_set >9) { $(obj).parent().find('.cantidad').val(9); return; }
+        $(obj).parent().find('.cantidad').val(value_to_set);
+    }
+
+    $().ready(function () {
+        //calculate();
+        $(".restar").click(function () {
+            changeQuantity(-1, this);
+            calculate(this);
         });
-    });
 
-    $(document).ready(function () {
-        $('#sumar').click(function () {
-            //get txtAmt value
-            var valorProducto = $('#cantidad').val();
-            valorProducto = parseInt(1) + parseInt(valorProducto);
+        $(".sumar").click(function () {
+            changeQuantity(1, this);
+            calculate(this);
 
-            if (valorProducto > 9) {}
-            else {
-                //change txtInterest% value
-                $('#cantidad').val(valorProducto);
-            }
         });
+
+        $(".cantidad").keyup(function (e) {
+            if (e.keyCode == 38) changeQuantity(1, this);
+            if (e.keyCode == 40) changeQuantity(-1, this);
+            calculate(this);
+        });
+
+
     });
 </script>
