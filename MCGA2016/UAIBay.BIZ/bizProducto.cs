@@ -11,6 +11,7 @@ namespace UAIBay.BIZ
     
         public int CodProducto { get; set; }
         public string Descripcion { get; set; }
+        public int Cantidad { get; set; }
         public double PrecioCompra { get; set; }
         public double PrecioVenta { get; set; }
         public int IdCategoria { get; set; }

@@ -13,6 +13,12 @@ body {
   font-weight:400px;
 }
 
+#cantidad{
+     width: 20px;
+     text-align:center;
+     border:none;
+     color:#FE980F;
+}
 
 
 ul li {
