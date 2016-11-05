@@ -12,6 +12,7 @@ namespace UAIBay.BLL.DTO
     public class dtoProducto
     {
         public int CodProducto { get; set; }
+        public int Cantidad { get; set; }
         public string Descripcion { get; set; }
         public double PrecioCompra { get; set; }
         public double PrecioVenta { get; set; }

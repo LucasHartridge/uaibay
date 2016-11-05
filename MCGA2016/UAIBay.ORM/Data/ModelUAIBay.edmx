@@ -158,6 +158,7 @@
           </Key>
           <Property Name="CodProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="PrecioCompra" Type="float" Nullable="false" />
           <Property Name="PrecioVenta" Type="float" Nullable="false" />
           <Property Name="IdCategoria" Type="int" Nullable="false" />
@@ -747,6 +748,7 @@
           <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_Producto" FromRole="Producto" ToRole="DetalleCompra" />
           <NavigationProperty Name="DetalleVenta" Relationship="Self.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
           <NavigationProperty Name="ItemCarrito" Relationship="Self.FK_ItemCarrito_Producto" FromRole="Producto" ToRole="ItemCarrito" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
@@ -1283,6 +1285,7 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="UAIBayModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />

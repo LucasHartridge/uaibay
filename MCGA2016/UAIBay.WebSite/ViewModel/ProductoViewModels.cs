@@ -21,6 +21,9 @@ namespace UAIBay.WebSite.ViewModel
         public string Descripcion { get; set; }
 
         [Required]
+        public int Cantidad { get; set; }
+
+        [Required]
         [Display(Name = "Precio de compra")]
         public double PrecioCompra { get; set; }
 
@@ -35,7 +38,7 @@ namespace UAIBay.WebSite.ViewModel
         [Required]
         public string Imagen { get; set; }
 
-        
+
 
         public virtual CategoriaViewModels Categoria { get; set; }
         public virtual ICollection<DetalleCompraViewModels> DetalleCompra { get; set; }

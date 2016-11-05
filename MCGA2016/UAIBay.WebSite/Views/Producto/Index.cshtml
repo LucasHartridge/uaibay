@@ -20,6 +20,9 @@
             @Html.DisplayName("Descripción")
         </th>
         <th>
+            @Html.DisplayName("Cantidad")
+        </th>
+        <th>
             @Html.DisplayName("Precio de compra")
         </th>
         <th>
@@ -36,6 +39,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
             </td>
             <td>
                $ @Html.DisplayFor(modelItem => item.PrecioCompra)

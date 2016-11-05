@@ -24,34 +24,77 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            $ @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            $ @Html.DisplayFor(modelItem => item.Subtotal)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+            </td>
+            <td>
 
-        <td>
-            @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito})
-        </td>
-    </tr>
-}
+                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+
+                @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
+
+                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+
+            <td>
+                @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
+            </td>
+        </tr>
+    }
 
 </table>
 
 
 @Html.Label("Código de descuento:")
-@Html.TextBox("cod", null, new { placeholder="Ingrese el código de descuento" })
+@Html.TextBox("cod", null, new { placeholder = "Ingrese el código de descuento" })
 @Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })
 
 <p>
     @Html.ActionLink("Volver al catálogo", "Catalogo")
 </p>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#restar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto -= 1;
+           
+            if (valorProducto < 1) {
+
+            }
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
+            
+        });
+    });
+
+    $(document).ready(function () {
+        $('#sumar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto = parseInt(1) + parseInt(valorProducto);
+
+            if (valorProducto > 9) {}
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
+        });
+    });
+</script>
