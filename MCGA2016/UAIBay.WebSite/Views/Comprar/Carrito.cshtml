@@ -4,66 +4,184 @@
     ViewBag.Title = "Carrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section id="cart_items">
 
-<h2>Carrito</h2>
-
-<table class="table" id="TablaCarrito">
-    <tr>
-        <th>
-            @Html.DisplayName("Nombre del producto")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subtotal)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    @*<h2>Carrito</h2>*@
+    <div class="review-payment">
+        <h2>Carrito</h2>
+    </div>
+    @*<table class="table" id="TablaCarrito">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-            </td>
-            <td>
+            <th>
+                @Html.DisplayName("Nombre del producto")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th></th>
+        </tr>*@
+    <div class="table-responsive cart_info">
+        <table class="table table-condensed" id="TablaCarrito">
+            <thead>
+                <tr class="cart_menu">
+                    <th>
+                        @Html.DisplayName("Nombre del producto")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Subtotal)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="targetfields">
+                        <td>
+                            <h4> @Html.DisplayFor(modelItem => item.Producto.Descripcion)</h4>
+                        </td>
+                        <td>
 
-                <a href="#"  @*class="btn btn-flat"*@ class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                            <a href="#" class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
 
-                @*@Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })*@
-                @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad" ,id="cantidad"})
-
-
-                <a href="#" @*class="btn btn-flat"*@ class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-
-            </td>
-            <td>
-                $ @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                $ @Html.DisplayFor(modelItem => item.Subtotal)
-            </td>
-
-            <td>
-                @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
-            </td>
-        </tr>
-    }
-
-</table>
+                            @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad", id = "cantidad", @readonly = true })
 
 
-@Html.Label("Código de descuento:")
-@Html.TextBox("cod", null, new { placeholder = "Ingrese el código de descuento" })
-@Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })
+                            <a href="#" class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
-<p>
-    @Html.ActionLink("Volver al catálogo", "Catalogo")
-</p>
+                        </td>
+                        <td>
+                            $ @Html.TextBoxFor(modelItem => item.Precio, new { @class = "precio", @readonly = true, id = "precio" })
+                        </td>
+                        <td class="tdsubtotal">
+                            $ @Html.TextBoxFor(modelItem => item.Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
+                        </td>
+
+                        <td>
+                            <a href='@(Url.Action("QuitarItem", "Comprar",new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito }))'><i class="fa fa-times"></i></a>
+                            @*@Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })*@
+                        </td>
+                    </tr>
+                }
+                @*<tr>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="2">
+                        <table class="table table-condensed total-result">
+                            <tr>
+                                <td>Carrito Subtotal</td>
+                                <td>$<input type="text" id="subtotalcarrito" value="1" readonly="readonly" /></td>
+                            </tr>
+                            <tr class="shipping-cost">
+                                <td>Costo de envio</td>
+                                <td>Gratis</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>$<input value="0" readonly="readonly" id="totalcarrito" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>*@
+            </tbody>
+        </table>
+    </div>
+</section>
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>Confirme su compra</h3>
+            <p>Recuerde que unicamente realizamos envios dentro de Zona Oeste.</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="chose_area">
+                    <ul class="user_option">
+                        <li>
+                            <label>Ingrese su codigo de descuento</label>
+                            @Html.TextBox("cod", null)
+                        </li>
+                    </ul>
+                    <ul class="user_info">
+                        <li class="single_field zip-field">
+                            <label>Partido:</label>
+                            <input type="text">
+                        </li>
+                        <li class="single_field zip-field">
+                            <label>Direccion:</label>
+                            <input type="text">
+                        </li>
+                        <li class="single_field zip-field">
+                            <label>Codigo postal:</label>
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <ul>
+                        <li>Sub Total <span>$<input type="text" id="subtotalcarrito" value="1" readonly="readonly" /></span></li>
+                        <li>Costo de envio <span id="enviogratis">Gratis</span></li>
+                        <li>Total <span>$<input value="0" readonly="readonly" id="totalcarrito" /></span></li>
+                    </ul>
+                    <a href='@(Url.Action("Comprar", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }))' class="btn btn-default update">Comprar</a>
+                    <a href='@(Url.Action("Catalogo", "Comprar"))' class="btn btn-default check_out">Volver al catalogo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                </td>
+                <td>
+
+                    <a href="#" class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+
+                    @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad", id = "cantidad", @readonly = true })
+
+
+                    <a href="#" class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+                </td>
+                <td class="tdprecio">
+                    $ @Html.TextBoxFor(modelItem => item.Precio, new { @class = "precio", @readonly = true, id = "precio" })
+                </td>
+                <td class="tdsubtotal">
+                    $ @Html.TextBoxFor(modelItem => item.Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
+                </td>
+
+                <td>
+                    @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+
+@*@Html.Label("Código de descuento:")
+    @Html.TextBox("cod", null, new { placeholder = "Ingrese el código de descuento" })
+    @Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })
+
+    <p>
+        @Html.ActionLink("Volver al catálogo", "Catalogo")
+    </p>*@
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -109,39 +227,83 @@
 
 
 
-    function calculate(obj) {
-        var price = parseFloat($(obj).parent().parent().parent().find('.cantidad').text()) || 0;
-        var quantity = parseInt($(obj).parent().find('.cantidad').val());
-        var total = price * quantity;
+    //function calculate(obj) {
+    //    var price = parseFloat($(obj).parent().parent().parent().find('.cantidad').text()) || 0;
+    //    var quantity = parseInt($(obj).parent().find('.cantidad').val());
+    //    //var total = price * quantity;
+    //    $(obj).parent().parent().parent().find('.cantidad').text(quantity);;
 
-        $(obj).parent().parent().parent().find('.cantidad').text(quantity);;
+    //    var subtotal = parseFloat($(obj).parent().parent().parent().find('.subtotal').val());
+    //    var precio = parseFloat($(obj).parent().parent().parent().find('.precio').val());
+    //    var subtotalactualizado = precio * quantity;
+    //    $(obj).parent().parent().parent().find('.subtotal').text(subtotalactualizado);;
+    //}
+
+
+    
+
+    function calcularTotal() {
+        var total = 0;
+        $('#TablaCarrito .targetfields').each(function () {
+            var subtotal = parseInt($(this).find(".subtotal").val());
+            total = total + subtotal;
+        });
+        $('#subtotalcarrito').val(total);
+        $('#totalcarrito').val(total);
     }
 
     function changeQuantity(num, obj) {
         var value_to_set = parseInt($(obj).parent().find('.cantidad').val()) + num;
         if (value_to_set <= 1) { $(obj).parent().find('.cantidad').val(1); return; }
-        if (value_to_set >9) { $(obj).parent().find('.cantidad').val(9); return; }
+        if (value_to_set > 9) { $(obj).parent().find('.cantidad').val(9); return; }
         $(obj).parent().find('.cantidad').val(value_to_set);
+    }
+
+    function changeSubTotal(obj) {
+        var $tr = $(obj).parents("tr");
+        var precio = $tr.find("td").eq(2).find('.precio').val();
+        var subtotal = $tr.find("td").eq(3).find('.subtotal').val();
+        var quantity = parseInt($(obj).parent().parent().find('.cantidad').val());
+        var subtotalactualizado = precio * quantity;
+        $tr.find("td").eq(3).find('.subtotal').val(subtotalactualizado);
+
+        //var subtotal = parseInt($(obj).parent().parent().find('.subtotal').val());
+        //var quantity = parseInt($(obj).parent().parent().find('.cantidad').val());
+        //var precio = parseInt($(obj).parent().parent().find('.precio').val());
+        //var subtotalactualizado = precio * quantity;
+        //$(obj).parent().find('.subtotal').val(subtotalactualizado);
     }
 
     $().ready(function () {
         //calculate();
+        var total = 0;
+        $('#TablaCarrito .targetfields').each(function () {
+            var subtotal = parseInt($(this).find(".subtotal").val());
+            total = total+subtotal;
+        });
+        $('#subtotalcarrito').val(total);
+        $('#totalcarrito').val(total);
+
         $(".restar").click(function () {
             changeQuantity(-1, this);
-            calculate(this);
+            changeSubTotal(this);
+            calcularTotal();
+            //calculate(this);
         });
 
         $(".sumar").click(function () {
             changeQuantity(1, this);
-            calculate(this);
+            changeSubTotal(this);
+            calcularTotal();
+            //calculate(this);
 
         });
 
-        $(".cantidad").keyup(function (e) {
-            if (e.keyCode == 38) changeQuantity(1, this);
-            if (e.keyCode == 40) changeQuantity(-1, this);
-            calculate(this);
-        });
+        //$(".cantidad").keyup(function (e) {
+        //    if (e.keyCode == 38) changeQuantity(1, this);
+        //    if (e.keyCode == 40) changeQuantity(-1, this);
+        //    calculate(this);
+        //});
 
 
     });
