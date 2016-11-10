@@ -7,50 +7,53 @@
 
 <h2>Carrito</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Nombre del producto")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subtotal)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table" id="tableId">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-            </td>
-            <td>
-
-                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-
-                @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
-
-                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-
-            </td>
-            <td>
-                $ @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                $ @Html.DisplayFor(modelItem => item.Subtotal)
-            </td>
-
-            <td>
-                @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
-            </td>
+            <th>
+                @Html.DisplayName("Nombre del producto")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+          
+            <tr id=@item.CodProducto>
+                <td id="NombreProducto">
+                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                </td>
+
+                <td id="CantidadProducto">
+                    <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                    @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
+                    <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+                </td>
+                <td>
+                    $ @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    $ @Html.DisplayFor(modelItem => item.Subtotal)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
+                </td>
+            </tr>
+        }
+    </tbody>
+
 
 </table>
 
@@ -67,22 +70,20 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#restar').click(function () {
-            //get txtAmt value
-            var valorProducto = $('#cantidad').val();
-            valorProducto -= 1;
-           
-            if (valorProducto < 1) {
 
-            }
-            else {
-                //change txtInterest% value
-                $('#cantidad').val(valorProducto);
-            }
-            
-        });
+    $(document).ready(function () {
+    $("#restar").click(function () {
+        var index = $(this).parents("tr").attr("id");
+        var cantidad = $(this).parents("tr").find('tr#' + index + ' #cantidad').val();
+        var valorProducto = cantidad - 1;
+        if (valorProducto < 1) { }
+        else {
+            //change txtInterest% value
+            $('tr#' + index +' #cantidad').val(valorProducto);
+        }
     });
+    });
+    
 
     $(document).ready(function () {
         $('#sumar').click(function () {
