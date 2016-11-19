@@ -23,7 +23,6 @@ namespace UAIBay.ORM.Business
     
         public int CodProducto { get; set; }
         public string Descripcion { get; set; }
-        public int Cantidad { get; set; }
         public double PrecioCompra { get; set; }
         public double PrecioVenta { get; set; }
         public int IdCategoria { get; set; }
@@ -34,7 +33,8 @@ namespace UAIBay.ORM.Business
         public Nullable<int> ChangedBy { get; set; }
         public Nullable<System.DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
-
+        public int Cantidad { get; set; }
+    
         public virtual Categoria Categoria { get; set; }
         public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }

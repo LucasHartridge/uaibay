@@ -18,10 +18,12 @@ namespace UAIBay.BLL.DTO
 
         public virtual ICollection<dtoItemCarrito> ItemCarrito { get; set; }
 
-        private void CrearCarrito(dtoCarrito carrito)
+        public void CrearCarrito(dtoCarrito carrito)
         {
             BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
             var BIZ = Mapper.Map<dtoCarrito, bizCarrito>(carrito);
+
+            BIZ.CreatedOn = DateTime.Now;
 
             var repo = new CarritoRepository();
             repo.CrearCarrito(BIZ);
@@ -46,10 +48,10 @@ namespace UAIBay.BLL.DTO
         }
 
 
-        public void AgregarProducto(int codProducto)
+        public void AgregarProducto(int codProducto, int codCarrito)
         {
 
-            var carrito = TraerCarrito(1);
+            var carrito = TraerCarrito(codCarrito);
 
             var bllPrd= new dtoProducto();
             var producto=bllPrd.BuscarUnProducto(codProducto);
@@ -57,7 +59,8 @@ namespace UAIBay.BLL.DTO
 
             if (carrito==null)
             {
-                CrearCarrito(new dtoCarrito() { UserId = 1, CreatedOn = DateTime.Now, IdCarrito = 1 });
+                CrearCarrito(new dtoCarrito() { UserId = codCarrito, IdCarrito = codCarrito });
+                carrito = TraerCarrito(codCarrito);
             }
 
             var item = new dtoItemCarrito();
@@ -90,5 +93,6 @@ namespace UAIBay.BLL.DTO
             var bllVenta = new dtoVenta();
             bllVenta.RealizarCompra(carrito);
         }
+
     }
 }
