@@ -11,6 +11,6 @@ namespace UAIBay.BIZ
         public int IdRol { get; set; }
         public string Nombre { get; set; }
 
-        public virtual ICollection<bizUsuario> Usuario { get; set; }
+        //public virtual ICollection<bizUsuario> Usuario { get; set; }
     }
 }

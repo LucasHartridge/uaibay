@@ -41,27 +41,14 @@ namespace UAIBay.Repository
         public void Insertar(bizProducto objeto)
         {
 
-            var todos = ObtenerTodos();
-
-            if (todos.Count==0)
-            {
-                objeto.Imagen = "1";
-            }
-            else
-            {
-                var maxZ = todos.Max(obj => obj.CodProducto);
-                var maxObj = todos.Where(obj => obj.CodProducto == maxZ).FirstOrDefault();
-
-                objeto.Imagen = Convert.ToString(maxObj.CodProducto + 1);
-            }
-
             Mapeador.AutoMapperORMConfiguration.Configure();
             var ORM = Mapper.Map<bizProducto, Producto>(objeto);
 
+            ORM.Imagen = "nuevoProduto";
             ORM.CreatedOn = DateTime.Now;
-            ORM.CreatedBy = 1;
 
             contexto.Productos.Add(ORM);
+
         }
 
         public void Actualizar(bizProducto newObject)
@@ -132,5 +119,15 @@ namespace UAIBay.Repository
         }
 
 
+
+        public bizProducto UltimoProducto()
+        {
+            var todos = ObtenerTodos();
+
+            var maxZ = todos.Max(obj => obj.CodProducto);
+            var maxObj = todos.Where(obj => obj.CodProducto == maxZ).FirstOrDefault();
+
+            return maxObj;
+        }
     }
 }

@@ -5,72 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar</h2>
 
-<h2>¿Desea eliminar el producto?</h2>
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.DeseaEliminarElProducto</h2>
 <div>
-@using (Html.BeginForm())
-{
-    <hr />
-    <dl class="dl-horizontal">
-
+    @using (Html.BeginForm())
+    {
         @Html.HiddenFor(model => model.CodProducto)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+        <div class="form-horizontal">
+            <hr />
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Descripción, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-info"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Descripcion, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Cantidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-info"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Cantidad, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </dt>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.PrecioCompra, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.PrecioCompra, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cantidad)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.PrecioVenta, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.PrecioVenta, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayName("Precio de compra")
-        </dt>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Categoria, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Categoria.Nombre, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            $ @Html.DisplayFor(model => model.PrecioCompra)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Imagen, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-photo"></i>
+                        </span>
+                        @Html.DisplayFor(model => model.Imagen)
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayName("Precio de venta")
-        </dt>
 
-        <dd>
-            $ @Html.DisplayFor(model => model.PrecioVenta)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("Categoría")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-    </dl>
-
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Volver", "Index")
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-close"></i></button>
+                    <a href="@Url.Action("Index","Producto")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+                </div>
+            </div>
         </div>
     }
 </div>

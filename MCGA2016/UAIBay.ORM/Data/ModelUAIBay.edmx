@@ -237,10 +237,10 @@
           <Property Name="Sexo" Type="bit" Nullable="false" />
           <Property Name="FechaNacimiento" Type="date" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" />
           <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PasswordHash" Type="varchar(max)" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" />
           <Property Name="DeleteOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
@@ -811,10 +811,10 @@
           <Property Name="Sexo" Type="Boolean" Nullable="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" />
           <Property Name="DeleteOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ActivityLog" Relationship="Self.FK_ActivityLog_Usuario" FromRole="Usuario" ToRole="ActivityLog" />

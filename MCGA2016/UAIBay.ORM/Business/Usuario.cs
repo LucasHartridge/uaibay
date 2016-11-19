@@ -34,10 +34,10 @@ namespace UAIBay.ORM.Business
         public bool Sexo { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
         public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
+        public Nullable<bool> EmailConfirmed { get; set; }
         public string Password { get; set; }
         public string PasswordHash { get; set; }
-        public int AccessFailedCount { get; set; }
+        public Nullable<int> AccessFailedCount { get; set; }
         public Nullable<System.DateTime> DeleteOn { get; set; }
         public bool IsDeleted { get; set; }
     

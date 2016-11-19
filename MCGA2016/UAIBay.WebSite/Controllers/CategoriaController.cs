@@ -7,6 +7,7 @@ using AutoMapper;
 using UAIBay.WebSite.ViewModel;
 using UAIBay.BLL.DTO;
 using PagedList;
+using System.Globalization;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -38,10 +39,12 @@ namespace UAIBay.WebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dtoCategoria = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+                var dtoCat = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+
+                dtoCat.Nombre = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(categoria.Nombre);
 
                 var bllCategoria = new dtoCategoria();
-                bllCategoria.Crear(dtoCategoria);
+                bllCategoria.Crear(dtoCat);
 
                 return RedirectToAction("Index");
             }
@@ -67,10 +70,12 @@ namespace UAIBay.WebSite.Controllers
             if (ModelState.IsValid)
             {
                 App_Start.AutoMapperWebConfiguration.Configure();
-                dtoCategoria dtoCategoria = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+                dtoCategoria dtoCat = Mapper.Map<CategoriaViewModels, dtoCategoria>(categoria);
+
+                dtoCat.Nombre = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(categoria.Nombre);
 
                 var bllCategoria = new dtoCategoria();
-                bllCategoria.Actualizar(dtoCategoria);
+                bllCategoria.Actualizar(dtoCat);
 
                 return RedirectToAction("Index");
             }

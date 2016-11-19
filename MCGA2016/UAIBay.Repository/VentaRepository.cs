@@ -53,8 +53,8 @@ namespace UAIBay.Repository
             var ORM = Mapper.Map<bizVenta, Venta>(objeto);
 
             ORM.CreatedOn = DateTime.Now;
-            ORM.CreatedBy = 1;
-            ORM.UserId = 2;
+            ORM.CreatedBy = objeto.UserId;
+            ORM.UserId = objeto.UserId;
 
             using (var t = contexto.Database.BeginTransaction())
             {
@@ -74,12 +74,14 @@ namespace UAIBay.Repository
         }
 
 
-
-
         public void Actualizar(bizVenta objeto)
         {
             Mapeador.AutoMapperORMConfiguration.Configure();
             var ORM = Mapper.Map<bizVenta, Venta>(objeto);
+
+            ORM.ChangedBy = objeto.UserId;
+            ORM.ChangedOn = DateTime.Now;
+
             contexto.Entry(ORM).State = System.Data.Entity.EntityState.Modified;
         }
 

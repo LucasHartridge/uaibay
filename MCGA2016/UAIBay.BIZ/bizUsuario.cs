@@ -16,11 +16,11 @@ namespace UAIBay.BIZ
         public bool Sexo { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
         public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
+        public Nullable<bool> EmailConfirmed { get; set; }
         public string Password { get; set; }
         public string PasswordHash { get; set; }
-        public int AccessFailedCount { get; set; }
-        public System.DateTime DeleteOn { get; set; }
+        public Nullable<int> AccessFailedCount { get; set; }
+        public Nullable<System.DateTime> DeleteOn { get; set; }
         public bool IsDeleted { get; set; }
 
         //public virtual ICollection<ActivityLog> ActivityLog { get; set; }
@@ -30,6 +30,6 @@ namespace UAIBay.BIZ
         //public virtual ICollection<History> History { get; set; }
         //public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }
         //public virtual ICollection<Venta> Venta { get; set; }
-        //public virtual ICollection<Roles> Roles { get; set; }
+        public virtual ICollection<bizRoles> Roles { get; set; }
     }
 }

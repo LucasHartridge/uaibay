@@ -20,6 +20,8 @@ namespace UAIBay.Repository
             Mapeador.AutoMapperORMConfiguration.Configure();
             var ORM = Mapper.Map<bizCarrito, Carrito>(objeto);
 
+            ORM.CreatedOn = DateTime.Now;
+
             contexto.Carritos.Add(ORM);
         }
 
@@ -77,6 +79,9 @@ namespace UAIBay.Repository
         {
             Mapeador.AutoMapperORMConfiguration.Configure();
             var ORM = Mapper.Map<bizCarrito, Carrito>(objeto);
+
+            ORM.LastUpdate = DateTime.Now;
+
             contexto.Entry(ORM).State = System.Data.Entity.EntityState.Modified;
         }
 
