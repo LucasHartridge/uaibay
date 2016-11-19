@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using UAIBay.BLL.DTO;
 using UAIBay.WebSite.ViewModel;
+using System.IO;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -49,7 +50,7 @@ namespace UAIBay.WebSite.Controllers
 
             var bll = new dtoCarrito();
 
-            bll.QuitarProducto(codProducto,nroCarrito);
+            bll.QuitarProducto(codProducto, nroCarrito);
 
             return RedirectToAction("Carrito", new { userId = 1 });
         }
@@ -68,20 +69,20 @@ namespace UAIBay.WebSite.Controllers
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
 
             ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
-            ViewBag.Carrito = carrito.IdCarrito; 
+            ViewBag.Carrito = carrito.IdCarrito;
 
             return View("Carrito", carritoVM.ItemCarrito);
 
         }
 
-        public ActionResult Comprar(int nroCarrito, string codDescuento="" )
+        public ActionResult Comprar(int nroCarrito, string codDescuento = "")
         {
-            
+
             // FALTA COMPROBAR CODIGO DE DESCUENTO
-            
+
             var bll = new dtoCarrito();
-          
-            
+
+
             bll.RealizarCompra(nroCarrito);
 
 
@@ -94,9 +95,40 @@ namespace UAIBay.WebSite.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public ActionResult CompraFinalizada()
+        //{
+        //    return RedirectToAction("CompraFinalizada");
+        //}
 
+        public ActionResult Pagar()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Hola()
+        {
+            //var file = Request.Files[0];
+            foreach (string item in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[item] as HttpPostedFileBase;
+                string fileName = file.FileName;
+                string UploadPath = "~/Images/";
 
+                if (file.ContentLength == 0)
+                    continue;
+                if (file.ContentLength > 0)
+                {
+                    string path = Path.Combine(HttpContext.Request.MapPath(UploadPath), fileName);
+                    string extension = Path.GetExtension(file.FileName);
+
+                    file.SaveAs(path);
+                }
+                return View();
+            }
+            return View();
+        }
 
     }
 }

@@ -70,11 +70,65 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Actualizar categoría.
+        /// </summary>
+        public static string ActualizarCategoria {
+            get {
+                return ResourceManager.GetString("ActualizarCategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Actualizar producto.
+        /// </summary>
+        public static string ActualizarProducto {
+            get {
+                return ResourceManager.GetString("ActualizarProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Actualizar proveedor.
+        /// </summary>
+        public static string ActualizarProveedor {
+            get {
+                return ResourceManager.GetString("ActualizarProveedor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Agregar.
+        /// </summary>
+        public static string Agregar {
+            get {
+                return ResourceManager.GetString("Agregar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Agregar al carrito.
         /// </summary>
         public static string AgregarAlCarrito {
             get {
                 return ResourceManager.GetString("AgregarAlCarrito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Agregue una nueva direccion.
+        /// </summary>
+        public static string AgregueUnaNuevaDireccion {
+            get {
+                return ResourceManager.GetString("AgregueUnaNuevaDireccion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Año.
+        /// </summary>
+        public static string Año {
+            get {
+                return ResourceManager.GetString("Año", resourceCulture);
             }
         }
         
@@ -160,6 +214,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cantidad.
+        /// </summary>
+        public static string Cantidad {
+            get {
+                return ResourceManager.GetString("Cantidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Carrito.
         /// </summary>
         public static string Carrito {
@@ -178,11 +241,38 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Categoria.
+        /// </summary>
+        public static string Categoria {
+            get {
+                return ResourceManager.GetString("Categoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Categorias.
         /// </summary>
         public static string Categorias {
             get {
                 return ResourceManager.GetString("Categorias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Codigo.
+        /// </summary>
+        public static string Codigo {
+            get {
+                return ResourceManager.GetString("Codigo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Codigo postal.
+        /// </summary>
+        public static string CodigoPostal {
+            get {
+                return ResourceManager.GetString("CodigoPostal", resourceCulture);
             }
         }
         
@@ -205,6 +295,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Comprar.
+        /// </summary>
+        public static string Comprar {
+            get {
+                return ResourceManager.GetString("Comprar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Comunidad.
         /// </summary>
         public static string Comunidad {
@@ -219,6 +318,15 @@ namespace UAIBay.WebSite.Resources {
         public static string ComunidadParrafo {
             get {
                 return ResourceManager.GetString("ComunidadParrafo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirme su compra.
+        /// </summary>
+        public static string ConfirmeSuCompra {
+            get {
+                return ResourceManager.GetString("ConfirmeSuCompra", resourceCulture);
             }
         }
         
@@ -259,6 +367,51 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Costo de envio.
+        /// </summary>
+        public static string CostoDeEnvio {
+            get {
+                return ResourceManager.GetString("CostoDeEnvio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crear.
+        /// </summary>
+        public static string Crear {
+            get {
+                return ResourceManager.GetString("Crear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crear nueva categoria.
+        /// </summary>
+        public static string CrearNuevaCategoria {
+            get {
+                return ResourceManager.GetString("CrearNuevaCategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crear nuevo producto.
+        /// </summary>
+        public static string CrearNuevoProducto {
+            get {
+                return ResourceManager.GetString("CrearNuevoProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crear nuevo proveedor.
+        /// </summary>
+        public static string CrearNuevoProveedor {
+            get {
+                return ResourceManager.GetString("CrearNuevoProveedor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¿COMO RECUPERO MI CONTRASEÑA?.
         /// </summary>
         public static string CuartaPreguntaFrecuente {
@@ -286,11 +439,137 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a cuota s/i de.
+        /// </summary>
+        public static string CuotaSinInteresDe {
+            get {
+                return ResourceManager.GetString("CuotaSinInteresDe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a cuotas s/i de.
+        /// </summary>
+        public static string CuotasSinInteresDe {
+            get {
+                return ResourceManager.GetString("CuotasSinInteresDe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Descripción.
+        /// </summary>
+        public static string Descripción {
+            get {
+                return ResourceManager.GetString("Descripción", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Desea eliminar el producto?.
+        /// </summary>
+        public static string DeseaEliminarElProducto {
+            get {
+                return ResourceManager.GetString("DeseaEliminarElProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Desea eliminar el proveedor?.
+        /// </summary>
+        public static string DeseaEliminarElProveedor {
+            get {
+                return ResourceManager.GetString("DeseaEliminarElProveedor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Desea eliminar la categoría?.
+        /// </summary>
+        public static string DeseaEliminarLaCategoria {
+            get {
+                return ResourceManager.GetString("DeseaEliminarLaCategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalles.
+        /// </summary>
+        public static string Detalles {
+            get {
+                return ResourceManager.GetString("Detalles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalles de categoría.
+        /// </summary>
+        public static string DetallesDeCategoria {
+            get {
+                return ResourceManager.GetString("DetallesDeCategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalles del producto.
+        /// </summary>
+        public static string DetallesDelProducto {
+            get {
+                return ResourceManager.GetString("DetallesDelProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalles del proveedor.
+        /// </summary>
+        public static string DetallesDelProveedor {
+            get {
+                return ResourceManager.GetString("DetallesDelProveedor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Dirección.
+        /// </summary>
+        public static string Dirección {
+            get {
+                return ResourceManager.GetString("Dirección", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Diseñado por los 4 Fantasticos.
         /// </summary>
         public static string Diseñado {
             get {
                 return ResourceManager.GetString("Diseñado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Domicilio.
+        /// </summary>
+        public static string Domicilio {
+            get {
+                return ResourceManager.GetString("Domicilio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Editar.
+        /// </summary>
+        public static string Editar {
+            get {
+                return ResourceManager.GetString("Editar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Eliminar.
+        /// </summary>
+        public static string Eliminar {
+            get {
+                return ResourceManager.GetString("Eliminar", resourceCulture);
             }
         }
         
@@ -309,6 +588,15 @@ namespace UAIBay.WebSite.Resources {
         public static string Enviar {
             get {
                 return ResourceManager.GetString("Enviar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Uh... parece que ha ocurrido un error inesperado.
+        /// </summary>
+        public static string ErrorInesperado {
+            get {
+                return ResourceManager.GetString("ErrorInesperado", resourceCulture);
             }
         }
         
@@ -349,11 +637,56 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Finalizar pago.
+        /// </summary>
+        public static string FinalizarPago {
+            get {
+                return ResourceManager.GetString("FinalizarPago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Frances.
         /// </summary>
         public static string Frances {
             get {
                 return ResourceManager.GetString("Frances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¡Gracias por comprar en UAIBay!.
+        /// </summary>
+        public static string GraciasPorComprarEnUAIBay {
+            get {
+                return ResourceManager.GetString("GraciasPorComprarEnUAIBay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gratis.
+        /// </summary>
+        public static string Gratis {
+            get {
+                return ResourceManager.GetString("Gratis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Guardar.
+        /// </summary>
+        public static string Guardar {
+            get {
+                return ResourceManager.GetString("Guardar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Imagen.
+        /// </summary>
+        public static string Imagen {
+            get {
+                return ResourceManager.GetString("Imagen", resourceCulture);
             }
         }
         
@@ -372,6 +705,15 @@ namespace UAIBay.WebSite.Resources {
         public static string Ingles {
             get {
                 return ResourceManager.GetString("Ingles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ingrese su codigo de descuento.
+        /// </summary>
+        public static string IngreseSuCodigoDeDescuento {
+            get {
+                return ResourceManager.GetString("IngreseSuCodigoDeDescuento", resourceCulture);
             }
         }
         
@@ -399,6 +741,24 @@ namespace UAIBay.WebSite.Resources {
         public static string Inicio {
             get {
                 return ResourceManager.GetString("Inicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ir al Inicio.
+        /// </summary>
+        public static string IrAlInicio {
+            get {
+                return ResourceManager.GetString("IrAlInicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Localidad.
+        /// </summary>
+        public static string Localidad {
+            get {
+                return ResourceManager.GetString("Localidad", resourceCulture);
             }
         }
         
@@ -457,6 +817,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mes.
+        /// </summary>
+        public static string Mes {
+            get {
+                return ResourceManager.GetString("Mes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Mision.
         /// </summary>
         public static string Mision {
@@ -475,11 +844,38 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Monto total a pagar.
+        /// </summary>
+        public static string MontoTotalAPagar {
+            get {
+                return ResourceManager.GetString("MontoTotalAPagar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nombre.
         /// </summary>
         public static string Nombre {
             get {
                 return ResourceManager.GetString("Nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre completo del titular de la tarjeta.
+        /// </summary>
+        public static string NombreCompletoTitularTarjeta {
+            get {
+                return ResourceManager.GetString("NombreCompletoTitularTarjeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No pudimos encontrar esa pagina.
+        /// </summary>
+        public static string NoPudimosEncontrarEsaPagina {
+            get {
+                return ResourceManager.GetString("NoPudimosEncontrarEsaPagina", resourceCulture);
             }
         }
         
@@ -529,6 +925,96 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nueva categoria.
+        /// </summary>
+        public static string NuevaCategoria {
+            get {
+                return ResourceManager.GetString("NuevaCategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nuevo producto.
+        /// </summary>
+        public static string NuevoProducto {
+            get {
+                return ResourceManager.GetString("NuevoProducto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nuevo proveedor.
+        /// </summary>
+        public static string NuevoProveedor {
+            get {
+                return ResourceManager.GetString("NuevoProveedor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Numero de tarjeta.
+        /// </summary>
+        public static string NumeroDeTarjeta {
+            get {
+                return ResourceManager.GetString("NumeroDeTarjeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a O.
+        /// </summary>
+        public static string O {
+            get {
+                return ResourceManager.GetString("O", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pagar.
+        /// </summary>
+        public static string Pagar {
+            get {
+                return ResourceManager.GetString("Pagar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Partido.
+        /// </summary>
+        public static string Partido {
+            get {
+                return ResourceManager.GetString("Partido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Precio.
+        /// </summary>
+        public static string Precio {
+            get {
+                return ResourceManager.GetString("Precio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Precio de compra.
+        /// </summary>
+        public static string PrecioCompra {
+            get {
+                return ResourceManager.GetString("PrecioCompra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Precio de venta.
+        /// </summary>
+        public static string PrecioVenta {
+            get {
+                return ResourceManager.GetString("PrecioVenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Preguntas frecuentes.
         /// </summary>
         public static string PreguntasFrecuentes {
@@ -556,6 +1042,24 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Productos.
+        /// </summary>
+        public static string Productos {
+            get {
+                return ResourceManager.GetString("Productos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Proveedores.
+        /// </summary>
+        public static string Proveedores {
+            get {
+                return ResourceManager.GetString("Proveedores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¿COMO CAMBIAR MI CONTRASEÑA?.
         /// </summary>
         public static string QuintaPreguntaFrecuente {
@@ -570,6 +1074,15 @@ namespace UAIBay.WebSite.Resources {
         public static string QuintaRespuesta {
             get {
                 return ResourceManager.GetString("QuintaRespuesta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recuerde que unicamente realizamos envios dentro de Zona Oeste..
+        /// </summary>
+        public static string RecuerdeEnviosZonaOeste {
+            get {
+                return ResourceManager.GetString("RecuerdeEnviosZonaOeste", resourceCulture);
             }
         }
         
@@ -619,6 +1132,33 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Seleccionar.
+        /// </summary>
+        public static string Seleccionar {
+            get {
+                return ResourceManager.GetString("Seleccionar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione el número de cuotas en las que desea realizar el pago.
+        /// </summary>
+        public static string SeleccioneNumeroCuotas {
+            get {
+                return ResourceManager.GetString("SeleccioneNumeroCuotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione su dirección.
+        /// </summary>
+        public static string SeleccioneSuDireccion {
+            get {
+                return ResourceManager.GetString("SeleccioneSuDireccion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¿COMO APLICAR UN CODIGO DE DESCUENTO?.
         /// </summary>
         public static string SeptimaPreguntaFrecuente {
@@ -655,11 +1195,29 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a SubTotal.
+        /// </summary>
+        public static string SubTotal {
+            get {
+                return ResourceManager.GetString("SubTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Telefono.
         /// </summary>
         public static string Telefono {
             get {
                 return ResourceManager.GetString("Telefono", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Teléfono.
+        /// </summary>
+        public static string Teléfono {
+            get {
+                return ResourceManager.GetString("Teléfono", resourceCulture);
             }
         }
         
@@ -691,6 +1249,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Vision.
         /// </summary>
         public static string Vision {
@@ -705,6 +1272,24 @@ namespace UAIBay.WebSite.Resources {
         public static string VisionParrafo {
             get {
                 return ResourceManager.GetString("VisionParrafo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Volver.
+        /// </summary>
+        public static string Volver {
+            get {
+                return ResourceManager.GetString("Volver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Volver al catalogo.
+        /// </summary>
+        public static string VolverAlCatalogo {
+            get {
+                return ResourceManager.GetString("VolverAlCatalogo", resourceCulture);
             }
         }
     }

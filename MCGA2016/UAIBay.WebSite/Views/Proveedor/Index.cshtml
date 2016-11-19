@@ -9,70 +9,85 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<UAIBay.WebSite.ViewModel.ProveedorViewModels>
 
-<h2>Proveedores</h2>
-
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Proveedores</h2>
 <p>
-    @Html.ActionLink("Nuevo proveedor", "Create")
+    <a href="@Url.Action("Create","Proveedor")" class="btn btn-primary" id="botonCrear"><i class="fa fa-fw fa-plus-square"></i> @UAIBay.WebSite.Resources.Recurso.NuevoProveedor</a>
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("CUIT")
-        </th>
-        <th>
-            @Html.DisplayName("Nombre")
-        </th>
-        <th>
-            @Html.DisplayName("Domicilio")
-        </th>
-        <th>
-            @Html.DisplayName("Localidad")
-        </th>
-        <th>
-            @Html.DisplayName("Codigo postal")
-        </th>
-        <th>
-            @Html.DisplayName("E-mail")
-        </th>
-        <th>
-            @Html.DisplayName("Teléfono")
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="responsive">
+    <tbody>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CUIT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Domicilio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Localidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoPostal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CUIT }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.CUIT }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.CUIT })
-            </td>
+            <th>
+                @Html.DisplayName("CUIT")
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Nombre)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Domicilio)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Localidad)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.CodigoPostal)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Email)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Telefono)
+            </th>
+            <th></th>
         </tr>
-    }
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CUIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domicilio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoPostal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Proveedor", new { id = item.CUIT })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Details", "Proveedor", new { id = item.CUIT })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Detalles"><i class="fa fa-search-plus fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Delete", "Proveedor", new { id = item.CUIT })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-minus-square fa-lg" style="color:#FFBE69"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
+<br />
 @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
