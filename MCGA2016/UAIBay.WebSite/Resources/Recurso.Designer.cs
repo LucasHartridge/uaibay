@@ -70,6 +70,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Administrador.
+        /// </summary>
+        public static string Administrador {
+            get {
+                return ResourceManager.GetString("Administrador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Agregar al carrito.
         /// </summary>
         public static string AgregarAlCarrito {
