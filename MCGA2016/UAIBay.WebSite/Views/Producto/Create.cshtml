@@ -7,78 +7,101 @@
 
 }
 
-<h2>Nuevo producto</h2>
-
-
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.CrearNuevoProducto</h2>
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.Label("Descripción", new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Descripción, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Descripcion, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Descripción, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Descripcion)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Cantidad", new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Cantidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Cantidad)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Cantidad, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Cantidad, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Cantidad)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Precio de compra", new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.PrecioCompra, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrecioCompra)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.PrecioCompra, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.PrecioCompra, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.PrecioCompra)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Precio de venta", new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.PrecioVenta, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrecioVenta)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.PrecioVenta, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.PrecioVenta, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.PrecioVenta)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Categoría", new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Categoria, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.IdCategoria, ViewBag.Categorias as List<SelectListItem>, "Seleccionar", new { @class = "control-label col-md-2" })
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-list"></i>
+                    </span>
+                    @Html.DropDownListFor(x => x.IdCategoria, ViewBag.Categorias as List<SelectListItem>, @UAIBay.WebSite.Resources.Recurso.Seleccionar, new { @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.IdCategoria)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Imagen, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Imagen, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                <input type="file" id="imagen" name="imagen" size="23" accept="image/*"/>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-photo"></i>
+                    </span>
+                    <input type="file" id="imagen" name="imagen" size="23" accept="image/*"/>
+                </div>
                 @Html.ValidationMessageFor(model => model.Imagen)
             </div>
         </div>
 
 
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Crear"><i class="fa fa-fw fa-check"></i></button>
+                <a href="@Url.Action("Index","Producto")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>
-
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

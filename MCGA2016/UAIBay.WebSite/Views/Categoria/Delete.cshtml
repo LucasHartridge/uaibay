@@ -5,33 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar</h2>
 
-<h2>¿Desea eliminar la categoría?</h2>
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.DeseaEliminarLaCategoria</h2>
 <div>
     @using (Html.BeginForm())
     {
-        <hr />
-        <dl class="dl-horizontal">
-
-            <dd>
-                @Html.HiddenFor(model => model.IdCategoria)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Nombre)
-            </dd>
-
-        </dl>
-
-        <div class="form-actions no-color">
-            @Html.ActionLink("Volver", "Index")
-            <input type="submit" value="Delete" class="btn btn-default" />
-
+     
+        <div class="form-horizontal">
+        <hr /> 
+        <div class="form-group">
+            @Html.HiddenFor(model => model.IdCategoria)
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Nombre, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Nombre, new { @readonly="readonly", @class = "form-control" })
+                </div>
+            </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-close"></i></button>
+                <a href="@Url.Action("Index","Categoria")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+            </div>
+        </div>
+    </div>
+        
+        
     }
 </div>
