@@ -424,6 +424,10 @@
       <Project>{77c4cb03-c4b6-4d51-b3a1-4d759ee9316b}</Project>
       <Name>UAIBay.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UAIBay.Servicios\UAIBay.Servicios.csproj">
+      <Project>{5f6d6e1a-6595-4a95-b6c7-846eff43b3c0}</Project>
+      <Name>UAIBay.Servicios</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
