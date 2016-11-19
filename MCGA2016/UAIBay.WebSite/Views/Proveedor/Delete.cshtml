@@ -5,81 +5,103 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar</h2>
-
-<h2>¿Desea eliminar el proveedor?</h2>
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.DeseaEliminarElProveedor</h2>
 <div>
-@using (Html.BeginForm())
-{
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.HiddenFor(model => model.CUIT)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.CUIT)
-        </dt>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <hr />
+            <div class="form-group">
+                @Html.Label("CUIT", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-info"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.CUIT, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CUIT)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Nombre, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Nombre, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Domicilio, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Domicilio, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Localidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Localidad, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Domicilio)
-        </dt>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.CodigoPostal, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.CodigoPostal, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Domicilio)
-        </dd>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Telefono, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Telefono, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Localidad)
-        </dt>
+            <div class="form-group">
+                @Html.Label(@UAIBay.WebSite.Resources.Recurso.Email, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope-o"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Localidad)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoPostal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CodigoPostal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-
-    </dl>
-
-   
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Volver", "Index")
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-close"></i></button>
+                    <a href="@Url.Action("Index","Proveedor")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+                </div>
+            </div>
         </div>
     }
 </div>

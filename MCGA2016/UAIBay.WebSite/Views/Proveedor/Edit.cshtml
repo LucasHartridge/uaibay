@@ -5,83 +5,123 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Actualizar proveedor</h2>
 
-
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.ActualizarProveedor</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            @Html.LabelFor(model => model.CUIT, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.CUIT, new { @readonly = "readonly" })
+                @Html.HiddenFor(model => model.CUIT)
+                @Html.ValidationMessageFor(model => model.CUIT)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("CUIT", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.CUIT, new { @placeholder = "CUIT", @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.CUIT)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Nombre, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Nombre, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Nombre, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Nombre)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Domicilio, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Domicilio, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Domicilio)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Domicilio, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Domicilio, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Domicilio)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Localidad, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Localidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Localidad)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Localidad, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Localidad, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Localidad)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodigoPostal, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.CodigoPostal, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CodigoPostal)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.CodigoPostal, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.CodigoPostal, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.CodigoPostal)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Telefono, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telefono, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefono)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Telefono, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Telefono, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Telefono)
             </div>
         </div>
 
         <div class="form-group">
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Email, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-envelope-o"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Email, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Email, @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Guardar"><i class="fa fa-fw fa-check"></i></button>
+                <a href="@Url.Action("Index","Proveedor")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

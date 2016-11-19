@@ -9,33 +9,50 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<UAIBay.WebSite.ViewModel.CategoriaViewModels>
 
-<h2>Categorías</h2>
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Categorias</h2>
 
 <p>
-    @Html.ActionLink("Nueva categoría", "Create")
+    <a href="@Url.Action("Create","Categoria")" class="btn btn-primary" id="botonCrear"><i class="fa fa-fw fa-plus-square"></i> @UAIBay.WebSite.Resources.Recurso.NuevaCategoria</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Nombre")
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="responsive">
+    <tbody>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Update", new { id = item.IdCategoria }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.IdCategoria }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCategoria })
-            </td>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Nombre)
+            </th>
+            <th></th>
         </tr>
-    }
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    <a href="@Url.Action("Update", "Categoria", new { id = item.IdCategoria })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Details", "Categoria", new { id = item.IdCategoria })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Detalles"><i class="fa fa-search-plus fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Delete", "Categoria", new { id = item.IdCategoria })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-minus-square fa-lg" style="color:#FFBE69"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
+<br />
 @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+@section Scripts
+{
+   
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
+
