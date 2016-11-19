@@ -12,11 +12,17 @@
                 <div class="login-form">
                     <!--login form-->
                     <h2>@UAIBay.WebSite.Resources.Recurso.IniciaSesion</h2>
-                    <form action="#">
-                        <input type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" />
-                        <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" />
+
+
+                    @using (@Html.BeginForm("Ingresar", "Account", FormMethod.Post))
+                    {
+                        <input name="user" type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" />
+                        <input name="pw" type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" />
                         <button type="submit" class="btn btn-default">@UAIBay.WebSite.Resources.Recurso.IniciarSesion</button>
-                    </form>
+
+                    }
+
+
                 </div><!--/login form-->
             </div>
             <div class="col-sm-1">
@@ -26,25 +32,47 @@
                 <div class="signup-form">
                     <!--sign up form-->
                     <h2>@UAIBay.WebSite.Resources.Recurso.Registrarse</h2>
-                    <form action="#">
-                        <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Nombre" />
-                        <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Apellido" />
-                        <input type="text" placeholder="DNI" />
-                        <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" />
-                        <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.RepetirContraseña" />
-                        <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Telefono" />
-                        <input type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" />
-                        <select>
-                            <option>@UAIBay.WebSite.Resources.Recurso.Masculino</option>
-                            <option>@UAIBay.WebSite.Resources.Recurso.Femenino</option>
+
+                    @using (@Html.BeginForm("Registrar", "Account", FormMethod.Post))
+                    {
+
+                        <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Nombre" name="nombre" required />
+                        @Html.ValidationMessage("nombre")
+
+                        <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Apellido" name="apellido" required />
+                        @Html.ValidationMessage("apellido")
+
+                        <input type="number" placeholder="DNI" name="dni" required />
+                        @Html.ValidationMessage("dni")
+
+                        <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" name="password" required />
+                        @Html.ValidationMessage("password")
+
+                        <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.RepetirContraseña" required name="passwordRepetir" />
+                        @Html.ValidationMessage("passwordRepetir")
+
+                        <input type="number" placeholder="@UAIBay.WebSite.Resources.Recurso.Telefono" name="telefono" required />
+                        @Html.ValidationMessage("telefono")
+
+                        <input type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" name="email" required />
+                        @Html.ValidationMessage("email")
+
+                        <input type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" required />
+                        @Html.ValidationMessage("fechaNacimiento")
+
+                        <select name="sexo">
+                            <option value="true">@UAIBay.WebSite.Resources.Recurso.Masculino</option>
+                            <option value="false">@UAIBay.WebSite.Resources.Recurso.Femenino</option>
                         </select>
                         <br />
                         <br />
+
                         <button type="submit" class="btn btn-default">@UAIBay.WebSite.Resources.Recurso.Registrese</button>
-                    </form>
+
+
+                    }
                 </div><!--/sign up form-->
             </div>
         </div>
     </div>
 </section><!--/form-->
-

@@ -122,11 +122,25 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> @UAIBay.WebSite.Resources.Recurso.Cuenta</a></li>
+
+
+                                @*<li><a href="#"><i class="fa fa-user"></i> @UAIBay.WebSite.Resources.Recurso.Cuenta</a></li>*@
+
+
                                 @*<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>*@
                                 @*<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>*@
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i> @UAIBay.WebSite.Resources.Recurso.Carrito</a></li>
-                                <li><a href="/Account/Login"><i class="fa fa-lock"></i> @UAIBay.WebSite.Resources.Recurso.Login</a></li>
+
+
+                                @if (Session["LogedUserID"] == null)
+                                {
+                                    <li><a href="/Account/Login"><i class="fa fa-lock"></i> @UAIBay.WebSite.Resources.Recurso.Login</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Comprar/Carrito?userId=@Convert.ToInt32(Session["logeduserid"])"><i class="fa fa-shopping-cart"></i> @UAIBay.WebSite.Resources.Recurso.Carrito</a></li>
+                                    <li><a href="/Account/Cuenta"><i class="fa fa-user"></i> @Session["LogedUserNombre"].ToString()</a></li>
+                                }
+
                             </ul>
                         </div>
                     </div>

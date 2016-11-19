@@ -32,11 +32,11 @@
             </td>
             <td>
 
-                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                <a href="#" class="btn btn-flat restar" @*id="restar"*@><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
 
                 @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
 
-                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+                <a href="#" class="btn btn-flat sumar" @*id="sumar"*@><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
             </td>
             <td>
@@ -47,7 +47,7 @@
             </td>
 
             <td>
-                @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
+                @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto})
             </td>
         </tr>
     }
@@ -57,7 +57,7 @@
 
 @Html.Label("Código de descuento:")
 @Html.TextBox("cod", null, new { placeholder = "Ingrese el código de descuento" })
-@Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })
+@Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito }, new { @class = "btn btn-warning" })
 
 <p>
     @Html.ActionLink("Volver al catálogo", "Catalogo")
@@ -68,9 +68,9 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#restar').click(function () {
+        $('tr td .restar').click(function () {
             //get txtAmt value
-            var valorProducto = $('#cantidad').val();
+            var valorProducto = $('tr td #cantidad').val();
             valorProducto -= 1;
            
             if (valorProducto < 1) {
@@ -78,22 +78,22 @@
             }
             else {
                 //change txtInterest% value
-                $('#cantidad').val(valorProducto);
+                $('tr td #cantidad #cantidad').val(valorProducto);
             }
             
         });
     });
 
     $(document).ready(function () {
-        $('#sumar').click(function () {
+        $('tr td .sumar').click(function () {
             //get txtAmt value
-            var valorProducto = $('#cantidad').val();
+            var valorProducto = $('tr td #cantidad').val();
             valorProducto = parseInt(1) + parseInt(valorProducto);
 
             if (valorProducto > 9) {}
             else {
                 //change txtInterest% value
-                $('#cantidad').val(valorProducto);
+                $('tr td #cantidad').val(valorProducto);
             }
         });
     });

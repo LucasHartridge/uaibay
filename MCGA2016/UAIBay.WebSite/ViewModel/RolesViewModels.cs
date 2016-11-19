@@ -8,16 +8,16 @@ namespace UAIBay.WebSite.ViewModel
 {
     public class RolesViewModels
     {
-        public RolesViewModels()
-        {
-            this.Usuario = new HashSet<UsuarioViewModels>();
-        }
+        //public RolesViewModels()
+        //{
+        //    this.Usuario = new HashSet<UsuarioViewModels>();
+        //}
 
         public int IdRol { get; set; }
 
         [Required]
         public string Nombre { get; set; }
 
-        public virtual ICollection<UsuarioViewModels> Usuario { get; set; }
+        //public virtual ICollection<UsuarioViewModels> Usuario { get; set; }
     }
 }

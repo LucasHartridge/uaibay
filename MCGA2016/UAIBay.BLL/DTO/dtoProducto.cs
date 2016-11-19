@@ -26,14 +26,24 @@ namespace UAIBay.BLL.DTO
 
 
 
-        public void Crear(dtoProducto producto)
+        public dtoProducto Crear(dtoProducto producto, int idUser)
         {
             BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
             var BIZ = Mapper.Map<dtoProducto, bizProducto>(producto);
 
+            BIZ.CreatedBy = idUser;
+
             var repository = new ProductoRepository();
             repository.Insertar(BIZ);
             repository.Save();
+
+            var nuevoProductoBIZ = repository.UltimoProducto();
+
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var DTO = Mapper.Map<bizProducto, dtoProducto>(nuevoProductoBIZ);
+
+
+            return DTO;
         }
 
         public object TraerProductos()
@@ -58,10 +68,12 @@ namespace UAIBay.BLL.DTO
             return DTO;
         }
 
-        public void Actualizar(dtoProducto DTO)
+        public void Actualizar(dtoProducto DTO, int idUser)
         {
             BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
             var BIZ = Mapper.Map<dtoProducto, bizProducto>(DTO);
+
+            BIZ.ChangedBy = idUser;
 
             var repo = new ProductoRepository();
             repo.Actualizar(BIZ);
