@@ -9,56 +9,73 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<UAIBay.WebSite.ViewModel.ProductoViewModels>
 
-<h2>Productos</h2>
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Productos</h2>
 
 <p>
-    @Html.ActionLink("Nuevo producto", "Create")
+    <a href="@Url.Action("Create","Producto")" class="btn btn-primary" id="botonCrear"><i class="fa fa-fw fa-plus-square"></i> @UAIBay.WebSite.Resources.Recurso.NuevoProducto</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Descripción")
-        </th>
-        <th>
-            @Html.DisplayName("Cantidad")
-        </th>
-        <th>
-            @Html.DisplayName("Precio de compra")
-        </th>
-        <th>
-            @Html.DisplayName("Precio de venta")
-        </th>
-        <th>
-            @Html.DisplayName("Categoría")
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="responsive">
+    <tbody>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-               $ @Html.DisplayFor(modelItem => item.PrecioCompra)
-            </td>
-            <td>
-               $ @Html.DisplayFor(modelItem => item.PrecioVenta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CodProducto }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.CodProducto }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.CodProducto })
-            </td>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Descripción)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.PrecioCompra)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Categoria)
+            </th>
+            <th></th>
         </tr>
-    }
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    $ @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    $ @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Producto", new { id = item.CodProducto })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Details", "Producto", new { id = item.CodProducto })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Detalles"><i class="fa fa-search-plus fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Delete", "Producto", new { id = item.CodProducto })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-minus-square fa-lg" style="color:#FFBE69"></i></a>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+<br />
 @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
+

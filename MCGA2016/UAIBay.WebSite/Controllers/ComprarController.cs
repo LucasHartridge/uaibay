@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using UAIBay.BLL.DTO;
 using UAIBay.WebSite.ViewModel;
+using System.IO;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -84,19 +85,6 @@ namespace UAIBay.WebSite.Controllers
 
         }
 
-        //public ActionResult Comprar(int nroCarrito)
-        //{
-
-        //    // FALTA COMPROBAR CODIGO DE DESCUENTO
-
-        //    var bll = new dtoCarrito();
-
-
-        //    bll.RealizarCompra(nroCarrito);
-        //    string codDescuento=""
-
-        //    return RedirectToAction("CompraFinalizada");
-        //}
 
         public ActionResult Comprar()
         {
@@ -106,25 +94,18 @@ namespace UAIBay.WebSite.Controllers
             // FALTA COMPROBAR CODIGO DE DESCUENTO
 
             var bll = new dtoCarrito();
-
-
             bll.RealizarCompra(nroCarrito);
             return RedirectToAction("CompraFinalizada");
         }
+      
 
         public ActionResult DestinoCompra()
         {
-
-
-
             return View();
         }
 
         public ActionResult RealizarPago()
         {
-
-
-
             return View();
         }
 
@@ -133,9 +114,34 @@ namespace UAIBay.WebSite.Controllers
             return View();
         }
 
+        public ActionResult Pagar()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Hola()
+        {
+            //var file = Request.Files[0];
+            foreach (string item in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[item] as HttpPostedFileBase;
+                string fileName = file.FileName;
+                string UploadPath = "~/Images/";
 
+                if (file.ContentLength == 0)
+                    continue;
+                if (file.ContentLength > 0)
+                {
+                    string path = Path.Combine(HttpContext.Request.MapPath(UploadPath), fileName);
+                    string extension = Path.GetExtension(file.FileName);
 
+                    file.SaveAs(path);
+                }
+                return View();
+            }
+            return View();
+        }
 
     }
 }
