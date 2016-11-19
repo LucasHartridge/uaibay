@@ -7,6 +7,9 @@ using UAIBay.WebSite.ViewModel;
 using AutoMapper;
 using UAIBay.BLL.DTO;
 using PagedList;
+using System.IO;
+using System.Globalization;
+using System.Reflection;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -50,15 +53,60 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ProductoViewModels producto, HttpPostedFileBase imagen)
+        public ActionResult Create(ProductoViewModels producto, HttpPostedFileBase file)
         {
             var bll = new dtoProducto();
 
             App_Start.AutoMapperWebConfiguration.Configure();
             var DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
-            bll.Crear(DTO);
+             var id= Convert.ToInt32( Session["LogedUserID"]);
+        
+            var productoCreado = bll.Crear(DTO,id);
+
+            GuardarImagen(file, productoCreado);
+
+
             return RedirectToAction("Index");
+        }
+
+        private void GuardarImagen(HttpPostedFileBase file, dtoProducto productoCreado)
+        {
+
+            foreach (var item in productoCreado.GetType().GetProperties())
+            {
+                if (item.PropertyType == typeof(string) && item.Name != "Imagen")
+                {
+                    string texto = item.GetValue(productoCreado, null).ToString();
+
+                    item.SetValue(productoCreado, ConvertirMayuscula(texto));
+                }
+            }
+
+
+            var bll = new dtoProducto();
+
+            // Se carga la ruta física de la carpeta temp del sitio
+            string ruta = Server.MapPath("~/ImgProductos");
+
+            // Si el directorio no existe, crearlo
+            if (!Directory.Exists(ruta))
+                Directory.CreateDirectory(ruta);
+
+
+            string archivo = String.Format("{0}\\{1}", ruta, productoCreado.CodProducto.ToString());
+
+            // Se revisa el formato de la imagen
+            string ext = Path.GetExtension(file.FileName).ToLower();
+
+            string nombre = archivo + ext;
+
+            file.SaveAs(nombre);
+            productoCreado.Imagen = productoCreado.CodProducto.ToString() + ext;
+
+            var id = Convert.ToInt32(Session["LogedUserID"]);
+
+            bll.Actualizar(productoCreado,id);
         }
 
 
@@ -93,22 +141,18 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ProductoViewModels producto)
+        public ActionResult Edit(ProductoViewModels producto, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
-            {
-                App_Start.AutoMapperWebConfiguration.Configure();
-                dtoProducto DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
-                var bll = new dtoProducto();
-                bll.Actualizar(DTO);
+            App_Start.AutoMapperWebConfiguration.Configure();
+            dtoProducto DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(producto);
-            }
+            var bll = new dtoProducto();
+
+            GuardarImagen(file, DTO);
+
+            return RedirectToAction("Index");
+
         }
 
 
@@ -149,6 +193,11 @@ namespace UAIBay.WebSite.Controllers
         public ActionResult VerProducto()
         {
             return View();
+        }
+
+        public static string ConvertirMayuscula(string value)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
         }
 
     }

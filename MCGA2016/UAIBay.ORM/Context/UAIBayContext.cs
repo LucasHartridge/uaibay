@@ -23,5 +23,7 @@ namespace UAIBay.ORM.Context
         public virtual DbSet<Venta> Ventas { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
         public virtual DbSet<Promocion> Promociones { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
     }
 }

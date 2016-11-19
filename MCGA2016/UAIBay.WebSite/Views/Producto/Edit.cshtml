@@ -8,7 +8,7 @@
 <h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.ActualizarProducto</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
 
@@ -94,9 +94,10 @@
                         <i class="fa fa-photo"></i>
                     </span>
                     @Html.EditorFor(model => model.Imagen)
-                    <input type="file" id="imagen" name="imagen" size="23" accept="image/*" />
+                    <input type="file" id="file" name="file" size="23" accept="image/*" />
 
                 </div>
+
                 @Html.ValidationMessageFor(model => model.Imagen)
             </div>
         </div>
