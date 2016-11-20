@@ -52,7 +52,47 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -93,9 +133,6 @@
     <Reference Include="System.Web.Webpages.Razor">
       <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
@@ -119,6 +156,15 @@
     <Content Include="Content\dashboard\js\morris\morris-0.4.3.min.css" />
     <Content Include="Content\dashboard\js\morris\morris.js" />
     <Content Include="Content\dashboard\js\morris\raphael-2.1.0.min.js" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Content\bootstrap-fileinput\themes\fa\theme.js" />
+    <Content Include="Content\bootstrap-fileinput\themes\gly\theme.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -199,8 +245,11 @@
     <Content Include="Content\images\templates\tweet.gif" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\contact.js" />
+    <Content Include="Content\js\fileinput.js" />
+    <Content Include="Content\js\fileinput.min.js" />
     <Content Include="Content\js\gmaps.js" />
     <Content Include="Content\js\html5shiv.js" />
+    <Content Include="Content\js\index.js" />
     <Content Include="Content\js\init.js" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\jquery.prettyPhoto.js" />
@@ -217,6 +266,7 @@
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\style.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -280,7 +330,17 @@
     <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\dashboard\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -288,6 +348,43 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\locales\ar.js" />
+    <Content Include="Scripts\locales\bg.js" />
+    <Content Include="Scripts\locales\ca.js" />
+    <Content Include="Scripts\locales\cr.js" />
+    <Content Include="Scripts\locales\cz.js" />
+    <Content Include="Scripts\locales\da.js" />
+    <Content Include="Scripts\locales\de.js" />
+    <Content Include="Scripts\locales\el.js" />
+    <Content Include="Scripts\locales\es.js" />
+    <Content Include="Scripts\locales\fa.js" />
+    <Content Include="Scripts\locales\fi.js" />
+    <Content Include="Scripts\locales\fr.js" />
+    <Content Include="Scripts\locales\hu.js" />
+    <Content Include="Scripts\locales\id.js" />
+    <Content Include="Scripts\locales\it.js" />
+    <Content Include="Scripts\locales\ja.js" />
+    <Content Include="Scripts\locales\LANG.js" />
+    <Content Include="Scripts\locales\nl.js" />
+    <Content Include="Scripts\locales\pl.js" />
+    <Content Include="Scripts\locales\pt-BR.js" />
+    <Content Include="Scripts\locales\pt.js" />
+    <Content Include="Scripts\locales\ro.js" />
+    <Content Include="Scripts\locales\ru.js" />
+    <Content Include="Scripts\locales\sk.js" />
+    <Content Include="Scripts\locales\th.js" />
+    <Content Include="Scripts\locales\tr.js" />
+    <Content Include="Scripts\locales\uk.js" />
+    <Content Include="Scripts\locales\zh-TW.js" />
+    <Content Include="Scripts\locales\zh.js" />
+    <Content Include="Scripts\ng_responsive_tables.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
+    <Content Include="Scripts\plugins\purify.js" />
+    <Content Include="Scripts\plugins\purify.min.js" />
+    <Content Include="Scripts\plugins\sortable.js" />
+    <Content Include="Scripts\plugins\sortable.min.js" />
     <Content Include="TemplatesEmail\TemplateEmailRegistro.html" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -311,6 +408,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PromocionController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -328,6 +426,8 @@
     <Compile Include="ViewModel\ProductoViewModels.cs" />
     <Compile Include="ViewModel\PromocionViewModels.cs" />
     <Compile Include="ViewModel\ProveedorViewModels.cs" />
+    <Compile Include="ViewModel\Reportes\ProductosPorCategoriaViewModels.cs" />
+    <Compile Include="ViewModel\Reportes\VentasPorMesViewModels.cs" />
     <Compile Include="ViewModel\RolesViewModels.cs" />
     <Compile Include="ViewModel\TarjetaCreditoViewModels.cs" />
     <Compile Include="ViewModel\UsuarioViewModels.cs" />
@@ -385,9 +485,19 @@
     <Content Include="Views\Promocion\Details.cshtml" />
     <Content Include="Views\Promocion\Edit.cshtml" />
     <Content Include="Views\Promocion\Delete.cshtml" />
-    <Content Include="Views\Admin\Visitas.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Rol\Index.cshtml" />
+    <Content Include="Views\Rol\Create.cshtml" />
+    <Content Include="Views\Rol\Edit.cshtml" />
+    <Content Include="Views\Rol\Details.cshtml" />
+    <Content Include="Views\Rol\Delete.cshtml" />
+    <Content Include="Views\Account\Cuenta.cshtml" />
+    <Content Include="Views\Comprar\Pagar.cshtml" />
+    <Content Include="Views\Admin\VentasAnuales.cshtml" />
+    <Content Include="Views\Admin\ComparacionPrecioProducto.cshtml" />
+    <Content Include="Views\Admin\ProductosPorCategoria.cshtml" />
+    <Content Include="Views\Admin\UsuariosPorProvincia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -405,18 +515,22 @@
     <EmbeddedResource Include="Resources\Recurso.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.esp.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.esp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

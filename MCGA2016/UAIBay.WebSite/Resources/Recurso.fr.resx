@@ -333,7 +333,203 @@
   <data name="VisionParrafo" xml:space="preserve">
     <value>Être le supermarché le plus important sur ​​la côte centrale , la réalisation de la distinction des clients et des fournisseurs et des concurrents . Maintenir et augmenter les ventes et le nombre de clients , année après année.</value>
   </data>
+
   <data name="Administrador" xml:space="preserve">
     <value>Administrateur</value>
+</data>
+  <data name="ActualizarCategoria" xml:space="preserve">
+    <value>Catégorie Reload</value>
+  </data>
+  <data name="ActualizarProducto" xml:space="preserve">
+    <value>Mise à jour du produit</value>
+  </data>
+  <data name="ActualizarProveedor" xml:space="preserve">
+    <value>Fournisseur de Reload</value>
+  </data>
+  <data name="Cantidad" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="Categoria" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="CodigoPostal" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="Crear" xml:space="preserve">
+    <value>Créer</value>
+  </data>
+  <data name="CrearNuevaCategoria" xml:space="preserve">
+    <value>Créer nouvelle catégorie</value>
+  </data>
+  <data name="CrearNuevoProducto" xml:space="preserve">
+    <value>Créer un nouveau produit</value>
+  </data>
+  <data name="CrearNuevoProveedor" xml:space="preserve">
+    <value>Créer un nouveau fournisseur</value>
+  </data>
+  <data name="Descripción" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DeseaEliminarElProducto" xml:space="preserve">
+    <value>Voulez-vous retirer le produit?</value>
+  </data>
+  <data name="DeseaEliminarElProveedor" xml:space="preserve">
+    <value>Vous voulez supprimer le fournisseur?</value>
+  </data>
+  <data name="DeseaEliminarLaCategoria" xml:space="preserve">
+    <value>Voulez-vous supprimer la catégorie?</value>
+  </data>
+  <data name="Detalles" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="DetallesDeCategoria" xml:space="preserve">
+    <value>Catégorie détails</value>
+  </data>
+  <data name="DetallesDelProducto" xml:space="preserve">
+    <value>Détails du produit</value>
+  </data>
+  <data name="DetallesDelProveedor" xml:space="preserve">
+    <value>Détails Fournisseur</value>
+  </data>
+  <data name="Domicilio" xml:space="preserve">
+    <value>Maison</value>
+  </data>
+  <data name="Editar" xml:space="preserve">
+    <value>Éditer</value>
+  </data>
+  <data name="Eliminar" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="Guardar" xml:space="preserve">
+    <value>Garder</value>
+  </data>
+  <data name="Imagen" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Localidad" xml:space="preserve">
+    <value>Localité</value>
+  </data>
+  <data name="NuevaCategoria" xml:space="preserve">
+    <value>Nouvelle catégorie</value>
+  </data>
+  <data name="NuevoProducto" xml:space="preserve">
+    <value>Nouveau produit</value>
+  </data>
+  <data name="NuevoProveedor" xml:space="preserve">
+    <value>Nouveau Fournisseur</value>
+  </data>
+  <data name="PrecioCompra" xml:space="preserve">
+    <value>Prix ​​d'achat</value>
+  </data>
+  <data name="PrecioVenta" xml:space="preserve">
+    <value>Prix ​​de vente</value>
+  </data>
+  <data name="Productos" xml:space="preserve">
+    <value>Produits</value>
+  </data>
+  <data name="Proveedores" xml:space="preserve">
+    <value>Fournisseurs</value>
+  </data>
+  <data name="Seleccionar" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="Teléfono" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="Volver" xml:space="preserve">
+    <value>Revenir</value>
+  </data>
+  <data name="Agregar" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AgregueUnaNuevaDireccion" xml:space="preserve">
+    <value>Ajouter une nouvelle direction</value>
+  </data>
+  <data name="Año" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="Codigo" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Comprar" xml:space="preserve">
+    <value>Acheter</value>
+  </data>
+  <data name="ConfirmeSuCompra" xml:space="preserve">
+    <value>Confirmez votre achat</value>
+  </data>
+  <data name="CostoDeEnvio" xml:space="preserve">
+    <value>Coût de l'expédition</value>
+  </data>
+  <data name="CuotaSinInteresDe" xml:space="preserve">
+    <value>versement sans intérêt de</value>
+  </data>
+  <data name="CuotasSinInteresDe" xml:space="preserve">
+    <value>versements sans intérêt de</value>
+  </data>
+  <data name="Dirección" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="ErrorInesperado" xml:space="preserve">
+    <value>Euh ... il semble qu'une erreur est survenue</value>
+  </data>
+  <data name="FinalizarPago" xml:space="preserve">
+    <value>Paiement Terminer</value>
+  </data>
+  <data name="GraciasPorComprarEnUAIBay" xml:space="preserve">
+    <value>Nous vous remercions pour le shopping à UAIBay!</value>
+  </data>
+  <data name="Gratis" xml:space="preserve">
+    <value>Libre</value>
+  </data>
+  <data name="IngreseSuCodigoDeDescuento" xml:space="preserve">
+    <value>Entrez votre code de réduction</value>
+  </data>
+  <data name="IrAlInicio" xml:space="preserve">
+    <value>Aller à l'accueil</value>
+  </data>
+  <data name="Mes" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="MontoTotalAPagar" xml:space="preserve">
+    <value>Le montant total payable</value>
+  </data>
+  <data name="NombreCompletoTitularTarjeta" xml:space="preserve">
+    <value>Nom complet du titulaire de la carte</value>
+  </data>
+  <data name="NoPudimosEncontrarEsaPagina" xml:space="preserve">
+    <value>Nous ne pouvions pas trouver cette page</value>
+  </data>
+  <data name="NumeroDeTarjeta" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="O" xml:space="preserve">
+    <value>OU</value>
+  </data>
+  <data name="Pagar" xml:space="preserve">
+    <value>Payer</value>
+  </data>
+  <data name="Partido" xml:space="preserve">
+    <value>Partie</value>
+  </data>
+  <data name="Precio" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="RecuerdeEnviosZonaOeste" xml:space="preserve">
+    <value>Rappelez-vous que seulement faire des livraisons dans la Zone Ouest.</value>
+  </data>
+  <data name="SeleccioneNumeroCuotas" xml:space="preserve">
+    <value>Sélectionnez le nombre de versements dans lequel vous souhaitez payer</value>
+  </data>
+  <data name="SeleccioneSuDireccion" xml:space="preserve">
+    <value>Sélectionnez votre adresse</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>SubTotal</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="VolverAlCatalogo" xml:space="preserve">
+    <value>Retour au catalogue</value>
   </data>
 </root>

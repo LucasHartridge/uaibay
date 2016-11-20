@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Ventas Anuales";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cantidad de Ventas del ultimo año</h2>
+<br />
+
+<div id="chart-container">
+    @*<div id="chart_ventasxCategorias" style="width: 40%; height: 400px;"></div>*@
+    <div id="chart_prodcat" class="google-api-chart-responsive"></div>
+</div>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+  // Load the Visualization API and the piechart package.
+ google.load('visualization', '1.0', {'packages':['corechart']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+ google.setOnLoadCallback(drawChartVentasMensuales);
+
+    function drawChartVentasMensuales() {
+        var data = new google.visualization.DataTable();
+        //Se crea un Data Table donde se definen las Columnas
+        data.addColumn('string', 'Mes');
+        data.addColumn('number','Total');
+        data.addColumn('number', 'Cantidad de Ventas');
+        // No Olvides que el GetChar debe ser JsonResult
+        //Hacemos un for each creando cada row
+        $.getJSON("@Url.Action("GetChartVentasMensuales")", null, function (chartData) {
+            $.each(chartData, function (i, item) {
+                data.addRow([item.Fecha, item.Total, item.Cantidad ]);
+            });
+
+            var options = {
+                bars: 'vertical',
+                vAxis: { format: 'decimal' },
+                height: 500,
+                colors: ['#1b9e77', '#d95f02', '#7570b3']
+            };
+
+            //Mandamos la Data al DIV
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_prodcat'));
+            chart.draw(data, options);
+        });
+
+        $(window).resize(function () {
+            drawChartVentasMensuales();
+        });
+    }
+</script>

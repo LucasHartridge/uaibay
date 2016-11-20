@@ -4,17 +4,20 @@
 }
 
 <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>UAIBay</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
     <!-- Bootstrap Styles-->
     <link href="~/Content/dashboard/css/bootstrap.css" rel="stylesheet" />
-
     <!-- FontAwesome Styles-->
     <link href="~/Content/dashboard/css/font-awesome.css" rel="stylesheet" />
     <!-- Morris Chart Styles-->
-    <link href="~/Content/dashboard/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    @*<link href="~/Content/dashboard/js/morris/morris-0.4.3.min.css" rel="stylesheet" />*@
     <!-- Custom Styles-->
     <link href="~/Content/dashboard/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
@@ -32,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">UAIBAY</a>
+                <a class="navbar-brand" href="Index">UAIBAY</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -61,45 +64,47 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    @* ICONOS
-                        @*<i class="fa fa-fw fa-file">*@
-
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i>Panel de Control</a>
+                        <a class="active-menu" href="Index"><i class="fa fa-dashboard"></i>Panel de Control</a>
                     </li>
+                    <!-- GRAFICOS  -->
                     <li>
-                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> Graficos <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="VentasAnuales"><i class="fa fa-qrcode"></i>Cantidad de Ventas Anuales</a>
+                            </li>
+                            <li>
+                                <a href="ProductosPorCategoria"><i class="fa fa-desktop"></i>Productos por Categoria</a>
+                            </li>
+                            <li>
+                                <a href="ComparacionPrecioProducto"><i class="fa fa-money"></i>Comparación de Precios</a>
+                            </li>
+                            <li>
+                                <a href="UsuariosPorProvincia"><i class="fa fa-map-marker"></i>Usuarios en Argentina</a>
+                            </li>
+                        </ul>
+                    <!-- /. GRAFICOS  -->
                     <li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i> Graficos</a>
-                    </li>
-                    <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Analytics</a>
-                    </li>
-
-                    <li>
-                        <a href="table.html"><i class="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
+                        <a href="#"><i class="fa fa-qrcode"></i> Analytics</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Administrador <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Usuarios</a>
+                                <a href="~/Usuario/Index"><i class="fa fa-edit"></i>Usuarios</a>
                             </li>
                             <li>
-                                <a href="#">Admin Aplicacion<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-users"></i>Gestion UaiBay<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Proovedores</a>
+                                        <a href="~/Proveedor/Index"><i class="fa fa-shopping-cart"></i>Proovedores</a>
                                     </li>
                                     <li>
-                                        <a href="#">Categorias</a>
+                                        <a href="~/Categoria/Index"><i class="fa fa-bitcoin"></i>Categorias</a>
                                     </li>
                                     <li>
-                                        <a href="#">Productos</a>
+                                        <a href="~/Producto/Index"><i class="fa fa-tablet"></i>Productos</a>
                                     </li>
                                 </ul>
 
@@ -113,8 +118,7 @@
         <div id="page-wrapper">
             <div id="page-inner">
                 <section>
-                        @RenderBody()
-                    
+                    @RenderBody()
                 </section>
                 <footer><p>All right reserved. Template by: <a href="http://uaibaylppa.com">4 Fantasticos</a></p></footer>
             </div>
@@ -130,9 +134,6 @@
     <script src="~/Content/dashboard/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
     <script src="~/Content/dashboard/js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="~/Content/dashboard/morris/raphael-2.1.0.min.js"></script>
-    <script src="~/Content/dashboard/morris/morris.js"></script>
     <!-- Custom Js -->
     <script src="~/Content/dashboard/js/custom-scripts.js"></script>
     <script>

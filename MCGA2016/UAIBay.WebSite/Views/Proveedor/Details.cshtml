@@ -1,0 +1,102 @@
+﻿@model UAIBay.WebSite.ViewModel.ProveedorViewModels
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.DetallesDelProveedor</h2>
+<div class="form-horizontal">
+    <hr />
+
+    <div class="form-group">
+        @Html.Label("CUIT", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-info"></i>
+                </span>
+                @Html.TextBoxFor(model => model.CUIT, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.Nombre, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </span>
+                @Html.TextBoxFor(model => model.Nombre, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.Domicilio, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-home"></i>
+                </span>
+                @Html.TextBoxFor(model => model.Domicilio, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.Localidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-home"></i>
+                </span>
+                @Html.TextBoxFor(model => model.Localidad, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.CodigoPostal, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-home"></i>
+                </span>
+                @Html.TextBoxFor(model => model.CodigoPostal, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.Telefono, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                </span>
+                @Html.TextBoxFor(model => model.Telefono, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(@UAIBay.WebSite.Resources.Recurso.Email, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-envelope-o"></i>
+                </span>
+                @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Edit", "Proveedor", new { id = Model.CUIT })" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-fw fa-pencil-square-o"></i></a>
+            <a href="@Url.Action("Index", "Proveedor")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+        </div>
+    </div>
+</div>
