@@ -14,7 +14,10 @@ namespace UAIBay.WebSite.Controllers
         {
             Response.StatusCode = statusCode;
             ViewBag.StatusCode = statusCode + " Error";
-            return View();
+            ViewBag.Error = statusCode + " Error"+ exception;
+            //return View();
+            return View("~/Views/Error/Error404.cshtml");
+
         }
 	}
 }

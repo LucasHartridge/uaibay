@@ -6,73 +6,9 @@
 }
 <section id="cart_items">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <h2>Carrito</h2>
 
-<table class="table" id="tableId">
-    <thead>
-=======
-    @*<h2>Carrito</h2>*@
-=======
->>>>>>> premaster
-    <div class="review-payment">
-        <h2>@UAIBay.WebSite.Resources.Recurso.Carrito</h2>
-    </div>
-<<<<<<< HEAD
-    @*<table class="table" id="TablaCarrito">
->>>>>>> premaster
-        <tr>
-            <th>
-                @Html.DisplayName("Nombre del producto")
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subtotal)
-            </th>
-            <th></th>
-<<<<<<< HEAD
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-          
-            <tr id=@item.CodProducto>
-                <td id="NombreProducto">
-                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-                </td>
-
-                <td id="CantidadProducto">
-                    <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-                    @Html.TextBoxFor(modelItem => item.Cantidad, new { id = "cantidad" })
-                    <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-                </td>
-                <td>
-                    $ @Html.DisplayFor(modelItem => item.Precio)
-                </td>
-                <td>
-                    $ @Html.DisplayFor(modelItem => item.Subtotal)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
-                </td>
-            </tr>
-        }
-    </tbody>
-
-=======
-        </tr>*@
-=======
-    
->>>>>>> premaster
     <div class="table-responsive cart_info">
         <table class="table table-condensed" id="TablaCarrito">
             <thead>
@@ -194,113 +130,12 @@
         </div>
     </div>
 </section>
-<<<<<<< HEAD
-@*@foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-                </td>
-                <td>
 
-                    <a href="#" class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-
-                    @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad", id = "cantidad", @readonly = true })
-
-
-                    <a href="#" class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
->>>>>>> premaster
-
-                </td>
-                <td class="tdprecio">
-                    $ @Html.TextBoxFor(modelItem => item.Precio, new { @class = "precio", @readonly = true, id = "precio" })
-                </td>
-                <td class="tdsubtotal">
-                    $ @Html.TextBoxFor(modelItem => item.Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
-                </td>
-
-                <td>
-                    @Html.ActionLink("Quitar producto", "QuitarItem", new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito })
-                </td>
-            </tr>
-        }
-
-    </table>*@
-
-
-@*@Html.Label("Código de descuento:")
-    @Html.TextBox("cod", null, new { placeholder = "Ingrese el código de descuento" })
-    @Html.ActionLink("COMPRAR", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }, new { @class = "btn btn-warning" })
-
-    <p>
-        @Html.ActionLink("Volver al catálogo", "Catalogo")
-    </p>*@
-=======
->>>>>>> premaster
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
-<<<<<<< HEAD
-
-    //$(document).ready(function () {
-    //    $('#restar').click(function () {
-    //        //get txtAmt value
-    //        var valorProducto = $('#cantidad').val();
-    //        //var valorProducto = $('.cantidad').val();
-
-    //        valorProducto -= 1;
-
-    //        if (valorProducto < 1) {
-
-    //        }
-    //        else {
-    //            //change txtInterest% value
-    //            $('#cantidad').val(valorProducto);
-    //        }
-
-    //    });
-    //});
-
-    //$(document).ready(function () {
-    //    $('#sumar').click(function () {
-    //        //get txtAmt value
-    //        var valorProducto = $('#cantidad').val();
-    //        valorProducto = parseInt(1) + parseInt(valorProducto);
-
-    //        if (valorProducto > 9) {}
-    //        else {
-    //            //change txtInterest% value
-    //            $('#cantidad').val(valorProducto);
-    //        }
-    //    });
-    //});
-
-
-
-
-
-
-
-
-    //function calculate(obj) {
-    //    var price = parseFloat($(obj).parent().parent().parent().find('.cantidad').text()) || 0;
-    //    var quantity = parseInt($(obj).parent().find('.cantidad').val());
-    //    //var total = price * quantity;
-    //    $(obj).parent().parent().parent().find('.cantidad').text(quantity);;
-
-    //    var subtotal = parseFloat($(obj).parent().parent().parent().find('.subtotal').val());
-    //    var precio = parseFloat($(obj).parent().parent().parent().find('.precio').val());
-    //    var subtotalactualizado = precio * quantity;
-    //    $(obj).parent().parent().parent().find('.subtotal').text(subtotalactualizado);;
-    //}
-
-
-    
-
-=======
->>>>>>> premaster
     function calcularTotal() {
         var total = 0;
         $('#TablaCarrito .targetfields').each(function () {
@@ -347,19 +182,6 @@
             changeQuantity(1, this);
             changeSubTotal(this);
             calcularTotal();
-<<<<<<< HEAD
-            //calculate(this);
-        });
-
-        //$(".cantidad").keyup(function (e) {
-        //    if (e.keyCode == 38) changeQuantity(1, this);
-        //    if (e.keyCode == 40) changeQuantity(-1, this);
-        //    calculate(this);
-        //});
-
-=======
->>>>>>> premaster
-
         })
     });
 </script>
