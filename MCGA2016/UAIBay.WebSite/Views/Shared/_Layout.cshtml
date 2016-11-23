@@ -9,11 +9,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Es una pagina de venta de productos que realiza envios a toda Argentina de manera gratuita y que ofrece un servicio de pago en cuotas. Posee multilenguaje(Español,Ingles y Frances)">
+    <meta name="author" content="Los 4 fantasticos">
+
     <title>UAIBay</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*@
     <script src="https://api.mondido.com/v1/mondido.js?rnd=1&merchant_id=3"> </script>
     <script src="https://s3-eu-west-1.amazonaws.com/mondido/www/js/validator.js"> </script>
     <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
@@ -56,7 +58,7 @@
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="https://es-es.facebook.com/uai.elfuturososvos" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/uainow?lang=es" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://twitter.com/uainow" target="_blank"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://ar.linkedin.com/edu/universidad-abierta-interamericana-10086" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="https://dribbble.com/" target=" _blank"><i class="fa fa-dribbble"></i></a></li>
                                 <li><a href="https://plus.google.com/about?hl=es" target="_blank"><i class="fa fa-google-plus"></i></a></li>
@@ -73,11 +75,11 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="/Home/Index"><img src="~/Content/images/home/Logo.Pequeño.png" alt="" /></a>
+                            <a href="/Home/Index"><img src="~/Content/images/home/Logo.Pequeño.png" alt="Logo" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
-                              
+
 
                                 @if (cookie != null)
                                 {
@@ -180,11 +182,18 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Buscar" />
+                    @if (Session["LogedUserID"] != null)
+                    {
+                        <div class="col-sm-3">
+                            <div class="search_box pull-right">
+                                @using (Html.BeginForm("BuscarProducto", "Producto", FormMethod.Get, new { id = "fbuscar" }))
+                                {
+                                    <input type="text" name="productoBuscar" id="productoBuscar" placeholder="@UAIBay.WebSite.Resources.Recurso.Buscar" />
+                                    <button type="submit" name="Buscar">Buscar</button>
+                                }
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div><!--/header-bottom-->
@@ -241,7 +250,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="address">
-                            <img src="~/Content/images/home/map.png" alt="" />
+                            <img src="~/Content/images/home/map.png" alt="Mapa" />
                             <p>3550 Arias,Castelar,Buenos Aires,Argentina</p>
                         </div>
                     </div>
@@ -260,7 +269,6 @@
         </div>
 
     </footer><!--/Footer-->
-  
     @RenderSection("scripts", required: false)
     <script src="~/Content/js/jquery.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>

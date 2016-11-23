@@ -9,8 +9,10 @@ using UAIBay.BLL.DTO;
 using PagedList;
 using System.Globalization;
 
+
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarAdmin]
     public class CategoriaController : Controller
     {
         //

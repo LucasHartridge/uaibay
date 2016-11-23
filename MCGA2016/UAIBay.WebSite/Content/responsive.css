@@ -113,7 +113,6 @@
 .address {
 	margin-top: 48px;
 	margin-left: 20px;
-   
 }
 
 .address p {
@@ -259,7 +258,6 @@ ul.sub-menu{
 
 .footer-widget .col-sm-3{
 	display: inline-block;
-    float:none;
 }
 
 .single-widget{
@@ -308,7 +306,7 @@ ul.sub-menu{
 
 .header_top .col-sm-6:first-child{
 	display: block;
-	/*float: none;*/
+	float: none;
 }
 
 .header_top .col-sm-6:last-child{
