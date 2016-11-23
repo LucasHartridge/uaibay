@@ -1,12 +1,10 @@
-﻿@*@model List<UAIBay.WebSite.ViewModel.ProductoViewModels>*@
-
-@{
-    ViewBag.Title = "Catalogo";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@using PagedList;
+﻿@using PagedList;
 @using PagedList.Mvc;
 @model PagedList.IPagedList<UAIBay.WebSite.ViewModel.ProductoViewModels>
+@{
+    ViewBag.Title = "BuscarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <div class="container">
     <div class="row">
@@ -100,8 +98,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="modal fade" id="tips-@item.CodProducto" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content modal-lg">
@@ -122,7 +118,7 @@
                                             <div class="product-information" style="border:none">
                                                 <h2>@item.Descripcion</h2>
                                                 <span>
-                                                    <span>$ @item.PrecioVenta por unidad</span>
+                                                    <span>$@item.PrecioVenta por unidad</span>
                                                     <label>Cantidad:</label>
                                                     <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
                                                     <input type="text" id="cantidad" value="1" readonly="readonly" />
@@ -164,15 +160,13 @@
                             </div>
                         </div>
                     }
-
                 }
             </div><!--features_items-->
         </div>
     </div>
 </div>
 <br />
-@Html.PagedListPager(Model, Page => Url.Action("Catalogo", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-
+@Html.PagedListPager(Model, Page => Url.Action("BuscarProducto", new { Page = Page}), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
@@ -208,4 +202,7 @@
         });
     });
 </script>
+
+
+
 
