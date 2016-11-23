@@ -17,6 +17,6 @@ namespace UAIBay.BIZ
         public Nullable<DateTime> DeletedOn { get; set; }
         public bool IsDeleted { get; set; }
 
-        public virtual bizUsuario Usuario { get; set; }
+        //public virtual bizUsuario Usuario { get; set; }
     }
 }

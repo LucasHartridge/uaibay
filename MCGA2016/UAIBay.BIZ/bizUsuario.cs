@@ -25,7 +25,7 @@ namespace UAIBay.BIZ
 
         //public virtual ICollection<ActivityLog> ActivityLog { get; set; }
         //public virtual ICollection<DataLog> DataLog { get; set; }
-        //public virtual ICollection<Direccion> Direccion { get; set; }
+        public virtual ICollection<bizDireccion> Direccion { get; set; }
         //public virtual ICollection<ErrorLog> ErrorLog { get; set; }
         //public virtual ICollection<History> History { get; set; }
         //public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }

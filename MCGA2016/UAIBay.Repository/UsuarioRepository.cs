@@ -14,7 +14,15 @@ namespace UAIBay.Repository
     {
         private readonly UAIBayContext contexto = new UAIBayContext();
 
+        public List<bizUsuario> ObtenerTodos()
+        {
 
+            var orm = contexto.Usuarios.Where(x => x.IsDeleted == false).ToList();
+
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var BIZ = Mapper.Map<List<bizUsuario>>(orm);
+            return BIZ;
+        }
 
         public bizUsuario TraerPorEmail(string email)
         {
@@ -25,6 +33,15 @@ namespace UAIBay.Repository
             return biz;
         }
 
+        public bizUsuario UltimoUsuario()
+        {
+            var todos = ObtenerTodos();
+
+            var maxZ = todos.Max(obj => obj.UserId);
+            var maxObj = todos.Where(obj => obj.UserId == maxZ).FirstOrDefault();
+
+            return maxObj;
+        }
 
         public bizUsuario TraerCuenta(int id)
         {

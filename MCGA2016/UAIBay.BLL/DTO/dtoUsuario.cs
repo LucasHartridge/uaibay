@@ -9,7 +9,7 @@ using UAIBay.Repository;
 
 namespace UAIBay.BLL.DTO
 {
-   public class dtoUsuario
+    public class dtoUsuario
     {
         public int UserId { get; set; }
         public int DNI { get; set; }
@@ -30,8 +30,22 @@ namespace UAIBay.BLL.DTO
             var BIZ = Mapper.Map<dtoUsuario, bizUsuario>(usuario);
 
             var repository = new UsuarioRepository();
+            var repositoryDir = new DireccionRepository();
+
             repository.Insertar(BIZ);
             repository.Save();
+
+
+            var nuevoUsuario = repository.UltimoUsuario();
+
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var bizDir = Mapper.Map<dtoDireccion, bizDireccion>(usuario.Direccion.FirstOrDefault());
+
+            bizDir.UserId = nuevoUsuario.UserId;
+
+            repositoryDir.Insertar(bizDir);
+            repositoryDir.Save();
+
         }
 
         public dtoUsuario BuscarUsuario(string email)
@@ -66,15 +80,26 @@ namespace UAIBay.BLL.DTO
             repo.Save();
         }
 
+        public List<dtoVenta> MisCompras(int idUsuario)
+        {
+            var repository = new VentaRepository();
+            var BIZ = repository.ObtenerTodos().Where(x => x.UserId == idUsuario).ToList();
 
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var DTO = Mapper.Map<List<dtoVenta>>(BIZ);
+
+            return DTO;
+        }
 
         //public virtual ICollection<ActivityLog> ActivityLog { get; set; }
         //public virtual ICollection<DataLog> DataLog { get; set; }
-        //public virtual ICollection<Direccion> Direccion { get; set; }
+        public virtual ICollection<dtoDireccion> Direccion { get; set; }
         //public virtual ICollection<ErrorLog> ErrorLog { get; set; }
         //public virtual ICollection<History> History { get; set; }
         //public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }
         //public virtual ICollection<Venta> Venta { get; set; }
         public virtual ICollection<dtoRoles> Roles { get; set; }
+
+
     }
 }

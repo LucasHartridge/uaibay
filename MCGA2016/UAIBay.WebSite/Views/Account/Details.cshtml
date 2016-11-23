@@ -1,0 +1,63 @@
+﻿@*@model IEnumerable<UAIBay.WebSite.ViewModel.DetalleVentaViewModels>*@
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<UAIBay.WebSite.ViewModel.DetalleVentaViewModels>
+
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.DetalleVenta</h2>
+
+
+<table class="responsive">
+    <tr>
+        <th>
+            @Html.DisplayName("Nombre del producto")
+        </th>
+        <th>
+            @Html.DisplayName("Precio por producto")
+        </th>
+        <th>
+            @Html.DisplayName("Cantidad")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+        </td>
+        <td>
+           $ @Html.DisplayFor(modelItem => item.Producto.PrecioVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+    </tr>
+}
+</table>
+
+<br />
+
+
+@Html.PagedListPager(Model, Page => Url.Action("Details", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+<a href="@Url.Action("MisCompras","Account")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
