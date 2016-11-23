@@ -498,6 +498,7 @@
     <Content Include="Views\Admin\ComparacionPrecioProducto.cshtml" />
     <Content Include="Views\Admin\ProductosPorCategoria.cshtml" />
     <Content Include="Views\Admin\UsuariosPorProvincia.cshtml" />
+    <Content Include="Views\Home\EmailEnviado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

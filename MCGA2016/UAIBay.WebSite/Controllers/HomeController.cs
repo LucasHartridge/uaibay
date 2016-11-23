@@ -27,5 +27,13 @@ namespace UAIBay.WebSite.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Email(String txtemail, String txtnombre, String txtapellido, String txtmensaje)
+        {
+            UAIBay.Servicios.CorreoElectronico.EnviarCorreo(txtemail, txtnombre + txtapellido, txtmensaje, "CONSULTA PRODUCTO");
+
+            return View("EmailEnviado");
+        }
 	}
 }
