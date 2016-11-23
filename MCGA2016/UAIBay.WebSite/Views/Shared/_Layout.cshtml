@@ -136,8 +136,9 @@
                                 else
                                 {
                                     <li><a href="/Comprar/Carrito?userId=@Convert.ToInt32(Session["logeduserid"])"><i class="fa fa-shopping-cart"></i> @UAIBay.WebSite.Resources.Recurso.Carrito</a></li>
+                                        <li><a href="/Account/MisCompras"><i class="glyphicon glyphicon-tags"></i>  @UAIBay.WebSite.Resources.Recurso.MisCompras</a></li>
                                     <li><a href="/Account/Cuenta"><i class="fa fa-user"></i> @Session["LogedUserNombre"].ToString()</a></li>
-                                    <li><a href="/Account/Logout"><i class="fa fa-lock"></i> @UAIBay.WebSite.Resources.Recurso.Login</a></li>
+                                    <li><a href="/Account/Logout"><i class="fa fa-lock"></i>Logout</a></li>
                                 }
 
                             </ul>

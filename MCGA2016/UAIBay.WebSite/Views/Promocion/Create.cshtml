@@ -4,6 +4,8 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    string codigo = ViewBag.CodDescuento;
+
 }
 
 <h3>Nueva promoción</h3>
@@ -20,7 +22,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nro, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBox("codDescuento", ViewBag.CodDescuento as string, new  { @readonly = "readonly" })
+                @Html.TextBoxFor(x => x.Nro, new { @readonly = "readonly", @Value = @codigo })
+
                 @Html.ValidationMessageFor(model => model.Nro)
             </div>
         </div>

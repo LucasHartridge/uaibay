@@ -24,7 +24,7 @@ namespace UAIBay.WebSite.ViewModel
         [Required]
         public string CodigoPostal { get; set; }
 
-        public virtual UsuarioViewModels Usuario { get; set; }
+        //public virtual UsuarioViewModels Usuario { get; set; }
 
     }
 }

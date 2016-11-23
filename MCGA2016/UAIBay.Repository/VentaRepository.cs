@@ -28,14 +28,14 @@ namespace UAIBay.Repository
 
         }
 
-        //public bizCategoria TraerPorId(int id)
-        //{
-        //    Mapeador.AutoMapperORMConfiguration.Configure();
-        //    var categoriaORM = contexto.Categorias.Find(id);
-        //    var categoriaBIZ = Mapper.Map<Categoria, bizCategoria>(categoriaORM);
+        public bizVenta TraerPorId(int id)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var orm = contexto.Ventas.Find(id);
+            var biz = Mapper.Map<Venta, bizVenta>(orm);
 
-        //    return categoriaBIZ;
-        //}
+            return biz;
+        }
 
 
         public int NroUltimaVenta()

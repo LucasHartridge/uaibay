@@ -528,4 +528,13 @@
   <data name="VolverAlCatalogo" xml:space="preserve">
     <value>Retour au catalogue</value>
   </data>
+  <data name="Provincia" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="MisCompras" xml:space="preserve">
+    <value>Mes achats</value>
+  </data>
+  <data name="DetalleVenta" xml:space="preserve">
+    <value>Détail vente</value>
+  </data>
 </root>

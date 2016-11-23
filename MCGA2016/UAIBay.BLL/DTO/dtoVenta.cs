@@ -21,16 +21,23 @@ namespace UAIBay.BLL.DTO
         public virtual dtoUsuario Usuario { get; set; }
 
 
-        public void RealizarCompra(dtoCarrito carrito, string codDescuento = null)
+        public void RealizarCompra(dtoCarrito carrito, string codDescuento=null)
         {
 
             var repo = new VentaRepository();
+            var repoCarrito = new CarritoRepository();
+
             var nuevaVenta = new dtoVenta();
             nuevaVenta.DetalleVenta = new List<dtoDetalleVenta>();
 
             nuevaVenta.UserId = carrito.UserId;
             nuevaVenta.Fecha = DateTime.Now;
-            nuevaVenta.NroComprobante = codDescuento;
+
+            if (string.IsNullOrEmpty(codDescuento)==false)
+            {
+                nuevaVenta.NroComprobante = codDescuento;
+            }
+            
             nuevaVenta.Total = TraerTotal(carrito.ItemCarrito);
 
 
@@ -46,9 +53,10 @@ namespace UAIBay.BLL.DTO
 
             BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
             var BIZ = AutoMapper.Mapper.Map<dtoVenta, bizVenta>(nuevaVenta);
+            var BIZCarrito = AutoMapper.Mapper.Map<dtoCarrito, bizCarrito>(carrito);
 
             repo.Insertar(BIZ);
-
+            repoCarrito.Eliminar(BIZCarrito);
         }
 
         private double TraerTotal(ICollection<dtoItemCarrito> listaItem)
@@ -61,6 +69,18 @@ namespace UAIBay.BLL.DTO
             }
 
             return total;
+        }
+
+
+        public dtoVenta TraerVenta(int nroVenta)
+        {
+            var repository = new VentaRepository();
+            var biz = repository.TraerPorId(nroVenta);
+
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var dto = AutoMapper.Mapper.Map<bizVenta, dtoVenta>(biz);
+
+            return dto;
         }
 
 

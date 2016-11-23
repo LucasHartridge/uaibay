@@ -40,7 +40,7 @@ namespace UAIBay.Repository
         public bizCarrito TraerPorId(int idUser)
         {
             Mapeador.AutoMapperORMConfiguration.Configure();
-            var ORM = contexto.Carritos.Where(x => x.UserId == idUser).FirstOrDefault();
+            var ORM = contexto.Carritos.Where(x => x.UserId == idUser).ToList().FirstOrDefault();
 
             if (ORM != null)
             {
@@ -57,6 +57,21 @@ namespace UAIBay.Repository
             var ORM = Mapper.Map<bizItemCarrito, ItemCarrito>(objeto);
 
             contexto.ItemCarrito.Add(ORM);
+
+            var repoProducto = new ProductoRepository();
+            var producto = repoProducto.BuscarUnORMProducto(objeto.CodProducto);
+            producto.Cantidad -= 1;
+            repoProducto.Actualizar(producto);
+            repoProducto.Save();
+
+        }
+
+        public void ActualizarProducto(bizItemCarrito objeto)
+        {
+            Mapeador.AutoMapperORMConfiguration.Configure();
+            var ORM = Mapper.Map<bizItemCarrito, ItemCarrito>(objeto);
+
+            contexto.Entry(ORM).State = System.Data.Entity.EntityState.Modified;
 
             var repoProducto = new ProductoRepository();
             var producto = repoProducto.BuscarUnORMProducto(objeto.CodProducto);
@@ -89,9 +104,28 @@ namespace UAIBay.Repository
         {
             Mapeador.AutoMapperORMConfiguration.Configure();
 
+            List<ItemCarrito> items = (List<ItemCarrito>)contexto.ItemCarrito.Where(b => b.IdCarrito == objeto.IdCarrito).ToList();
+
+            foreach (var item in items)
+            {
+                contexto.ItemCarrito.Remove(item);
+            }
+
             Carrito carrito = (Carrito)contexto.Carritos.Where(b => b.IdCarrito == objeto.IdCarrito).First();
             contexto.Carritos.Remove(carrito);
             contexto.SaveChanges();
+        }
+
+        public void QuitarTodosLosProductos(int IdCarrito)
+        {
+
+            List<ItemCarrito> items = (List<ItemCarrito>)contexto.ItemCarrito.Where(b => b.IdCarrito == IdCarrito).ToList();
+
+            foreach (var item in items)
+            {
+                contexto.ItemCarrito.Remove(item);
+            }
+
         }
 
         public void Save()

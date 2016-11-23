@@ -1,19 +1,23 @@
-﻿@model IEnumerable<UAIBay.WebSite.ViewModel.ItemCarritoViewModels>
+﻿@model List<UAIBay.WebSite.ViewModel.ItemCarritoViewModels>
 
 @{
     ViewBag.Title = "Carrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<section id="cart_items">
 
+    ViewBag.Items = Model;
+}
+
+<section id="cart_items">
     <div class="review-payment">
         <h2>@UAIBay.WebSite.Resources.Recurso.Carrito</h2>
     </div>
-    
     <div class="table-responsive cart_info">
         <table class="table table-condensed" id="TablaCarrito">
             <thead>
                 <tr class="cart_menu">
+                    <th>
+                        @Html.Hidden("cod")
+                    </th>
                     <th>
                         @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Nombre)
                     </th>
@@ -30,38 +34,48 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @for (int i = 0; i < Model.Count; i++)
                 {
+
                     <tr class="targetfields">
+
                         <td>
-                            <h4> @Html.DisplayFor(modelItem => item.Producto.Descripcion)</h4>
+                            @Html.HiddenFor(modelItem => modelItem[i].CodProducto)
+                        </td>
+                        <td>
+                            <h4> @Html.DisplayFor(modelItem => modelItem[i].Producto.Descripcion)</h4>
+
                         </td>
                         <td>
 
                             <a href="#" class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
 
-                            @Html.TextBoxFor(modelItem => item.Cantidad, new { @class = "cantidad", id = "cantidad", @readonly = true })
+                            @Html.TextBoxFor(modelItem => modelItem[i].Cantidad, new { @class = "cantidad", id = "cantidad", @readonly = true })
 
 
                             <a href="#" class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
                         </td>
                         <td>
-                            $ @Html.TextBoxFor(modelItem => item.Precio, new { @class = "precio", @readonly = true, id = "precio" })
+                            $ @Html.TextBoxFor(modelItem => modelItem[i].Precio, new { @class = "precio", @readonly = true, id = "precio" })
                         </td>
                         <td class="tdsubtotal">
-                            $ @Html.TextBoxFor(modelItem => item.Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
+                            $ @Html.TextBoxFor(modelItem => modelItem[i].Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
                         </td>
 
                         <td>
-                            <a href='@(Url.Action("QuitarItem", "Comprar",new { codProducto = item.CodProducto, nroCarrito = item.IdCarrito }))'><i class="fa fa-times"></i></a>
+                            <a href='@(Url.Action("QuitarItem", "Comprar",new { codProducto = Model[i].CodProducto, nroCarrito = Model[i].IdCarrito }))'><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+
+
+
 </section>
+
 <section id="do_action">
     <div class="container">
         <div class="heading">
@@ -71,21 +85,16 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="chose_area">
+                    @*<ul class="user_option">
+                            <li class="user_info">
+                                <label>@UAIBay.WebSite.Resources.Recurso.IngreseSuCodigoDeDescuento</label>
+                                <input id="codigoDes" type="text" name="codigoDes" />
+                            </li>
+                        </ul>*@
                     <ul class="user_option">
                         <li class="user_info">
-                            <label>@UAIBay.WebSite.Resources.Recurso.IngreseSuCodigoDeDescuento</label>
-                            @Html.TextBox("cod", null)
-                        </li>
-                    </ul>
-                    <ul class="user_option">
-                        <li class="user_info">
-                            <label >@UAIBay.WebSite.Resources.Recurso.SeleccioneSuDireccion</label>
-                            <select>
-                                <option value="Arias">Localidad: Morón,Direccion: Arias 1235,Cod.Postal: 1712</option>
-                                <option value="Sarmiento">Localidad: Morón,Direccion: Sarmiento 1501,Cod.Postal: 1712</option>
-                                <option value="Alem">Localidad: Morón,Direccion: Alem 1234,Cod.Postal: 1712</option>
-                                <option value="Santa Rosa">Localidad: Morón,Direccion: Santa Rosa,Cod.Postal: 1712</option>
-                            </select>
+                            <label>@UAIBay.WebSite.Resources.Recurso.SeleccioneSuDireccion</label>
+                            @Html.DropDownList("Direcciones", ViewBag.Direcciones as List<SelectListItem>, new { @class = "form-control" })
                         </li>
                     </ul>
                     <ul class="user_option">
@@ -98,34 +107,147 @@
                             <label>@UAIBay.WebSite.Resources.Recurso.AgregueUnaNuevaDireccion</label>
                         </li>
                     </ul>
-                    <ul class="user_info">
-                        <li class="single_field zip-field">
-                            <label>@UAIBay.WebSite.Resources.Recurso.Partido:</label>
-                            <input type="text" style="background:#F0F0E9">
-                        </li>
-                        <li class="single_field zip-field">
-                            <label>@UAIBay.WebSite.Resources.Recurso.Dirección:</label>
-                            <input type="text" style="background:#F0F0E9">
-                        </li>
-                        <li class="single_field zip-field">
-                            <label>@UAIBay.WebSite.Resources.Recurso.CodigoPostal:</label>
-                            <input type="text" style="background:#F0F0E9">
-                        </li>
-                        <li >
-                            <button class ="btn btn-default check_out">@UAIBay.WebSite.Resources.Recurso.Agregar</button>
-                        </li>
-                    </ul>
+
+
+                    @*FORMULARIO DE DIRECCIONES - INICIO*@
+
+                    @using (Html.BeginForm("Create", "Direccion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <ul class="user_info">
+
+                            <li class="single_field zip-field">
+                                <label>@UAIBay.WebSite.Resources.Recurso.Provincia:</label>
+                                @Html.DropDownList("provincia", ViewBag.Provincia as List<SelectListItem>, "Seleccionar..", new { @class = "form-control", @required = "required", @name = "provincia" })
+                            </li>
+
+                            <li class="single_field zip-field">
+                                <label>@UAIBay.WebSite.Resources.Recurso.Partido:</label>
+                                <input type="text" style="background:#F0F0E9" name="partido" required>
+                            </li>
+                            <li class="single_field zip-field">
+                                <label>@UAIBay.WebSite.Resources.Recurso.Dirección:</label>
+                                <input type="text" style="background:#F0F0E9" name="direccion" required>
+                            </li>
+                            <li class="single_field zip-field">
+                                <label>@UAIBay.WebSite.Resources.Recurso.CodigoPostal:</label>
+                                <input type="number" style="background:#F0F0E9" name="codigo" required>
+                            </li>
+                            <li>
+                                <button class="btn btn-default check_out" type="submit">@UAIBay.WebSite.Resources.Recurso.Agregar</button>
+                            </li>
+                        </ul>
+                    }
+
+                    @*FORMULARIO DE DIRECCIONES - FIN*@
+
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="total_area">
-                    <ul>
-                        <li>@UAIBay.WebSite.Resources.Recurso.SubTotal <span>$<input type="text" id="subtotalcarrito" value="1" readonly="readonly" /></span></li>
-                        <li>@UAIBay.WebSite.Resources.Recurso.CostoDeEnvio <span id="enviogratis">@UAIBay.WebSite.Resources.Recurso.Gratis</span></li>
-                        <li>@UAIBay.WebSite.Resources.Recurso.Total <span>$<input value="0" readonly="readonly" id="totalcarrito" /></span></li>
-                    </ul>
-                    <a href='@(Url.Action("Comprar", "Comprar", new { nroCarrito = ViewBag.Carrito, codDescuento = "" }))' class="btn btn-default update">@UAIBay.WebSite.Resources.Recurso.Comprar</a>
-                    <a href='@(Url.Action("Catalogo", "Comprar"))' class="btn btn-default check_out">@UAIBay.WebSite.Resources.Recurso.VolverAlCatalogo</a>
+
+
+
+                    @using (Html.BeginForm("Pagar", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+
+                        <table class="table table-condensed hidden" id="TablaCarritoHidden">
+                            <thead>
+                                <tr class="cart_menu">
+                                    <th>
+                                        @Html.Hidden("cod")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Nombre)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Cantidad)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.Precio)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@UAIBay.WebSite.Resources.Recurso.SubTotal)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr class="targetfieldsHidden">
+
+                                        <td>
+                                            @Html.HiddenFor(modelItem => modelItem[i].CodProducto)
+                                        </td>
+
+                                        <td>
+
+                                            <h4> @Html.DisplayFor(modelItem => modelItem[i].Producto.Descripcion)</h4>
+
+                                        </td>
+                                        <td>
+
+                                            <a href="#" class="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+
+                                            @Html.TextBoxFor(modelItem => modelItem[i].Cantidad, new { @class = "cantidadHidden", id = "cantidad", @readonly = true })
+
+
+                                            <a href="#" class="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+                                        </td>
+                                        <td>
+                                            $ @Html.TextBoxFor(modelItem => modelItem[i].Precio, new { @class = "precioHidden", @readonly = true, id = "precio" })
+                                        </td>
+                                        <td class="tdsubtotal">
+                                            $ @Html.TextBoxFor(modelItem => modelItem[i].Subtotal, new { @class = "subtotalHidden", @readonly = true, id = "subtotal" })
+                                        </td>
+
+                                        <td>
+                                            <a href='@(Url.Action("QuitarItem", "Comprar",new { codProducto = Model[i].CodProducto, nroCarrito = Model[i].IdCarrito }))'><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                        <ul>
+                            <li>@UAIBay.WebSite.Resources.Recurso.SubTotal <span>$<input type="text" id="subtotalcarrito" value="1" readonly="readonly" /></span></li>
+                            <li>@UAIBay.WebSite.Resources.Recurso.CostoDeEnvio <span id="enviogratis">@UAIBay.WebSite.Resources.Recurso.Gratis</span></li>
+                            <li>@UAIBay.WebSite.Resources.Recurso.Total <span>$<input value="0" readonly="readonly" id="totalcarrito" name="totalcarrito" /></span></li>
+                        </ul>
+
+
+                        if (Model.Count > 0)
+                        {
+                            <button class="btn btn-default update" type="submit">@UAIBay.WebSite.Resources.Recurso.Comprar</button>
+                        }
+                        else
+                        {
+                            <ul>
+                                <li style="background-color:white;">
+                                    <div class="alert alert-info alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>¡Aviso!</strong> Mientras no hayan productos en el carrito, no podrá realizar compras.
+                                    </div>
+                                </li>
+                            </ul>
+                            <button class="btn btn-default update" type="button">@UAIBay.WebSite.Resources.Recurso.Comprar</button>
+                        }
+
+
+
+                        <a href='@(Url.Action("Catalogo", "Comprar"))' class="btn btn-default check_out">@UAIBay.WebSite.Resources.Recurso.VolverAlCatalogo</a>
+                        @*<a href='' class="btn btn-default update">@UAIBay.WebSite.Resources.Recurso.Comprar</a>*@
+
+
+
+
+                    }
+
+
                 </div>
             </div>
         </div>
@@ -135,15 +257,30 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript" id="copy.setAttribute('.Subtotal', 'TablaCarritoHidden');">
     function calcularTotal() {
         var total = 0;
+
+
         $('#TablaCarrito .targetfields').each(function () {
             var subtotal = parseInt($(this).find(".subtotal").val());
             total = total + subtotal;
         });
+
         $('#subtotalcarrito').val(total);
         $('#totalcarrito').val(total);
+
+    }
+
+    function calcularTotalHidden() {
+        var total = 0;
+
+
+        $('#TablaCarritoHidden .targetfields').each(function () {
+            var subtotal = parseInt($(this).find(".subtotalHidden").val());
+            total = total + subtotal;
+        });
+
     }
 
     function changeQuantity(num, obj) {
@@ -151,15 +288,35 @@
         if (value_to_set <= 1) { $(obj).parent().find('.cantidad').val(1); return; }
         if (value_to_set > 9) { $(obj).parent().find('.cantidad').val(9); return; }
         $(obj).parent().find('.cantidad').val(value_to_set);
+
+        $('#TablaCarritoHidden .targetfields').parent().find('.cantidadHidden').val(value_to_set);
+
     }
+
+    //function changeQuantityHidden(num, obj) {
+    //    var value_to_set = parseInt($(obj).parent().find('.cantidadHidden').val()) + num;
+    //    if (value_to_set <= 1) { $(obj).parent().find('.cantidadHidden').val(1); return; }
+    //    if (value_to_set > 9) { $(obj).parent().find('.cantidadHidden').val(9); return; }
+    //    $(obj).parent().find('.cantidadHidden').val(value_to_set);
+    //}
 
     function changeSubTotal(obj) {
         var $tr = $(obj).parents("tr");
-        var precio = $tr.find("td").eq(2).find('.precio').val();
-        var subtotal = $tr.find("td").eq(3).find('.subtotal').val();
+        var precio = $tr.find("td").eq(3).find('.precio').val();
+        var subtotal = $tr.find("td").eq(4).find('.subtotal').val();
         var quantity = parseInt($(obj).parent().parent().find('.cantidad').val());
         var subtotalactualizado = precio * quantity;
-        $tr.find("td").eq(3).find('.subtotal').val(subtotalactualizado);        
+        $tr.find("td").eq(4).find('.subtotal').val(subtotalactualizado);
+    }
+
+    function changeSubTotalHidden(obj) {
+        var $tr = $(obj).parents("tr");
+        var precio = $tr.find("td").eq(3).find('.precioHidden').val();
+        var subtotal = $tr.find("td").eq(4).find('.subtotalHidden').val();
+        var quantity = parseInt($(obj).parent().parent().find('.cantidadHidden').val());
+        var subtotalactualizado = precio * quantity;
+        $tr.find("td").eq(4).find('.subtotalHidden').val(subtotalactualizado);
+
     }
 
 
@@ -169,20 +326,50 @@
             var subtotal = parseInt($(this).find(".subtotal").val());
             total = total + subtotal;
         });
+        //$('#TablaCarritoHidden .targetfields').each(function () {
+        //    var subtotal = $(this).find(".subtotalHidden").val();
+        //    var cantidad = $(this).find(".cantidadHidden").val();
+
+        //});
         $('#subtotalcarrito').val(total);
         $('#totalcarrito').val(total);
+        //$('.subtotalHidden').val(total);
 
         $(".restar").click(function () {
             changeQuantity(-1, this);
+            //changeQuantityHidden(-1, this);
             changeSubTotal(this);
+            //changeSubTotalHidden(this);
             calcularTotal();
+            $("#TablaCarritoHidden > tbody").html("");
+            $(".targetfields").clone().appendTo("#TablaCarritoHidden");
+
+            //calcularTotalHidden();
         });
 
         $(".sumar").click(function () {
             changeQuantity(1, this);
             changeSubTotal(this);
+            //changeQuantityHidden(1, this);
+            //changeSubTotalHidden(this);
             calcularTotal();
-
+            $("#TablaCarritoHidden > tbody").html("");
+            $(".targetfields").clone().appendTo("#TablaCarritoHidden");
+            //calcularTotalHidden();
         })
+
+
+
+        //var source = document.getElementById('TablaCarrito');
+        //var destination = document.getElementById('TablaCarritoHidden');
+        //var copy = source.cloneNode(true);
+        //copy.setAttribute('.cart-menu', 'TablaCarritoHidden');
+        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
+        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
+        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
+        //destination.parentNode.replaceChild(copy, destination);
+
     });
+
+
 </script>

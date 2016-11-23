@@ -17,7 +17,7 @@ namespace UAIBay.BLL.DTO
         public System.DateTime FechaVencimiento { get; set; }
 
 
-        public object TraerPromociones()
+        public List<dtoPromocion> TraerPromociones()
         {
             var repo = new PromocionRepository();
             var biz = repo.ObtenerTodos();

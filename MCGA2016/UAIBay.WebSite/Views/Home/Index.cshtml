@@ -182,7 +182,7 @@
                                 <p>Freeze Blue Evolution 1L</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>@UAIBay.WebSite.Resources.Recurso.AgregarAlCarrito</a>
                                 <a href="#" class="btn btn-default add-to-cart" data-toggle="modal" data-target="#loginModal"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -255,24 +255,32 @@
                                         <img src="~/Content/images/producto/bebida/freeze-blue-evolution.jpg" alt="" style="border:none" />
                                     </div>
                                 </div>
-                                <div class="col-sm-7">
 
-                                    <div class="product-information" style="border:none">
-                                        <h2>Freeze Blue Evolution 1L</h2>
-                                        <span>
-                                            <span>$49 por unidad</span>
-                                            <label>Cantidad:</label>
-                                            <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-                                            <input type="text" id="cantidad" value="1" readonly="readonly" />
-                                            <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-                                            <button type="button" class="btn btn-fefault cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                Agregar al carrito
-                                            </button>
-                                        </span>
-                                        <a href=""><img src="~/Content/images/product-details/share.png" class="share img-responsive" alt="" /></a>
+
+                                @using (Html.BeginForm("AgregarItemPopUp", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+
+                                    <div class="col-sm-7">
+                                        <div class="product-information" style="border:none">
+                                            <h2>Freeze Blue Evolution 1L</h2>
+                                            <span>
+                                                <span>$49 por unidad</span>
+                                                <label>Cantidad:</label>
+                                                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                                                <input type="text" id="cantidad" value="1" readonly="readonly" />
+                                                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+                                                <button type="button" class="btn btn-fefault cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Agregar al carrito
+                                                </button>
+                                            </span>
+                                            <a href=""><img src="~/Content/images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                                        </div>
                                     </div>
-                                </div>
+
+
+                                }
+
                                 <div class="col-sm-12">
                                     <div id="similar-product" class="carousel slide" data-ride="carousel">
                                         <center>

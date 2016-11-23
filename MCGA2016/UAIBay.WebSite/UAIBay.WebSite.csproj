@@ -200,6 +200,7 @@
     <Content Include="Content\images\home\sale.png" />
     <Content Include="Content\images\home\searchicon.png" />
     <Content Include="Content\images\home\shipping.jpg" />
+    <Content Include="Content\images\index\compraFinalizada.png" />
     <Content Include="Content\images\index\delivery.jpg" />
     <Content Include="Content\images\index\fruta.jpg" />
     <Content Include="Content\images\index\promo-imperial.jpg" />
@@ -320,6 +321,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -378,6 +380,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ComprarController.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -465,6 +468,9 @@
     <Content Include="Views\Rol\Delete.cshtml" />
     <Content Include="Views\Account\Cuenta.cshtml" />
     <Content Include="Views\Comprar\Pagar.cshtml" />
+    <Content Include="Views\Comprar\CantidadSuperada.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\MisCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -475,6 +481,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Direccion\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>
