@@ -1,114 +1,130 @@
-﻿@{
+﻿@model double
+
+@{
     ViewBag.Title = "Pagar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var montoTotal = 120;
-    var tresCuotas = montoTotal / 3;
-    var seisCuotas = montoTotal / 6;
-    var doceCuotas = montoTotal / 12;
+    var montoTotal = Model;
+    var tresCuotas = decimal.Round(Convert.ToDecimal(montoTotal / 3), 2, MidpointRounding.AwayFromZero);
+    var seisCuotas = decimal.Round(Convert.ToDecimal(montoTotal / 6), 2, MidpointRounding.AwayFromZero);
+    var doceCuotas = decimal.Round(Convert.ToDecimal(montoTotal / 12), 2, MidpointRounding.AwayFromZero);
+    var codigo = ViewBag.CodigoUtilizado;
+    var total = ViewBag.Total;
 }
 
+@using (Html.BeginForm("Comprar", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
-<div class="container" style="margin-bottom:20px">
-    <div class="form-signin checkout_payment_option selected mondidojs">
-        <div class="container-bb">
-            <div class="row-bb">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <form id="mondidopayform">
-                        <div class="wrp">
-                            <div id="addCard">
-                                <div class="panel">
-                                    <center><h2 style="color:white;background:#FE980F">@UAIBay.WebSite.Resources.Recurso.FinalizarPago</h2></center>
-                                    <div class="form-group col-lg-12">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.MontoTotalAPagar:$@montoTotal</label>
+
+    <div class="container" style="margin-bottom:20px">
+        <div class="form-signin checkout_payment_option selected mondidojs">
+            <div class="container-bb">
+                <div class="row-bb">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form id="mondidopayform">
+                            <div class="wrp">
+                                <div id="addCard">
+                                    <div class="panel">
+                                        <center><h2 style="color:white;background:#FE980F">@UAIBay.WebSite.Resources.Recurso.FinalizarPago</h2></center>
+                                        <div class="form-group col-lg-12">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.MontoTotalAPagar: $ @Model</label>
+                                            @Html.Hidden("total", Model)
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.SeleccioneNumeroCuotas</label>
+                                            <select class="form-control">
+                                                <option value="1">1 @UAIBay.WebSite.Resources.Recurso.CuotaSinInteresDe $ @Model</option>
+                                                <option value="3">3 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $ @tresCuotas</option>
+                                                <option value="6">6 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $ @seisCuotas</option>
+                                                <option value="12">12 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $ @doceCuotas</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-lg-12">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.SeleccioneNumeroCuotas</label>
-                                        <select class="form-control">
-                                            <option value="1">1 @UAIBay.WebSite.Resources.Recurso.CuotaSinInteresDe $@montoTotal</option>
-                                            <option value="3">3 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $@tresCuotas</option>
-                                            <option value="6">6 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $@seisCuotas</option>
-                                            <option value="12">12 @UAIBay.WebSite.Resources.Recurso.CuotasSinInteresDe $@doceCuotas</option>
-                                        </select>
+
+                                    <div class="panel">
+                                        <div class="form-group col-lg-12">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.IngreseSuCodigoDeDescuento</label>
+
+                                            @if (ViewBag.CodigoUtilizado == null)
+                                            {
+                                                <input id="codigoDes" type="text" name="codigoDes" class="form-control" style="width:100%;" />
+                                            }
+                                            else
+                                            {
+                                                @Html.Hidden("codigoDes", "")
+                                                <input id="codigoD" type="text" value=@codigo name="codigoD" class="form-control" style="width:100%;" readonly />
+                                            }
+
+                                            @Html.ValidationMessage("codigoDes", new { @color = "#fdb45e" })
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="panel">
-                                    <div class="form-group col-lg-12">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.NombreCompletoTitularTarjeta</label>
-                                        <input type="text" class="form-control" name="card_holder" style="width:100%;" placeholder="@UAIBay.WebSite.Resources.Recurso.NombreCompletoTitularTarjeta">
+
+
+                                    <div class="panel">
+                                        <div class="form-group col-lg-12">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.NombreCompletoTitularTarjeta</label>
+                                            <input type="text" class="form-control" name="card_holder" style="width:100%;" placeholder="@UAIBay.WebSite.Resources.Recurso.NombreCompletoTitularTarjeta" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="panel">
-                                    <div class="col-sm-5 form-group">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.NumeroDeTarjeta</label>
-                                        <input type="text" class="form-control" data-encrypted-attribute="card_number" style="width:100%;" placeholder="@UAIBay.WebSite.Resources.Recurso.NumeroDeTarjeta">
+
+
+
+                                    <div class="panel">
+                                        <div class="col-sm-5 form-group">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.NumeroDeTarjeta</label>
+                                            <input required type="number" class="form-control" data-encrypted-attribute="card_number" style="width:100%;" placeholder="@UAIBay.WebSite.Resources.Recurso.NumeroDeTarjeta">
+                                        </div>
+                                        <div class="col-sm-3 col-xs-6 form-group third float-left">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.Codigo</label>
+                                            <input required type="number" class="form-control" data-encrypted-attribute="card_cvv" style="width:90%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Codigo">
+                                        </div>
+                                        <div class="col-sm-2 col-xs-3 form-group third float-left">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.Mes</label>
+                                            <input required type="number" name="expMM" class="form-control" maxlength="2" min="1" max="12" style="width:95%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Mes">
+                                        </div>
+                                        <div class="col-sm-2 col-xs-3 form-group third float-left">
+                                            <label>@UAIBay.WebSite.Resources.Recurso.Año</label>
+                                            <input required type="number" name="expYY" class="form-control" maxlength="2" min="16" max="25" style="width:95%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Año">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-3 col-xs-6 form-group third float-left">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.Codigo</label>
-                                        <input type="text" class="form-control" data-encrypted-attribute="card_cvv" style="width:90%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Codigo">
+                                    <div class="clear">
                                     </div>
-                                    <div class="col-sm-2 col-xs-3 form-group third float-left">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.Mes</label>
-                                        <input type="text" name="expMM" class="form-control" maxlength="2" style="width:90%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Mes">
-                                    </div>
-                                    <div class="col-sm-2 col-xs-3 form-group third float-left">
-                                        <label>@UAIBay.WebSite.Resources.Recurso.Año</label>
-                                        <input type="text" name="expYY" class="form-control" maxlength="2" style="width:90%;" placeholder="@UAIBay.WebSite.Resources.Recurso.Año">
-                                    </div>
-                                </div>
-                                <div class="clear">
-                                </div>
-                                <input type="submit" class="btn btn-default update" value="@UAIBay.WebSite.Resources.Recurso.Pagar" style="width:90%;" />
-                                <div style="margin-bottom:10px">
-                                    <div id="credit-card-list">
-                                        <img alt="Mastercard" class="card_mastercard card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/mastercard.png">
-                                        <img alt="Visa" class="card_visa card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/visa.png">
-                                        <img alt="Amex" class="card_amex card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/amex.png">
-                                        <img alt="Discover" class="card_discover card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/discover.png">
-                                        <img alt="Maestro" class="card_maestro  card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/maestro.png">
+                                    <input type="submit" class="btn btn-default update" value="@UAIBay.WebSite.Resources.Recurso.Pagar" style="width:90%;" />
+                                    <div style="margin-bottom:10px">
+                                        <div id="credit-card-list">
+                                            <img alt="Mastercard" class="card_mastercard card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/mastercard.png">
+                                            <img alt="Visa" class="card_visa card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/visa.png">
+                                            <img alt="Amex" class="card_amex card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/amex.png">
+                                            <img alt="Discover" class="card_discover card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/discover.png">
+                                            <img alt="Maestro" class="card_maestro  card_icon" src="https://raw.githubusercontent.com/Mondido/mondido-js/master/images/maestro.png">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-@using (Html.BeginForm("Hola", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formProducto" }))
-{
-    <div class="form-horizontal">
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input id="input-700" name="kartik-input-700[]" type="file" multiple class="file-loading">
-                </div>
-            </div>
-                @*<input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">*@
-                @*<div class="form-group">
-                        <label>Preview File Icon</label>
-                        <input id="file-3" type="file" multiple=true>
-                    </div>*@
-                <button type="submit">jeje</button>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <script>
-              
-                $("#input-700").fileinput({
-                    showBrowse: false,
-                    showRemove: false,
-                    //uploadUrl: true,
-                    @*showUpload: "@Url.Action("Hola","Comprar")",*@
-                    allowedFileExtensions: ['jpg', 'png'],
-                    //showUpload: null,
-                    uploadAsync: true,
-                    maxFileCount: 1
-                });
-                @*$('#formProducto').on('submit'), function () {
+
+
+
+}
+<script>
+
+    $("#input-700").fileinput({
+        showBrowse: false,
+        showRemove: false,
+        //uploadUrl: true,
+        @*showUpload: "@Url.Action("Hola","Comprar")",*@
+        allowedFileExtensions: ['jpg', 'png'],
+        //showUpload: null,
+        uploadAsync: true,
+        maxFileCount: 1
+    });
+    @*$('#formProducto').on('submit'), function () {
             $("#input-700").fileinput({
                 uploadUrl: "@Url.Action("Hola","Comprar")", // server upload action
                 allowedFileExtensions: ['jpg', 'png'],
@@ -116,12 +132,11 @@
             maxFileCount: 1
             });
         };*@
-            </script>
-            <script>
-                $('#mondidopayform').on('submit', function () {
-                    $('body').addClass("loading");
-                });
+</script>
+<script>
+    $('#mondidopayform').on('submit', function () {
+        $('body').addClass("loading");
+    });
 
-            </script>
-            }
-            <div class="loadingmodal"></div>
+</script>
+

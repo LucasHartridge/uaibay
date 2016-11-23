@@ -13,9 +13,14 @@ namespace UAIBay.WebSite.ViewModel
         {
             this.DetalleVenta = new HashSet<DetalleVentaViewModels>();
         }
-    
+
+
+        [Display(Name = "Nro de venta")]
         public int NroVenta { get; set; }
+
         public int UserId { get; set; }
+
+        [Display(Name = "Fecha de compra")]
         public DateTime Fecha { get; set; }
         public string CodPromocion { get; set; }
         public double Total { get; set; }

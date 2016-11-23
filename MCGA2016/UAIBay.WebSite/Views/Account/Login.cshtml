@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<SelectListItem>
+
+@{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,8 +18,13 @@
 
                     @using (@Html.BeginForm("Ingresar", "Account", FormMethod.Post))
                     {
-                        <input name="user" type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" />
-                        <input name="pw" type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" />
+                        <input name="user" type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" required />
+                        @Html.ValidationMessage("user")
+
+                        <input name="pw" type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" required />
+                        @Html.ValidationMessage("pw")
+
+                        @Html.ValidationMessage("login")
                         <button type="submit" class="btn btn-default">@UAIBay.WebSite.Resources.Recurso.IniciarSesion</button>
 
                     }
@@ -35,6 +42,12 @@
 
                     @using (@Html.BeginForm("Registrar", "Account", FormMethod.Post))
                     {
+                        @Html.ValidationMessage("email")
+                        
+
+                        <input type="number" placeholder="DNI" name="dni" required />
+                        @Html.ValidationMessage("dni")
+
 
                         <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Nombre" name="nombre" required />
                         @Html.ValidationMessage("nombre")
@@ -42,8 +55,8 @@
                         <input type="text" placeholder="@UAIBay.WebSite.Resources.Recurso.Apellido" name="apellido" required />
                         @Html.ValidationMessage("apellido")
 
-                        <input type="number" placeholder="DNI" name="dni" required />
-                        @Html.ValidationMessage("dni")
+                        <input type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" name="email" required />
+                        
 
                         <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.Contraseña" name="password" required />
                         @Html.ValidationMessage("password")
@@ -51,11 +64,27 @@
                         <input type="password" placeholder="@UAIBay.WebSite.Resources.Recurso.RepetirContraseña" required name="passwordRepetir" />
                         @Html.ValidationMessage("passwordRepetir")
 
+                        @*<input type="text" placeholder="Provincia" required name="provincia" />*@
+
+                        @Html.DropDownList("Provincia", Model, "Seleccionar provincia", new { @class = "form-control", @required = "required", @name = "provincia" })
+
+                        @Html.ValidationMessage("provincia")
+
+                        <br />
+
+                        <input type="text" placeholder="Localidad" required name="localidad" />
+                        @Html.ValidationMessage("localidad")
+
+                        <input type="text" placeholder="Domicilio" required name="domicilio" />
+                        @Html.ValidationMessage("domicilio")
+
+                        <input type="number" placeholder="CodigoPostal" required name="codigoPostal" />
+                        @Html.ValidationMessage("codigoPostal")
+
                         <input type="number" placeholder="@UAIBay.WebSite.Resources.Recurso.Telefono" name="telefono" required />
                         @Html.ValidationMessage("telefono")
 
-                        <input type="email" placeholder="@UAIBay.WebSite.Resources.Recurso.Email" name="email" required />
-                        @Html.ValidationMessage("email")
+
 
                         <input type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" required />
                         @Html.ValidationMessage("fechaNacimiento")

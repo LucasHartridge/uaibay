@@ -13,6 +13,6 @@ namespace UAIBay.BIZ
         public int Cantidad { get; set; }
 
         public virtual bizProducto Producto { get; set; }
-        public virtual bizVenta Venta { get; set; }
+        //public virtual bizVenta Venta { get; set; }
     }
 }

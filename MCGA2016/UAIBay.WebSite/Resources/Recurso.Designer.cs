@@ -97,6 +97,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Administrador.
+        /// </summary>
+        public static string Administrador {
+            get {
+                return ResourceManager.GetString("Administrador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Agregar.
         /// </summary>
         public static string Agregar {
@@ -529,6 +538,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Detalle de la venta.
+        /// </summary>
+        public static string DetalleVenta {
+            get {
+                return ResourceManager.GetString("DetalleVenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Dirección.
         /// </summary>
         public static string Dirección {
@@ -826,6 +844,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mis compras.
+        /// </summary>
+        public static string MisCompras {
+            get {
+                return ResourceManager.GetString("MisCompras", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Mision.
         /// </summary>
         public static string Mision {
@@ -1056,6 +1083,15 @@ namespace UAIBay.WebSite.Resources {
         public static string Proveedores {
             get {
                 return ResourceManager.GetString("Proveedores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Provincia.
+        /// </summary>
+        public static string Provincia {
+            get {
+                return ResourceManager.GetString("Provincia", resourceCulture);
             }
         }
         

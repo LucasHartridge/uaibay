@@ -1,0 +1,152 @@
+﻿@{
+    Layout = null;
+    HttpCookie cookie = HttpContext.Current.Request.Cookies["Lenguaje"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>UAIBay</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
+    <!-- Bootstrap Styles-->
+    <link href="~/Content/dashboard/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="~/Content/dashboard/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    @*<link href="~/Content/dashboard/js/morris/morris-0.4.3.min.css" rel="stylesheet" />*@
+    <!-- Custom Styles-->
+    <link href="~/Content/dashboard/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- HEADER -->
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Index">UAIBAY</a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="~/Account/Cuenta"><i class=" fa fa-user fa-fw"></i> Mi Perfil</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="~/Account/Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a class="active-menu" href="Index"><i class="fa fa-dashboard"></i>Panel de Control</a>
+                    </li>
+                    <!-- GRAFICOS  -->
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> Graficos <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Admin/VentasAnuales"><i class="fa fa-qrcode"></i>Cantidad de Ventas Anuales</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/ProductosPorCategoria"><i class="fa fa-desktop"></i>Productos por Categoria</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/ComparacionPrecioProducto"><i class="fa fa-money"></i>Comparación de Precios</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/UsuariosPorProvincia"><i class="fa fa-map-marker"></i>Usuarios en Argentina</a>
+                            </li>
+                        </ul>
+                    <!-- /. GRAFICOS  -->
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Administrador <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="~/Usuario/Index"><i class="fa fa-edit"></i>Usuarios</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-users"></i>Gestion UaiBay<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="~/Proveedor/Index"><i class="fa fa-shopping-cart"></i>Proovedores</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Categoria/Index"><i class="fa fa-bitcoin"></i>Categorias</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Producto/Index"><i class="fa fa-tablet"></i>Productos</a>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <section>
+                    @RenderBody()
+                </section>
+                <footer><p>All right reserved. Template by: <a href="http://uaibaylppa.com">4 Fantasticos</a></p></footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    @RenderSection("scripts", required: false)
+    <script src="~/Content/dashboard/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="~/Content/dashboard/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="~/Content/dashboard/js/jquery.metisMenu.js"></script>
+    <!-- Custom Js -->
+    <script src="~/Content/dashboard/js/custom-scripts.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-87713728-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</body>
+
+</html>

@@ -140,6 +140,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
+    <Content Include="Content\dashboard\css\bootstrap.css" />
+    <Content Include="Content\dashboard\css\custom-styles.css" />
+    <Content Include="Content\dashboard\css\font-awesome.css" />
+    <Content Include="Content\dashboard\font-awesome\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\dashboard\js\bootstrap.min.js" />
+    <Content Include="Content\dashboard\js\custom-scripts.js" />
+    <Content Include="Content\dashboard\js\custom.js" />
+    <Content Include="Content\dashboard\js\dataTables\dataTables.bootstrap.css" />
+    <Content Include="Content\dashboard\js\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Content\dashboard\js\dataTables\jquery.dataTables.js" />
+    <Content Include="Content\dashboard\js\jquery-1.10.2.js" />
+    <Content Include="Content\dashboard\js\jquery.metisMenu.js" />
+    <Content Include="Content\dashboard\js\morris\morris-0.4.3.min.css" />
+    <Content Include="Content\dashboard\js\morris\morris.js" />
+    <Content Include="Content\dashboard\js\morris\raphael-2.1.0.min.js" />
     <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
     <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
     <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
@@ -200,6 +216,7 @@
     <Content Include="Content\images\home\sale.png" />
     <Content Include="Content\images\home\searchicon.png" />
     <Content Include="Content\images\home\shipping.jpg" />
+    <Content Include="Content\images\index\compraFinalizada.png" />
     <Content Include="Content\images\index\delivery.jpg" />
     <Content Include="Content\images\index\fruta.jpg" />
     <Content Include="Content\images\index\promo-imperial.jpg" />
@@ -306,6 +323,14 @@
     <Content Include="Content\fonts\Roboto-Thin.ttf" />
     <Content Include="Content\fonts\Roboto-Thin.woff" />
     <Content Include="Content\fonts\Roboto-Thin.woff2" />
+    <Content Include="Content\dashboard\font-awesome\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="Content\dashboard\font-awesome\fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="Content\dashboard\font-awesome\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="Content\dashboard\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\dashboard\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\dashboard\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -321,6 +346,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -383,6 +409,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ComprarController.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -407,6 +435,8 @@
     <Compile Include="ViewModel\ProductoViewModels.cs" />
     <Compile Include="ViewModel\PromocionViewModels.cs" />
     <Compile Include="ViewModel\ProveedorViewModels.cs" />
+    <Compile Include="ViewModel\Reportes\ProductosPorCategoriaViewModels.cs" />
+    <Compile Include="ViewModel\Reportes\VentasPorMesViewModels.cs" />
     <Compile Include="ViewModel\RolesViewModels.cs" />
     <Compile Include="ViewModel\TarjetaCreditoViewModels.cs" />
     <Compile Include="ViewModel\UsuarioViewModels.cs" />
@@ -464,6 +494,8 @@
     <Content Include="Views\Promocion\Details.cshtml" />
     <Content Include="Views\Promocion\Edit.cshtml" />
     <Content Include="Views\Promocion\Delete.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Rol\Index.cshtml" />
     <Content Include="Views\Rol\Create.cshtml" />
     <Content Include="Views\Rol\Edit.cshtml" />
@@ -471,6 +503,14 @@
     <Content Include="Views\Rol\Delete.cshtml" />
     <Content Include="Views\Account\Cuenta.cshtml" />
     <Content Include="Views\Comprar\Pagar.cshtml" />
+    <Content Include="Views\Comprar\CantidadSuperada.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\MisCompras.cshtml" />
+    <Content Include="Views\Admin\VentasAnuales.cshtml" />
+    <Content Include="Views\Admin\ComparacionPrecioProducto.cshtml" />
+    <Content Include="Views\Admin\ProductosPorCategoria.cshtml" />
+    <Content Include="Views\Admin\UsuariosPorProvincia.cshtml" />
+    <Content Include="Views\Home\EmailEnviado.cshtml" />
     <Content Include="Views\Producto\FiltrarPorCategoria.cshtml" />
     <Content Include="Views\Producto\BuscarProducto.cshtml" />
     <None Include="Web.Debug.config">
@@ -482,7 +522,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\dashboard\img\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Direccion\" />
     <Folder Include="Views\Language\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
@@ -490,18 +532,22 @@
     <EmbeddedResource Include="Resources\Recurso.fr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.esp.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.esp.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recurso.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recurso.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

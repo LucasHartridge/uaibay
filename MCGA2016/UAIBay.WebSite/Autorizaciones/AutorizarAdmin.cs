@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Web.Mvc;
@@ -14,11 +13,14 @@ namespace UAIBay.WebSite.Autorizaciones
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (HttpContext.Current.Session["LogedUserRol"] == "Administrador")
+            if (HttpContext.Current.Session["LogedUserRol"].ToString() == "Administrador")
             {
                 return;
             }
-            throw new HttpException(403, "HTTPExcepcion403");
+            else
+            {
+                throw new HttpException(403, "HTTPExcepcion403");
+            }
 
         }
 

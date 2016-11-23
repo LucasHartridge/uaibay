@@ -333,6 +333,10 @@
   <data name="VisionParrafo" xml:space="preserve">
     <value>Être le supermarché le plus important sur ​​la côte centrale , la réalisation de la distinction des clients et des fournisseurs et des concurrents . Maintenir et augmenter les ventes et le nombre de clients , année après année.</value>
   </data>
+
+  <data name="Administrador" xml:space="preserve">
+    <value>Administrateur</value>
+</data>
   <data name="ActualizarCategoria" xml:space="preserve">
     <value>Catégorie Reload</value>
   </data>
@@ -527,5 +531,14 @@
   </data>
   <data name="VolverAlCatalogo" xml:space="preserve">
     <value>Retour au catalogue</value>
+  </data>
+  <data name="Provincia" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="MisCompras" xml:space="preserve">
+    <value>Mes achats</value>
+  </data>
+  <data name="DetalleVenta" xml:space="preserve">
+    <value>Détail vente</value>
   </data>
 </root>

@@ -57,7 +57,7 @@ namespace UAIBay.WebSite.ViewModel
 
         //public virtual ICollection<ActivityLogViewModels> ActivityLog { get; set; }
         //public virtual ICollection<DataLogViewModels> DataLog { get; set; }
-        //public virtual ICollection<DireccionViewModels> Direccion { get; set; }
+        public virtual ICollection<DireccionViewModels> Direccion { get; set; }
         //public virtual ICollection<ErrorLogViewModels> ErrorLog { get; set; }
         //public virtual ICollection<HistoryViewModels> History { get; set; }
         //public virtual ICollection<TarjetaCreditoViewModels> TarjetaCredito { get; set; }

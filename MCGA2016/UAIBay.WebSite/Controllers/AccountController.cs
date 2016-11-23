@@ -8,6 +8,7 @@ using AutoMapper;
 using UAIBay.BLL.DTO;
 using UAIBay.WebSite.ViewModel;
 using UAIBay.Servicios;
+using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -22,9 +23,46 @@ namespace UAIBay.WebSite.Controllers
 
         public ActionResult Login()
         {
-            return View();
+
+            var provincias = LlenarComboProvincias();
+
+            return View(provincias);
         }
 
+
+        [HttpGet]
+        public ActionResult MisCompras(int? page)
+        {
+            var bll = new dtoUsuario();
+
+            int idUsuario = Convert.ToInt32(Session["LogedUserID"]);
+
+            var ventas = bll.MisCompras(idUsuario);
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            List<VentaViewModels> ventasviewModel = Mapper.Map<List<VentaViewModels>>(ventas);
+
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+
+            return View(ventasviewModel.ToPagedList(pageNumber, 9));
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Details(int id, int? page)
+        {
+            var bll = new dtoVenta();
+            var venta = bll.TraerVenta(id);
+             App_Start.AutoMapperWebConfiguration.Configure();
+            var ventaVM = Mapper.Map<dtoVenta, VentaViewModels>(venta);
+
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+
+            return View(ventaVM.DetalleVenta.ToPagedList(pageNumber, 9));
+        }
 
         [HttpGet]
         public ActionResult Cuenta()
@@ -52,25 +90,24 @@ namespace UAIBay.WebSite.Controllers
 
         }
 
-        public ActionResult Registrar(string nombre, string apellido, int dni, string password, string passwordRepetir, int telefono, string email, DateTime fechaNacimiento, bool sexo)
+        public ActionResult Registrar(string nombre, string apellido, int dni, string password, string passwordRepetir,
+            int telefono, string email, DateTime fechaNacimiento,
+            bool sexo, string provincia, string localidad, string domicilio, int codigoPostal)
         {
             var bll = new dtoUsuario();
             if (password == passwordRepetir)
             {
-                //try
-                //{
 
                 var existe = bll.BuscarUsuario(email);
                 if (existe != null)
                 {
                     ModelState.AddModelError("email", "*El e-mail ingresado corresponde a un usuario ya registrado.");
 
-                    return View();
+                    var provincias = LlenarComboProvincias();
+
+                    return View("Login", provincias);
                 }
 
-                //}
-                //catch (Exception)
-                //{
                 var dtoRol = new dtoRoles();
                 var rolCliente = dtoRol.BuscarRolCliente();
 
@@ -85,6 +122,19 @@ namespace UAIBay.WebSite.Controllers
                     FechaNacimiento = fechaNacimiento,
                     Sexo = sexo
                 };
+
+                usuarioVM.Direccion = new List<DireccionViewModels>();
+
+                DireccionViewModels direccionVM = new DireccionViewModels()
+                {
+                    CodigoPostal = codigoPostal.ToString(),
+                    Domicilio = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(domicilio),
+                    Localidad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(localidad),
+                    Provincia = provincia
+                };
+
+                usuarioVM.Direccion.Add(direccionVM);
+
 
                 ViewBag.Password = password;
 
@@ -113,7 +163,9 @@ namespace UAIBay.WebSite.Controllers
 
                     ModelState.AddModelError("email", "*El e-mail ingresado no es válido. ");
 
-                    return View();
+                    var provincias = LlenarComboProvincias();
+
+                    return View("Login", provincias);
 
                 }
                 //}
@@ -129,17 +181,6 @@ namespace UAIBay.WebSite.Controllers
         {
             try
             {
-
-                if (user == "")
-                {
-                    ModelState.AddModelError("user", "El campo usuario no puede estar vacio");
-                }
-
-                if (pw == "")
-                {
-                    ModelState.AddModelError("pw", "El campo password no puede estar vacio");
-                }
-
 
                 if (ModelState.IsValid)
                 {
@@ -157,7 +198,9 @@ namespace UAIBay.WebSite.Controllers
                     {
                         ModelState.AddModelError("login", "*Usuario o contraseña incorrecto. Vuelva a intentar.");
 
-                        return View("Login");
+                        var provincias = LlenarComboProvincias();
+
+                        return View("Login", provincias);
 
                     }
 
@@ -185,13 +228,19 @@ namespace UAIBay.WebSite.Controllers
                         {
                             ModelState.AddModelError("login", "*Usuario o contraseña incorrecto. Vuelva a intentar.");
 
-                            return View("Login");
+                            var provincias = LlenarComboProvincias();
+
+                            return View("Login", provincias);
                         }
                     }
 
                 }
 
-                return View("Login");
+                ModelState.AddModelError("login", "*Usuario o contraseña incorrecto. Vuelva a intentar.");
+
+                var provinciasS = LlenarComboProvincias();
+
+                return View("Login",provinciasS);
 
             }
             catch (Exception)
@@ -202,13 +251,17 @@ namespace UAIBay.WebSite.Controllers
 
         public ActionResult AfterLogin()
         {
-            if (Session["LogedUserRol"] == "Cliente" || Session["LogedUserID"] != null)
+
+            var rol = Session["LogedUserRol"].ToString();
+            var id = Session["LogedUserID"].ToString();
+
+            if (Session["LogedUserRol"].ToString() == "Cliente" && Session["LogedUserID"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            else if (true)
+            else
             {
-                return RedirectToAction("Index", "Admin");   
+                return RedirectToAction("Index", "Admin");
             }
         }
 
@@ -224,8 +277,22 @@ namespace UAIBay.WebSite.Controllers
         }
 
 
+        public List<SelectListItem> LlenarComboProvincias()
+        {
+            var provincias = ProvinciasFill.CargarProvincias();
 
+            List<SelectListItem> Provincia = provincias.ConvertAll(a =>
+            {
+                return new SelectListItem()
+                {
+                    Text = a.ToString(),
+                    Value = a.ToString(),
+                    Selected = false
+                };
+            });
 
+            return Provincia;
+        }
 
 
     }
