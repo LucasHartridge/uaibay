@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CorreoElectronico.cs" />
     <Compile Include="EncriptadorPassword.cs" />
+    <Compile Include="Framework\Fechas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

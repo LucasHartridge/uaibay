@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header">
+                Panel de Control
+            </h1>
+        </div>
+    </div>
+    <!-- /. ROW  -->
+
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-green">
+                <div class="panel-body">
+                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                    <h3>8,457</h3>
+                </div>
+                <div class="panel-footer back-footer-green">
+                   <a href="#" style="color:white">Daily Visits</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel-body">
+                    <i class="fa fa-shopping-cart fa-5x"></i>
+                    <h3>52,160 </h3>
+                </div>
+                <div class="panel-footer back-footer-blue">
+                    Sales
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-red">
+                <div class="panel-body">
+                    <i class="fa fa fa-comments fa-5x"></i>
+                    <h3>15,823 </h3>
+                </div>
+                <div class="panel-footer back-footer-red">
+                    Comments
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-brown">
+                <div class="panel-body">
+                    <i class="fa fa-users fa-5x"></i>
+                    <h3>36,752 </h3>
+                </div>
+                <div class="panel-footer back-footer-brown">
+                    No. of Visits
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<h2>Productos con Baja Cantidad Disponible</h2>
+<br />
+
+<div id="chart-container">
+    <div id="chart_div" class="google-api-chart-responsive"></div>
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+  // Load the Visualization API and the piechart package.
+    google.charts.load('current', { 'packages': ['bar'] });
+
+  // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+      var data = new google.visualization.DataTable();
+      //Se crea un Data Table donde se definen las Columnas
+      data.addColumn('string', 'Producto');
+      data.addColumn('number', 'Cantidad Disponible');
+      data.addColumn('number', 'Precio Venta');
+      data.addColumn('number', 'Precio Compra');
+
+      // No Olvides que el GetChar debe ser JsonResult
+      //Hacemos un for each creando cada row
+      $.getJSON("@Url.Action("GetChartProductosPocaCantidad")", null, function (chartData) {
+          $.each(chartData, function (i, item) {
+              data.addRow([item.Descripcion, item.Cantidad,item.PrecioVenta,item.PrecioCompra]);
+          });
+
+          var options = {
+              hAxis: { title:"Producto", titleTextStyle: { color: '#FF5733' } },
+              vAxis: {  title: "Cantidad Disponible",titleTextStyle:{color: '#FF5733'} },
+              height: 500,
+              colors: ['#FF5733', '#25C6C1', '#900C3F']
+          };
+
+          //Mandamos la Data al DIV
+          var chart = new google.charts.Bar(document.getElementById('chart_div'));
+          chart.draw(data, options);
+      });
+
+      $(window).resize(function () {
+          drawChart();
+      });
+  }
+</script>

@@ -97,6 +97,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Administrador.
+        /// </summary>
+        public static string Administrador {
+            get {
+                return ResourceManager.GetString("Administrador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Agregar.
         /// </summary>
         public static string Agregar {

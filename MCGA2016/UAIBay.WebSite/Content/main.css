@@ -238,6 +238,10 @@ body.loading {
         display: block;
     }
 
+.google-api-chart-responsive{
+  width: 100%; 
+  min-height: 450px;
+}
 
 table {
     border-collapse: collapse;
@@ -763,15 +767,18 @@ aside:hover ul li:nth-child(3) {
 
 /* ACA EMPIEZA NUESTRO CSS QUE NO TIENE MONDIDO */
 
-
-
-
-
 body {
-    font-family: 'Roboto', sans-serif;
-    /*background:;*/
-    position: relative;
-    font-weight: 400px;
+  font-family: 'Roboto', sans-serif;
+  /*background:400px;*/
+  position: relative;
+  font-weight:400px
+}
+
+#cantidad{
+     width: 20px;
+     text-align:center;
+     border:none;
+     color:#FE980F;
 }
 
 #enviogratis {

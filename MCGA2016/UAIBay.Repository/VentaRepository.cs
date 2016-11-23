@@ -18,7 +18,6 @@ namespace UAIBay.Repository
 
         public List<bizVenta> ObtenerTodos()
         {
-
             Mapeador.AutoMapperORMConfiguration.Configure();
             var orm = contexto.Ventas.ToList();
 
