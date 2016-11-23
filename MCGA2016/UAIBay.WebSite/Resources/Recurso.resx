@@ -333,6 +333,10 @@
   <data name="VisionParrafo" xml:space="preserve">
     <value>Ser el supermercado más importante en todo el litoral central, logrando la distinción tanto de clientes como de proveedores y competidores. Mantener y aumentar, las ventas y el número de clientes, año a año.</value>
   </data>
+
+  <data name="Administrador" xml:space="preserve">
+    <value>Administrador</value>
+</data>
   <data name="ActualizarCategoria" xml:space="preserve">
     <value>Actualizar categoría</value>
   </data>

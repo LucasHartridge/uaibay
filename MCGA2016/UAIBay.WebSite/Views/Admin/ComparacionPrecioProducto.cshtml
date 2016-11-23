@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ComparacionPrecioProducto";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Precio Compra vs Precio Venta</h2>
+<br />
+
+<div id="chart-container">
+    <div id="chart_div" class="google-api-chart-responsive"></div>
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+  // Load the Visualization API and the piechart package.
+ google.load('visualization', '1.0', {'packages':['corechart']});
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+      var data = new google.visualization.DataTable();
+      //Se crea un Data Table donde se definen las Columnas
+      data.addColumn('string', 'Producto');
+      data.addColumn('number', 'Precio de Venta');
+      data.addColumn('number','Precio de Compra');
+
+      // No Olvides que el GetChar debe ser JsonResult
+      //Hacemos un for each creando cada row
+      $.getJSON("@Url.Action("GetChartComparacionPrecioProducto")", null, function (chartData) {
+          $.each(chartData, function (i, item) {
+              data.addRow([item.Descripcion, item.PrecioVenta, item.PrecioCompra]);
+          });
+
+          var options = {
+              title: 'Precio de Venta vs Precio de Compra',
+              hAxis: { title: 'Producto', titleTextStyle: { color: '#FF5733' } },
+              vAxis: { title: "Precio de Venta",  titleTextStyle:{color: '#FF5733'} },
+              height: 500,
+              colors: ['#FF5733', '#25C6C1', '#900C3F']
+          };
+
+          //Mandamos la Data al DIV
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+      });
+
+      $(window).resize(function () {
+          drawChart();
+      });
+  }
+</script>
+

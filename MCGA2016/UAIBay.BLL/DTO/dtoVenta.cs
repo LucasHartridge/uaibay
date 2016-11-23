@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,19 @@ namespace UAIBay.BLL.DTO
         public virtual ICollection<dtoDetalleVenta> DetalleVenta { get; set; }
         public virtual dtoUsuario Usuario { get; set; }
 
+        public List<DTO.dtoVenta> TraerVentas()
+        {
+            var repository = new VentaRepository();
+            var BIZ = repository.ObtenerTodos();
 
-        public void RealizarCompra(dtoCarrito carrito, string codDescuento=null)
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var DTO = Mapper.Map<List<dtoVenta>>(BIZ);
+
+            return DTO;
+        }
+
+        public void RealizarCompra(dtoCarrito carrito, string codDescuento = null)
+
         {
 
             var repo = new VentaRepository();

@@ -8,6 +8,7 @@ using UAIBay.BLL.DTO;
 using UAIBay.WebSite.ViewModel;
 using System.IO;
 using UAIBay.Servicios;
+using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
@@ -17,7 +18,7 @@ namespace UAIBay.WebSite.Controllers
         private Servicios.Encriptador Encriptador = new Encriptador();
         //
         // GET: /Comprar/
-        public ActionResult Catalogo()
+        public ActionResult Catalogo(int? page)
         {
             var bll = new dtoProducto();
             var productos = bll.TraerProductos();
@@ -30,10 +31,11 @@ namespace UAIBay.WebSite.Controllers
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
 
+            ViewBag.CategoriasSimple = categoriasViewmodel;
             ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
 
-            return View(productosVM);
-
+            var pageNumber = page ?? 1; 
+            return View(productosVM.ToPagedList(pageNumber, 9));
         }
 
         public ActionResult Carrito(int userId)

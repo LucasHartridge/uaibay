@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cantidad de Usuarios Por Provincia</h2>
+<br />
+
+<div id="chart-container">
+    <div id="chart_div" class="google-api-chart-responsive"></div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('upcoming', { 'packages': ['geomap'] });
+    google.charts.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+        var data = new google.visualization.DataTable();
+        //ROWS
+        data.addColumn('string', 'Provincias');
+        data.addColumn('number', 'Cantidad de Usuarios');
+
+        //ROWS
+          data.addRow(['Buenos Aires', 200]);
+          data.addRow(['Catamarca', 25]);
+          data.addRow(['Chaco', 3]);
+          data.addRow(['Chubut', 78]);
+          data.addRow(['Córdoba', 70]);
+          data.addRow(['Corrientes', 25]);
+          data.addRow(['Entre Rios', 28]);
+          data.addRow(['Formosa', 11]);
+          data.addRow(['Jujuy', 2]);
+          data.addRow(['La Pampa', 190]);
+          data.addRow(['La Rioja', 76]);
+          data.addRow(['Mendoza', 90]);
+          data.addRow(['Misiones', 120]);
+          data.addRow(['Neuquén', 56]);
+          data.addRow(['Río Negro', 12]);
+          data.addRow(['Salta', 1]);
+          data.addRow(['San Juan', 3]);
+          data.addRow(['San Luis', 33]);
+          data.addRow(['Santa Cruz', 23]);
+          data.addRow(['Santa Fe', 45]);
+          data.addRow(['Santiago del Estero', 65]);
+          data.addRow(['Tierra del Fuego', 63]);
+          data.addRow(['Tucumán', 8]);
+
+        var options = {};
+        options['region'] = 'AR';
+        options['colors'] = [0x09EACB, 0xB2F7ED,0x0F8583];
+        options['height'] = 566;
+        options['width'] = 1000; 
+        var container = document.getElementById('chart_div');
+        var geomap = new google.visualization.GeoMap(container);
+
+        geomap.draw(data, options);
+
+    };
+
+
+</script>

@@ -60,9 +60,9 @@ namespace UAIBay.WebSite.Controllers
             App_Start.AutoMapperWebConfiguration.Configure();
             var DTO = Mapper.Map<ProductoViewModels, dtoProducto>(producto);
 
-             var id= Convert.ToInt32( Session["LogedUserID"]);
-        
-            var productoCreado = bll.Crear(DTO,id);
+            var id = Convert.ToInt32(Session["LogedUserID"]);
+
+            var productoCreado = bll.Crear(DTO, id);
 
             GuardarImagen(file, productoCreado);
 
@@ -106,7 +106,7 @@ namespace UAIBay.WebSite.Controllers
 
             var id = Convert.ToInt32(Session["LogedUserID"]);
 
-            bll.Actualizar(productoCreado,id);
+            bll.Actualizar(productoCreado, id);
         }
 
 
@@ -193,6 +193,60 @@ namespace UAIBay.WebSite.Controllers
         public ActionResult VerProducto()
         {
             return View();
+        }
+
+        public ActionResult FiltrarPorCategoria(int? page, int idCategoria)
+        {
+            var bll = new dtoProducto();
+            var productos = bll.TraerProductos();
+
+            var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+            var categoriasDTO = bllcat.TraerCategorias();
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
+            productosVM = productosVM.Where(x => x.IdCategoria == idCategoria).ToList();
+
+            var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+            ViewBag.CategoriasSimple = categoriasViewmodel;
+
+            var pageNumber = page ?? 1;
+            return View(productosVM.ToPagedList(pageNumber, 9));
+            //return View(productosVM);
+        }
+
+        public ActionResult BuscarProducto(string productoBuscar, int? page)
+        {
+            var bll = new dtoProducto();
+            var productos = bll.TraerProductos();
+
+            var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+            var categoriasDTO = bllcat.TraerCategorias();
+
+             App_Start.AutoMapperWebConfiguration.Configure();
+
+             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+             ViewBag.CategoriasSimple = categoriasViewmodel;
+
+            var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
+            string palabraBeta = productoBuscar;
+
+            string palabra = palabraBeta.TrimEnd(' ');
+
+            IEnumerable<ProductoViewModels> productosE;
+            productosE = productosVM;
+
+            if (!String.IsNullOrEmpty(palabra))
+            {
+                productosE = productosE.Where(p => p.Descripcion.ToUpper().Contains(palabra.ToUpper()) || p.Categoria.Nombre.ToUpper().Contains(palabra.ToUpper()));
+            }
+
+            productosE = productosE.ToList();
+
+            var pageNumber = page ?? 1; 
+
+            return View(productosE.ToPagedList(pageNumber, 9));
         }
 
         public static string ConvertirMayuscula(string value)

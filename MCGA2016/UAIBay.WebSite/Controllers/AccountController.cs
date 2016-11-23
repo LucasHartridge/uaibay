@@ -251,11 +251,15 @@ namespace UAIBay.WebSite.Controllers
 
         public ActionResult AfterLogin()
         {
-            if (Session["LogedUserRol"].ToString() == "Cliente" || Session["LogedUserID"] != null)
+
+            var rol = Session["LogedUserRol"].ToString();
+            var id = Session["LogedUserID"].ToString();
+
+            if (Session["LogedUserRol"].ToString() == "Cliente" && Session["LogedUserID"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            else if (true)
+            else
             {
                 return RedirectToAction("Index", "Admin");
             }
