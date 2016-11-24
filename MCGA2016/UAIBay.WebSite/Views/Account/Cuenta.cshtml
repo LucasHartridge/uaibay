@@ -236,7 +236,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-info"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.DNI, new { @placeholder = "DNI", @type = "number", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.DNI, new { @placeholder = "DNI", @type = "number", @class = "form-control", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.DNI)
                     </div>
@@ -249,7 +249,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.Nombre, new { @placeholder = "Nombre", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Nombre, new { @placeholder = "Nombre", @class = "form-control", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Nombre)
                     </div>
@@ -262,7 +262,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.Apellido, new { @placeholder = "Apellido", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Apellido, new { @placeholder = "Apellido", @class = "form-control", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Apellido)
                     </div>
@@ -275,7 +275,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-phone"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.Telefono, new { @placeholder = "Telefono", @type = "number", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Telefono, new { @placeholder = "Telefono", @type = "number", @class = "form-control", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Telefono)
                     </div>
@@ -288,7 +288,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.FechaNacimiento, new { @placeholder = "Fecha de nacimiento", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.FechaNacimiento, new { @placeholder = "Fecha de nacimiento", @class = "form-control", @type = "date", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.FechaNacimiento)
                     </div>
@@ -301,7 +301,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-info"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.DNI, new { @readonly = "readonly", @type = "number", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly", @class = "form-control", required = "required" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Email)
                     </div>
