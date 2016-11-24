@@ -48,6 +48,17 @@ namespace UAIBay.BLL.DTO
 
         }
 
+        public List<dtoUsuario> TraerTodosLosUsuarios()
+        {
+            var repo = new UsuarioRepository();
+            var biz = repo.ObtenerTodos();
+
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var DTO = Mapper.Map<List<dtoUsuario>>(biz);
+
+            return DTO;
+        }
+
         public dtoUsuario BuscarUsuario(string email)
         {
             var repo = new UsuarioRepository();
