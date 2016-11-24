@@ -51,5 +51,13 @@ namespace UAIBay.WebSite.Controllers
 
             return View("EmailEnviado");
         }
+
+        [HttpPost]
+        public ActionResult EmailContacto(String txtemail, String txtnombre, String txtSubject, String txtmensaje)
+        {
+            UAIBay.Servicios.CorreoElectronico.EnviarCorreo(txtemail, txtnombre, txtmensaje, txtSubject);
+
+            return View("EmailEnviado");
+        }
 	}
 }

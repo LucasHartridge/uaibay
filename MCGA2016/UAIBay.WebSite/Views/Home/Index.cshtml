@@ -98,7 +98,6 @@
                     </article>
                     <br />
                 </div><!--/shipping-->
-
             </div>
         </div>
 
@@ -354,51 +353,53 @@
                 </div>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#restar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto -= 1;
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#restar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto -= 1;
 
-                    if (valorProducto < 1) {
+            if (valorProducto < 1) {
 
-                    }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
+            }
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
 
-                });
-            });
+        });
+    });
 
-            function verificar() {
-                var rec = grecaptcha.getResponse();
-                if (rec == "") {
-                    document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-                }
-                else {
-                    document.contact - form.submit()
-                }
-            };
+    function verificar() {
+        var rec = grecaptcha.getResponse();
+        if (rec == "") {
+            document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
+        }
+        else {
+            document.contact - form.submit()
+        }
+    };
 
 
-            $(document).ready(function () {
-                $('#sumar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto = parseInt(1) + parseInt(valorProducto);
+    $(document).ready(function () {
+        $('#sumar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto = parseInt(1) + parseInt(valorProducto);
 
-                    if (valorProducto > 9) { }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
-                });
-            });
-        </script>
+            if (valorProducto > 9) { }
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
+        });
+    });
+</script>
 
 

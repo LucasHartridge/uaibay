@@ -350,29 +350,6 @@ table {
     color: #FE980F;
 }
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ACA EMPIEZA NUESTRO CSS QUE NO TIENE MONDIDO */
 
 
@@ -605,11 +582,6 @@ xpopup
    .field-validation-error {
         color:Red;
     }
-
-
-
-
-
 
 
 .profile-card:hover {
@@ -1014,13 +986,6 @@ aside:hover ul li:nth-child(3) {
     }
 }
 
-
-
-
-
-
-/* ACA EMPIEZA NUESTRO CSS QUE NO TIENE MONDIDO */
-
 body {
   font-family: 'Roboto', sans-serif;
   /*background:400px;*/
@@ -1045,6 +1010,45 @@ body {
     text-align: center;
     border: none;
     color: #FE980F;
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.textarea:-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.textarea-ms-input-placeholder {
+  color: #999;
+}
+.textarea::-webkit-input-placeholder {
+  color: #999;
+}
+
+textarea.textarea {
+  height:auto ;
 }
 
 #totalcarrito {
