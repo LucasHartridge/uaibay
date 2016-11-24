@@ -12,31 +12,9 @@
     <meta name="author" content="Los 4 fantasticos">
 
     <title>UAIBay</title>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="~/Content/js/fileinput.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/animate.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
-    <link href="~/Content/prettyPhoto.css" rel="stylesheet" />
-    <link href="~/Content/price-range.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="~/Content/images/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/animate.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/main.css" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
     <!-- Bootstrap Styles-->
     <link href="~/Content/dashboard/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -45,6 +23,13 @@
     <link href="~/Content/dashboard/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
+    <!-- This demo uses the Chart.js graphing library and Moment.js to do date
+     formatting and manipulation. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+
 </head>
 
 <body>
@@ -104,9 +89,17 @@
                                 <a href="/Admin/UsuariosPorProvincia"><i class="fa fa-map-marker"></i>Usuarios en Argentina</a>
                             </li>
                         </ul>
-                    <!-- /. GRAFICOS  -->
+                        <!-- /. GRAFICOS  -->
                     <li>
-                        <a href="#"><i class="fa fa-qrcode"></i> Analytics</a>
+                        <a href="#"><i class="fa fa-qrcode"></i> Analytics<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="~/Admin/Sesiones"><i class="fa fa-archive"></i> Sesiones</a>
+                            </li>
+                            <li>
+                                <a href="~/Admin/Browser"><i class="fa fa-android"></i> Browsers</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Administrador <span class="fa arrow"></span></a>
@@ -150,6 +143,8 @@
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     @RenderSection("scripts", required: false)
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Scripts/ng_responsive_tables.js"></script>
     <script src="~/Content/dashboard/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="~/Content/dashboard/js/bootstrap.min.js"></script>
@@ -169,7 +164,6 @@
         ga('send', 'pageview');
 
     </script>
-
 </body>
 
 </html>
