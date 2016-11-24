@@ -299,9 +299,9 @@
                     <div class="col-md-10">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="fa fa-info"></i>
+                                <i class="fa fa-info"></i>{´´}
                             </span>
-                            @Html.TextBoxFor(x => x.DNI, new { @readonly = "readonly", @type = "number", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly", @class = "form-control" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Email)
                     </div>

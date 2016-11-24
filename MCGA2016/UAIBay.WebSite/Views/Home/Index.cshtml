@@ -74,7 +74,7 @@
                         @foreach (UAIBay.WebSite.ViewModel.CategoriaViewModels item in ViewBag.Categorias)
                         {
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">@item.Nombre</a></h4>
+                                <h4 class="panel-title"><a href="@Url.Action("FiltrarPorCategoria", "Producto", new { idCategoria = item.IdCategoria })">@item.Nombre</a></h4>
                             </div>
                         }
                     </div>
@@ -169,11 +169,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-
                                                 <label class="col-xs-3 control-label" style="color:#B4B1AB">CAPTCHA</label>
                                                 <div class="col-xs-5">
+                                                    <div id="@item.CodProducto"></div>
                                                     <div class="g-recaptcha" data-sitekey="6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH"></div>
-                                                    <span id="captcha" style="color:red" />
+                                                    @*<div class="g-recaptcha" data-sitekey="6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH"></div>*@
+                                                    @*<span id="captcha" style="color:red" />*@
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -354,51 +355,83 @@
                 </div>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#restar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto -= 1;
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#restar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto -= 1;
 
-                    if (valorProducto < 1) {
+            if (valorProducto < 1) {
 
-                    }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
+            }
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
 
-                });
-            });
+        });
+    });
 
-            function verificar() {
-                var rec = grecaptcha.getResponse();
-                if (rec == "") {
-                    document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-                }
-                else {
-                    document.contact - form.submit()
-                }
-            };
+    //function verificar() {
+    //    var rec = grecaptcha.getResponse();
+    //    if (rec == "") {
+    //        document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
+    //    }
+    //    else {
+    //        document.contact - form.submit()
+    //    }
+    //};
+
+    $(document).ready(function () {
+        $('#sumar').click(function () {
+            //get txtAmt value
+            var valorProducto = $('#cantidad').val();
+            valorProducto = parseInt(1) + parseInt(valorProducto);
+
+            if (valorProducto > 9) { }
+            else {
+                //change txtInterest% value
+                $('#cantidad').val(valorProducto);
+            }
+        });
+    });
+</script>
 
 
-            $(document).ready(function () {
-                $('#sumar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto = parseInt(1) + parseInt(valorProducto);
+<script type="text/javascript">
+    //var CaptchaCallback = function () {
+    //    $('.g-recaptcha').each(function (index, el) {
+    //        grecaptcha.render(el, { 'sitekey': '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH' });
+    //    });
+    //};
+    var ReCaptchaCallback = function () {
+        $('.g-recaptcha').each(function () {
+            var el = $(this);
+            grecaptcha.render(el.get(0), { 'sitekey': el.data("6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH") });
+        });
+    };
+    @*var images = Model();
 
-                    if (valorProducto > 9) { }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
-                });
-            });
-        </script>
+    $.each
 
+    @foreach (var item in Model)
+	{
+        var CaptchaCallback = function () {
+            recaptcha.render(@item.CodProducto, {'sitekey' : '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH'});
 
+        };
+	}*@
+    @*var CaptchaCallback = function () {
+        $.each(@Model,function() {
+            grecaptcha.render('RecaptchaField1', {'sitekey' : '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH'});
+        });
+
+    };*@
+</script>
