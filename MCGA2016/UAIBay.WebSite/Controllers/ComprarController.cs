@@ -34,91 +34,126 @@ namespace UAIBay.WebSite.Controllers
             ViewBag.CategoriasSimple = categoriasViewmodel;
             ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
 
-            var pageNumber = page ?? 1; 
+            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4);
+            ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
+            var pageNumber = page ?? 1;
             return View(productosVM.ToPagedList(pageNumber, 9));
         }
 
-        public ActionResult Carrito(int userId)
+        public ActionResult Carrito()
         {
-            var bll = new dtoCarrito();
-            var carrito = bll.TraerCarrito(userId);
-
-            var bllUsuario = new dtoUsuario();
-            var usuario = bllUsuario.BuscarCuenta(userId);
-
-            if (carrito == null)
+            if (Session["LogedUserID"] != null)
             {
+                int userId = Convert.ToInt32(Session["LogedUserID"]);
 
-                bll.CrearCarrito(new dtoCarrito() { UserId = userId, IdCarrito = userId });
-                carrito = bll.TraerCarrito(userId);
+                var bll = new dtoCarrito();
+                var carrito = bll.TraerCarrito(userId);
+
+                var bllUsuario = new dtoUsuario();
+                var usuario = bllUsuario.BuscarCuenta(userId);
+
+                if (carrito == null)
+                {
+
+                    bll.CrearCarrito(new dtoCarrito() { UserId = userId, IdCarrito = userId });
+                    carrito = bll.TraerCarrito(userId);
+                }
+
+                var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+                var categoriasDTO = bllcat.TraerCategorias();
+
+                App_Start.AutoMapperWebConfiguration.Configure();
+
+                var carritoVM = Mapper.Map<dtoCarrito, CarritoViewModels>(carrito);
+                var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+
+                ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
+                ViewBag.Carrito = carrito.IdCarrito;
+                ViewBag.Direcciones = usuario.Direccion.Select(x => new SelectListItem { Text = x.Domicilio + " - " + x.Localidad + " - CP: " + x.CodigoPostal + " - " + x.Provincia, Value = x.IDDireccion.ToString() }).ToList();
+
+                var provincias = ProvinciasFill.CargarProvincias();
+
+                ViewBag.Provincia = provincias.Select(x => new SelectListItem()
+                {
+                    Text = x.ToString(),
+                    Value = x.ToString()
+                });
+
+                return View("Carrito", carritoVM.ItemCarrito);
+            }
+            else
+            {
+                return RedirectToAction("UsuarioNoLogeado", "Account");
+
             }
 
-            var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
-            var categoriasDTO = bllcat.TraerCategorias();
-
-            App_Start.AutoMapperWebConfiguration.Configure();
-
-            var carritoVM = Mapper.Map<dtoCarrito, CarritoViewModels>(carrito);
-            var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
-
-            ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
-            ViewBag.Carrito = carrito.IdCarrito;
-            ViewBag.Direcciones = usuario.Direccion.Select(x => new SelectListItem { Text = x.Domicilio + " - " + x.Localidad + " - CP: " + x.CodigoPostal + " - " + x.Provincia, Value = x.IDDireccion.ToString() }).ToList();
-
-            var provincias = ProvinciasFill.CargarProvincias();
-
-            ViewBag.Provincia = provincias.Select(x => new SelectListItem()
-            {
-                Text = x.ToString(),
-                Value = x.ToString()
-            });
-
-            return View("Carrito", carritoVM.ItemCarrito);
 
         }
 
         public ActionResult AgregarItem(int codProducto)
         {
-            try
+            if (Session["LogedUserID"] != null)
             {
-                int idCarrito = Convert.ToInt32(Session["logeduserid"]);
 
-                var bll = new dtoCarrito();
+                try
+                {
+                    int idCarrito = Convert.ToInt32(Session["LogedUserID"]);
 
-                bll.AgregarProducto(codProducto, idCarrito);
+                    var bll = new dtoCarrito();
 
-                return RedirectToAction("Carrito", new { userId = idCarrito });
+                    bll.AgregarProducto(codProducto, idCarrito);
+
+                    return RedirectToAction("Carrito", new { userId = idCarrito });
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("CantidadSuperada");
+                }
             }
-            catch (Exception)
+            else
             {
-                return RedirectToAction("CantidadSuperada");
+                return RedirectToAction("UsuarioNoLogeado", "Account");
             }
+
+          
 
         }
 
+        
+
         public ActionResult AgregarItemPopUp(int codProducto, int cantidad)
         {
-            try
+            if (Session["LogedUserID"] != null)
             {
-                int idCarrito = Convert.ToInt32(Session["logeduserid"]);
+                try
+                {
+                    int idCarrito = Convert.ToInt32(Session["LogedUserID"]);
 
-                var bll = new dtoCarrito();
+                    var bll = new dtoCarrito();
 
-                bll.AgregarProducto(codProducto, idCarrito, cantidad);
+                    bll.AgregarProducto(codProducto, idCarrito, cantidad);
 
-                return RedirectToAction("Carrito", new { userId = idCarrito });
+                    return RedirectToAction("Carrito", new { userId = idCarrito });
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("CantidadSuperada");
+                }
             }
-            catch (Exception)
+            else
             {
-                return RedirectToAction("CantidadSuperada");
+                return RedirectToAction("UsuarioNoLogeado", "Account");
             }
+
+
         }
 
 
         public ActionResult QuitarItem(int codProducto)
         {
 
-            int nroCarrito = Convert.ToInt32(Session["logeduserid"]);
+            int nroCarrito = Convert.ToInt32(Session["LogedUserID"]);
 
             var bll = new dtoCarrito();
 
@@ -136,7 +171,7 @@ namespace UAIBay.WebSite.Controllers
         {
             var bll = new dtoCarrito();
 
-            int idCarrito = Convert.ToInt32(Session["logeduserid"]);
+            int idCarrito = Convert.ToInt32(Session["LogedUserID"]);
 
             App_Start.AutoMapperWebConfiguration.Configure();
             var DTO = Mapper.Map<List<dtoItemCarrito>>(model);
@@ -181,7 +216,7 @@ namespace UAIBay.WebSite.Controllers
             var bll = new dtoCarrito();
             var bllCodigo = new dtoPromocion();
 
-            int nroCarrito = Convert.ToInt32(Session["logeduserid"]);
+            int nroCarrito = Convert.ToInt32(Session["LogedUserID"]);
 
             // COMPROBAR CODIGO DE DESCUENTO
 

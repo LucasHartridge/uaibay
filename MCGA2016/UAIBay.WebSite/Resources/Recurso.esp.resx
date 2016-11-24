@@ -335,7 +335,7 @@
   </data>
   <data name="Administrador" xml:space="preserve">
     <value>Administrador</value>
-    </data>
+  </data>
   <data name="ActualizarCategoria" xml:space="preserve">
     <value>Actualizar categoría</value>
   </data>
@@ -539,5 +539,8 @@
   </data>
   <data name="DetalleVenta" xml:space="preserve">
     <value>Detalle de la venta</value>
+  </data>
+  <data name="Usuarios" xml:space="preserve">
+    <value>Usuarios</value>
   </data>
 </root>
