@@ -10,6 +10,7 @@ using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarAdmin]
     public class PromocionController : Controller
     {
         //
@@ -54,6 +55,10 @@ namespace UAIBay.WebSite.Controllers
             }
             else
             {
+                string codigo = RandomString();
+
+                ViewBag.CodDescuento = "UAIBAY" + codigo;
+
                 return View(promocion);
             }
         }

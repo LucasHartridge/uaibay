@@ -12,6 +12,7 @@ using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
+
     public class ComprarController : Controller
     {
 
@@ -41,6 +42,7 @@ namespace UAIBay.WebSite.Controllers
             return View(productosVM.ToPagedList(pageNumber, 9));
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Carrito()
         {
             if (Session["LogedUserID"] != null)
@@ -91,6 +93,7 @@ namespace UAIBay.WebSite.Controllers
 
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult AgregarItem(int codProducto)
         {
             if (Session["LogedUserID"] != null)
@@ -116,12 +119,12 @@ namespace UAIBay.WebSite.Controllers
                 return RedirectToAction("UsuarioNoLogeado", "Account");
             }
 
-          
+
 
         }
 
-        
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult AgregarItemPopUp(int codProducto, int cantidad)
         {
             if (Session["LogedUserID"] != null)
@@ -149,7 +152,7 @@ namespace UAIBay.WebSite.Controllers
 
         }
 
-
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult QuitarItem(int codProducto)
         {
 
@@ -162,11 +165,13 @@ namespace UAIBay.WebSite.Controllers
             return RedirectToAction("Carrito", new { userId = nroCarrito });
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult CantidadSuperada()
         {
             return View();
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Pagar(double totalcarrito, List<ItemCarritoViewModels> model, string descuento, string codigoCorrecto, string cod, string totCod)
         {
             var bll = new dtoCarrito();
@@ -211,6 +216,7 @@ namespace UAIBay.WebSite.Controllers
             }
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Comprar(double total, string codigoDes, string codigoD = null)
         {
             var bll = new dtoCarrito();
@@ -252,6 +258,7 @@ namespace UAIBay.WebSite.Controllers
             return RedirectToAction("CompraFinalizada");
         }
 
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult CompraFinalizada()
         {
             return View();

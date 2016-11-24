@@ -5,43 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-	<hr />
-    <dl class="dl-horizontal">
-
-        <dd>
-            @Html.HiddenFor(model => model.CodPromocion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descuento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descuento) %
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaVencimiento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaVencimiento)
-        </dd>
-
-    </dl>
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.DetallesDeCategoria</h2>
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        @Html.HiddenFor(model => model.CodPromocion)
+        @Html.Label("Numero", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-info"></i>
+                </span>
+                @Html.TextBoxFor(x => x.Nro, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Nro)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Descuento", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-dollar"></i>
+                </span>
+                @Html.TextBoxFor(x => x.Descuento, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Descuento)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Fecha de vencimiento", new { @class = "control-label col-md-2", @id = "colorNaranja" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                @Html.TextBoxFor(x => x.FechaVencimiento, new { @readonly = "readonly", @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.FechaVencimiento)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Edit", "Promocion", new { id = Model.CodPromocion })" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-fw fa-pencil-square-o"></i></a>
+            <a href="@Url.Action("Index", "Promocion")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id=Model.CodPromocion }) |
-    @Html.ActionLink("Volver", "Index")
-</p>

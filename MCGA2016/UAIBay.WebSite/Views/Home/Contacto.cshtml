@@ -68,16 +68,16 @@
                         <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.NuestrasRedesSociales</h2>
                         <ul>
                             <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="https://es-es.facebook.com/uai.elfuturososvos" target="_blank"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="https://twitter.com/uainow" target="_blank"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="https://plus.google.com/about?hl=es" target="_blank"><i class="fa fa-google-plus"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.youtube.com/user/UAIelfuturososvos" target="_blank"><i class="fa fa-youtube"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -86,16 +86,74 @@
         </div>
     </div>
 </div><!--/#contact-page-->
+<div id="Popup" class="cd-popup" role="alert" style="z-index:99;">
+    <div id="form" class=" cd-popup-container">
+
+        <h2 class="colorNaranja">Información</h2>
+
+        <h5>Antes de enviar el mensaje se debe confirmar que no es un robot.</h5>
+
+        <div style="float: left; width: 100%; padding-top: 25px; padding-bottom: 25px; ">
+            <img src="~/Content/images/home/no-robots.jpg" />
+        </div>
+
+        <ul class="cd-buttons" style="padding:0;margin:0;">
+            <li style="width: 100%;"><a href="#" class="cerrar" style="background: #fc7169;">VOLVER</a></li>
+        </ul>
+        <a href="/Home/Index" class="cd-popup-close img-replace">Close</a>
+    </div> <!-- cd-popup-container -->
+</div>
+
 @section scripts{
     <script>
         function verificar() {
             var rec = grecaptcha.getResponse();
             if (rec == "") {
-                    document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-            }
-            else {
-                document.contact-form.submit()
+                $(function () {
+                    jQuery(window).attr('location', '#crear');
+                    $('.cd-popup').addClass('is-visible');
+                })
+            } else {
+                document.enviarMsj.submit()
             }
         };
+    </script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            //open popup
+            $('.cd-popup-trigger').on('click', function (event) {
+                event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+            });
+
+            //close popup
+            $('.cd-popup').on('click', function (event) {
+                if ($(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup')) {
+                    event.preventDefault();
+                    $(this).removeClass('is-visible');
+                }
+            });
+
+            $('.cd-popup').on('click', function (event) {
+                if ($(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup')) {
+                    event.preventDefault();
+                    $(this).removeClass('is-visible');
+                }
+            });
+
+            $('.cerrar').on('click', function (event) {
+                $('.cd-popup').removeClass('is-visible');
+
+
+            });
+
+            //close popup when clicking the esc keyboard button
+            $(document).keyup(function (event) {
+                if (event.which == '27') {
+                    $('.cd-popup').removeClass('is-visible');
+                }
+            });
+        });
     </script>
 }

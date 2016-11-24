@@ -10,6 +10,7 @@ using UAIBay.WebSite.ViewModel.Reportes;
 
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarAdmin]
     public class AdminController : Controller
     {
         #region Index

@@ -17,6 +17,7 @@ namespace UAIBay.WebSite.Controllers
     {
         //
         // GET: /Home/
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Index(int? page)
         {
             var bll = new dtoProducto();
@@ -39,6 +40,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Create()
         {
             var bll = new UAIBay.BLL.DTO.dtoCategoria();
@@ -53,6 +55,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Create(ProductoViewModels producto, HttpPostedFileBase file)
         {
             var bll = new dtoProducto();
@@ -112,6 +115,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Details(int id)
         {
             var bll = new dtoProducto();
@@ -124,6 +128,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Edit(int id)
         {
             var bll = new dtoProducto();
@@ -141,6 +146,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Edit(ProductoViewModels producto, HttpPostedFileBase file)
         {
 
@@ -158,6 +164,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Delete(int id)
         {
             var bll = new dtoProducto();
@@ -168,6 +175,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Delete(ProductoViewModels producto)
         {
             App_Start.AutoMapperWebConfiguration.Configure();

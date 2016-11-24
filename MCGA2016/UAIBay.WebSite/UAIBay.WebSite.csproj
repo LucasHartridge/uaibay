@@ -199,6 +199,7 @@
     <Content Include="Content\images\home\logo.png" />
     <Content Include="Content\images\home\map.png" />
     <Content Include="Content\images\home\new.png" />
+    <Content Include="Content\images\home\no-robots.jpg" />
     <Content Include="Content\images\home\partner1.png" />
     <Content Include="Content\images\home\partner2.png" />
     <Content Include="Content\images\home\partner3.png" />

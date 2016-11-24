@@ -11,6 +11,7 @@ using System.Globalization;
 
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarAdmin]
     public class UsuarioController : Controller
     {
          

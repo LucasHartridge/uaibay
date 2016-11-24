@@ -9,45 +9,66 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<UAIBay.WebSite.ViewModel.PromocionViewModels>
 
-<h2>Promociones</h2>
+@*<h2>Promociones</h2>*@
+<h2 class="title text-center">Promociones</h2>
 
 <p>
-    @Html.ActionLink("Crear promoción", "Create")
+    <a href="@Url.Action("Create","Promocion")" class="btn btn-primary" id="botonCrear"><i class="fa fa-fw fa-plus-square"></i> Nueva promocion</a>
+    @*@Html.ActionLink("Crear promoción", "Create")*@
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Nro de comprobante")
-        </th>
-        <th>
-            @Html.DisplayName("Porcentaje de descuento aplicado")
-        </th>
-        <th>
-            @Html.DisplayName("Fecha de vencimiento")
-        </th>
-        <th></th>
-    </tr>
+<table class="responsive">
+    <tbody>
 
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descuento) %
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaVencimiento)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CodPromocion }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.CodPromocion }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.CodPromocion })
-            </td>
+            <th>
+                @Html.DisplayName("Nro de comprobante")
+            </th>
+            <th>
+                @Html.DisplayName("Porcentaje de descuento aplicado")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha de vencimiento")
+            </th>
+            <th></th>
         </tr>
-    }
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descuento) %
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaVencimiento)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Promocion", new { id = item.CodPromocion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Details", "Promocion", new { id = item.CodPromocion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Detalles"><i class="fa fa-search-plus fa-lg" style="color:#FFBE69"></i></a> |
+                    <a href="@Url.Action("Delete", "Promocion", new { id = item.CodPromocion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-minus-square fa-lg" style="color:#FFBE69"></i></a>
+                    @*@Html.ActionLink("Editar", "Edit", new { id = item.CodPromocion }) |
+                    @Html.ActionLink("Ver", "Details", new { id = item.CodPromocion }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.CodPromocion })*@
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
+<br />
 @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
