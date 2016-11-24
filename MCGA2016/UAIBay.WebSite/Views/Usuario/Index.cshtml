@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<UAIBay.WebSite.ViewModel.UsuarioViewModels>
+
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Usuarios</h2>
+
+<table class="responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(modelItem => modelItem.First().DNI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => modelItem.First().Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => modelItem.First().Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => modelItem.First().Email)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DNI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}
