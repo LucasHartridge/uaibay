@@ -8,20 +8,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Es una pagina de venta de productos que realiza envios a toda Argentina de manera gratuita y que ofrece un servicio de pago en cuotas. Posee multilenguaje(Español,Ingles y Frances)">
+    <meta name="author" content="Los 4 fantasticos">
+
     <title>UAIBay</title>
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
     <!-- Bootstrap Styles-->
     <link href="~/Content/dashboard/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
     <link href="~/Content/dashboard/css/font-awesome.css" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    @*<link href="~/Content/dashboard/js/morris/morris-0.4.3.min.css" rel="stylesheet" />*@
     <!-- Custom Styles-->
     <link href="~/Content/dashboard/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
 </head>
 
 <body>
@@ -35,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Index">UAIBAY</a>
+                <a class="navbar-brand" href="~/Admin/Index">UAIBAY</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -62,7 +64,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a class="active-menu" href="Index"><i class="fa fa-dashboard"></i>Panel de Control</a>
+                        <a class="active-menu" href="~/Admin/Index"><i class="fa fa-dashboard"></i>Panel de Control</a>
                     </li>
                     <!-- GRAFICOS  -->
                     <li>
@@ -81,9 +83,20 @@
                                 <a href="/Admin/UsuariosPorProvincia"><i class="fa fa-map-marker"></i>Usuarios en Argentina</a>
                             </li>
                         </ul>
-                    <!-- /. GRAFICOS  -->
+                        <!-- /. GRAFICOS  -->
                     <li>
-                        <a href="#"><i class="fa fa-qrcode"></i> Analytics</a>
+                        <a href="#"><i class="fa fa-qrcode"></i> Analytics<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="~/Admin/Sesiones"><i class="fa fa-archive"></i> Sesiones</a>
+                            </li>
+                            <li>
+                                <a href="~/Admin/Browser"><i class="fa fa-android"></i> Browsers</a>
+                            </li>
+                            <li>
+                                <a href="~/Admin/Status"><i class="fa fa-star"></i>Estado</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap"></i> Administrador <span class="fa arrow"></span></a>
@@ -103,8 +116,10 @@
                                     <li>
                                         <a href="~/Producto/Index"><i class="fa fa-tablet"></i>Productos</a>
                                     </li>
+                                    <li>
+                                        <a href="~/Promocion/Index"><i class="fa fa-code-fork"></i>Promoción</a>
+                                    </li>
                                 </ul>
-
                             </li>
                         </ul>
                     </li>
@@ -127,7 +142,11 @@
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     @RenderSection("scripts", required: false)
-    <script src="~/Content/dashboard/js/jquery-1.10.2.js"></script>
+    <!-- Layout  -->
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/dasboard/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
     <!-- Bootstrap Js -->
     <script src="~/Content/dashboard/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
@@ -146,7 +165,8 @@
         ga('send', 'pageview');
 
     </script>
-
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Scripts/ng_responsive_tables.js"></script>
 </body>
 
 </html>

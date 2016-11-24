@@ -41,8 +41,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UAIBay.Repository\bin\Debug\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -140,6 +140,182 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
+    <Content Include="Content\dashboard\analytics\css\base\custom-media.css" />
+    <Content Include="Content\dashboard\analytics\css\base\elements.css" />
+    <Content Include="Content\dashboard\analytics\css\base\variables.css" />
+    <Content Include="Content\dashboard\analytics\css\chartjs-visualizations.css" />
+    <Content Include="Content\dashboard\analytics\css\components\account-explorer-results.css" />
+    <Content Include="Content\dashboard\analytics\css\components\account-explorer-search.css" />
+    <Content Include="Content\dashboard\analytics\css\components\active-users.css" />
+    <Content Include="Content\dashboard\analytics\css\components\alert-dispatcher.css" />
+    <Content Include="Content\dashboard\analytics\css\components\alert.css" />
+    <Content Include="Content\dashboard\analytics\css\components\box.css" />
+    <Content Include="Content\dashboard\analytics\css\components\button-set.css" />
+    <Content Include="Content\dashboard\analytics\css\components\button.css" />
+    <Content Include="Content\dashboard\analytics\css\components\campaign-url-form.css" />
+    <Content Include="Content\dashboard\analytics\css\components\campaign-url-result.css" />
+    <Content Include="Content\dashboard\analytics\css\components\chartjs.css" />
+    <Content Include="Content\dashboard\analytics\css\components\checkbox.css" />
+    <Content Include="Content\dashboard\analytics\css\components\cohort-table.css" />
+    <Content Include="Content\dashboard\analytics\css\components\content.css" />
+    <Content Include="Content\dashboard\analytics\css\components\dashboard.css" />
+    <Content Include="Content\dashboard\analytics\css\components\data-table.css" />
+    <Content Include="Content\dashboard\analytics\css\components\date-range-selector.css" />
+    <Content Include="Content\dashboard\analytics\css\components\error.css" />
+    <Content Include="Content\dashboard\analytics\css\components\flex-grid.css" />
+    <Content Include="Content\dashboard\analytics\css\components\flex-line.css" />
+    <Content Include="Content\dashboard\analytics\css\components\form-control.css" />
+    <Content Include="Content\dashboard\analytics\css\components\form-field-add-on.css" />
+    <Content Include="Content\dashboard\analytics\css\components\form-field.css" />
+    <Content Include="Content\dashboard\analytics\css\components\header.css" />
+    <Content Include="Content\dashboard\analytics\css\components\hit-builder-param.css" />
+    <Content Include="Content\dashboard\analytics\css\components\hit-builder-params.css" />
+    <Content Include="Content\dashboard\analytics\css\components\hit-element.css" />
+    <Content Include="Content\dashboard\analytics\css\components\icon.css" />
+    <Content Include="Content\dashboard\analytics\css\components\inline-definition-list.css" />
+    <Content Include="Content\dashboard\analytics\css\components\link-button.css" />
+    <Content Include="Content\dashboard\analytics\css\components\logo.css" />
+    <Content Include="Content\dashboard\analytics\css\components\message.css" />
+    <Content Include="Content\dashboard\analytics\css\components\nav-header.css" />
+    <Content Include="Content\dashboard\analytics\css\components\nav.css" />
+    <Content Include="Content\dashboard\analytics\css\components\pivot-table.css" />
+    <Content Include="Content\dashboard\analytics\css\components\progress-bar.css" />
+    <Content Include="Content\dashboard\analytics\css\components\query-report.css" />
+    <Content Include="Content\dashboard\analytics\css\components\screenshot.css" />
+    <Content Include="Content\dashboard\analytics\css\components\search-suggest-match.css" />
+    <Content Include="Content\dashboard\analytics\css\components\search-suggest.css" />
+    <Content Include="Content\dashboard\analytics\css\components\site.css" />
+    <Content Include="Content\dashboard\analytics\css\components\table.css" />
+    <Content Include="Content\dashboard\analytics\css\components\tech-info.css" />
+    <Content Include="Content\dashboard\analytics\css\components\titles.css" />
+    <Content Include="Content\dashboard\analytics\css\components\video.css" />
+    <Content Include="Content\dashboard\analytics\css\components\view-selector.css" />
+    <Content Include="Content\dashboard\analytics\css\index.css" />
+    <Content Include="Content\dashboard\analytics\css\utilities\display.css" />
+    <Content Include="Content\dashboard\analytics\css\utilities\media.css" />
+    <Content Include="Content\dashboard\analytics\css\utilities\space.css" />
+    <Content Include="Content\dashboard\analytics\css\vendor\highlight.css" />
+    <Content Include="Content\dashboard\analytics\css\vendor\react-tabs.css" />
+    <Content Include="Content\dashboard\analytics\css\vendor\select2-overrides.css" />
+    <Content Include="Content\dashboard\analytics\css\vendor\select2.css" />
+    <Content Include="Content\dashboard\analytics\css\vendor\table-chart.css" />
+    <Content Include="Content\dashboard\analytics\images\ga-mark-white.svg" />
+    <Content Include="Content\dashboard\analytics\images\google-analytics-partners-2x.png" />
+    <Content Include="Content\dashboard\analytics\images\icons.svg" />
+    <Content Include="Content\dashboard\analytics\images\screenshots\dimensions-metrics-explorer-2x.png" />
+    <Content Include="Content\dashboard\analytics\images\screenshots\embed-api-2x.png" />
+    <Content Include="Content\dashboard\analytics\images\screenshots\enhanced-ecommerce-2x.png" />
+    <Content Include="Content\dashboard\analytics\images\screenshots\polymer-elements-2x.png" />
+    <Content Include="Content\dashboard\analytics\images\screenshots\spreadsheet-add-on-2x.png" />
+    <Content Include="Content\dashboard\analytics\js\account-explorer\index.js" />
+    <Content Include="Content\dashboard\analytics\js\analytics.js" />
+    <Content Include="Content\dashboard\analytics\js\autotrack\index.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\actions\index.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\actions\params.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\actions\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\actions\types.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\actions\website-url.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\components\campaign-url-builder.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\components\campaign-url.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\index.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\params.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\reducers\index.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\reducers\params.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\reducers\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\reducers\website-url.js" />
+    <Content Include="Content\dashboard\analytics\js\campaign-url-builder\store.js" />
+    <Content Include="Content\dashboard\analytics\js\components\alert-dispatcher.js" />
+    <Content Include="Content\dashboard\analytics\js\components\alert.js" />
+    <Content Include="Content\dashboard\analytics\js\components\code-block.js" />
+    <Content Include="Content\dashboard\analytics\js\components\datepicker.js" />
+    <Content Include="Content\dashboard\analytics\js\components\help-icon-link.js" />
+    <Content Include="Content\dashboard\analytics\js\components\icon-button.js" />
+    <Content Include="Content\dashboard\analytics\js\components\icon.js" />
+    <Content Include="Content\dashboard\analytics\js\components\search-suggest.js" />
+    <Content Include="Content\dashboard\analytics\js\components\select2-multi-suggest.js" />
+    <Content Include="Content\dashboard\analytics\js\components\view-selector.js" />
+    <Content Include="Content\dashboard\analytics\js\data-store.js" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\active-users.js" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\date-range-selector.js" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\view-selector2.js" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\index.js" />
+    <Content Include="Content\dashboard\analytics\js\header.js" />
+    <Content Include="Content\dashboard\analytics\js\highlighter.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\hit-status.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\index.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\params.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\types.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\actions\validation-messages.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\hit-builder.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\hit-element.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\param-button-element.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\param-element.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\param-search-suggest-element.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\components\param-select-element.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\hit.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\index.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\hit-status.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\index.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\params.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\properties.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\reducers\validation-messages.js" />
+    <Content Include="Content\dashboard\analytics\js\hit-builder\store.js" />
+    <Content Include="Content\dashboard\analytics\js\index.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\index.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\params.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\query.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\report.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\select2-options.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\actions\types.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\components\data-chart.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\components\query-explorer.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\components\query-report.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\index.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\query-params.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\index.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\params.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\query.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\report.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\select2-options.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\reducers\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\segments.js" />
+    <Content Include="Content\dashboard\analytics\js\query-explorer\store.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\index.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\params.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\query.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\response.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\select2-options.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\actions\types.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\cohort-table.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\histogram-chart.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\pivot-table.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\request-composer.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\request-viewer.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\components\response-viewer.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\index.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\query-params.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\auth.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\index.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\params.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\query.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\response.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\select2-options.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\reducers\settings.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\request.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\segments.js" />
+    <Content Include="Content\dashboard\analytics\js\request-composer\store.js" />
+    <Content Include="Content\dashboard\analytics\js\sidebar.js" />
+    <Content Include="Content\dashboard\analytics\js\site.js" />
+    <Content Include="Content\dashboard\analytics\js\supports.js" />
+    <Content Include="Content\dashboard\analytics\js\url-shortener.js" />
+    <Content Include="Content\dashboard\analytics\js\utils.js" />
     <Content Include="Content\dashboard\css\bootstrap.css" />
     <Content Include="Content\dashboard\css\custom-styles.css" />
     <Content Include="Content\dashboard\css\font-awesome.css" />
@@ -337,6 +513,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\active-users.js.map" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\date-range-selector.js.map" />
+    <Content Include="Content\dashboard\analytics\js\embed-api\components\view-selector2.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -515,6 +694,9 @@
     <Content Include="Views\Producto\BuscarProducto.cshtml" />
     <Content Include="Views\Account\UsuarioNoLogeado.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Admin\Sesiones.cshtml" />
+    <Content Include="Views\Admin\Browser.cshtml" />
+    <Content Include="Views\Admin\Status.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -560,6 +742,9 @@
       <Project>{5f6d6e1a-6595-4a95-b6c7-846eff43b3c0}</Project>
       <Name>UAIBay.Servicios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

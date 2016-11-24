@@ -47,8 +47,8 @@
             chart.draw(data, options);
         });
 
-        $(window).resize(function () {
-            drawChartVentasMensuales();
+        window.addEventListener('resize', function () {
+            drawChartVentasMensuales(data)();
         });
     }
 </script>

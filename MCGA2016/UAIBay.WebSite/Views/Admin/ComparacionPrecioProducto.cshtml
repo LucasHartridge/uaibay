@@ -47,8 +47,8 @@
           chart.draw(data, options);
       });
 
-      $(window).resize(function () {
-          drawChart();
+      window.addEventListener('resize', function () {
+          drawChart(data)();
       });
   }
 </script>
