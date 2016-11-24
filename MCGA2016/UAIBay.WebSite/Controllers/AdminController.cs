@@ -34,7 +34,7 @@ namespace UAIBay.WebSite.Controllers
                                       orderby q.Cantidad ascending
                                       select q).Take(10);
 
-            return Json(productosFiltrados.Select(p => new { p.Descripcion, p.Cantidad,p.PrecioCompra,p.PrecioVenta }), JsonRequestBehavior.AllowGet);
+            return Json(productosFiltrados.Select(p => new { p.Descripcion, p.Cantidad, p.PrecioCompra, p.PrecioVenta }), JsonRequestBehavior.AllowGet);
         }
         #endregion
 
@@ -55,8 +55,8 @@ namespace UAIBay.WebSite.Controllers
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
 
             var productosFiltrados = (from q in productosVM
-                            orderby q.PrecioVenta descending
-                            select q).Take(10);
+                                      orderby q.PrecioVenta descending
+                                      select q).Take(10);
 
             return Json(productosFiltrados.Select(p => new { p.Descripcion, p.PrecioVenta, p.PrecioCompra }), JsonRequestBehavior.AllowGet);
         }
@@ -101,7 +101,7 @@ namespace UAIBay.WebSite.Controllers
                 totalXMes.Fecha = mes.Fecha;
                 totalXMes.Cantidad = 0;
                 totalXMes.Total = 0;
-                
+
                 foreach (var item in ventasDto)
                 {
                     if (item.Fecha.Month == Convert.ToDateTime(mes.Fecha).Month && item.Fecha.Year == Convert.ToDateTime(mes.Fecha).Year)
@@ -110,7 +110,7 @@ namespace UAIBay.WebSite.Controllers
                         totalXMes.Cantidad += 1;
                     }
                 }
-                
+
                 reporte.Add(totalXMes);
             }
 
@@ -166,5 +166,31 @@ namespace UAIBay.WebSite.Controllers
             return Json(reporte.Select(p => new { p.Categoria, p.Cantidad }), JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        #region Sesiones
+        // GET: /Sesiones/
+        public ActionResult Sesiones()
+        {
+            return View();
+        }
+        #endregion
+
+        #region Browser
+        // GET: /Browser/
+        public ActionResult Browser()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Status
+        // GET: /Status/
+        public ActionResult Status()
+        {
+            return View();
+        }
+        #endregion
     }
+
 }
