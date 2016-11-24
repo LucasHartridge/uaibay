@@ -1,6 +1,14 @@
 ﻿@{
     Layout = null;
     HttpCookie cookie = HttpContext.Current.Request.Cookies["Lenguaje"];
+
+    var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
+    var categoriasDTO = bllcat.TraerCategorias();
+
+    UAIBay.WebSite.App_Start.AutoMapperWebConfiguration.Configure();
+
+    var categoriasViewmodel = AutoMapper.Mapper.Map<List<UAIBay.WebSite.ViewModel.CategoriaViewModels>>(categoriasDTO);
+    ViewBag.CategoriasLayout = categoriasViewmodel;
 }
 
 <!DOCTYPE html>
@@ -178,18 +186,16 @@
                             </ul>
                         </div>
                     </div>
-                    @if (Session["LogedUserID"] != null)
-                    {
-                        <div class="col-sm-3">
-                            <div class="search_box pull-right">
-                                @using (Html.BeginForm("BuscarProducto", "Producto", FormMethod.Get, new { id = "fbuscar" }))
-                                {
-                                    <input type="text" name="productoBuscar" id="productoBuscar" placeholder="@UAIBay.WebSite.Resources.Recurso.Buscar" />
-                                    <button type="submit" name="Buscar">Buscar</button>
-                                }
-                            </div>
+
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            @using (Html.BeginForm("BuscarProducto", "Producto", FormMethod.Get, new { id = "fbuscar" }))
+                            {
+                                <input type="text" name="productoBuscar" id="productoBuscar" placeholder="@UAIBay.WebSite.Resources.Recurso.Buscar" />
+                            }
                         </div>
-                    }
+                    </div>
+
                 </div>
             </div>
         </div><!--/header-bottom-->
@@ -214,13 +220,11 @@
                         <div class="single-widget">
                             <h2>@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Almacen</a></li>
-                                <li><a href="#">Panificados</a></li>
-                                <li><a href="#">Carnes</a></li>
-                                <li><a href="#">Bebidas</a></li>
-                                <li><a href="#">Congelados</a></li>
-                                <li><a href="#">Limpieza</a></li>
-                                <li><a href="#">Importados</a></li>
+                                @foreach (UAIBay.WebSite.ViewModel.CategoriaViewModels item in ViewBag.CategoriasLayout)
+                                {
+                                    <li><a href="@Url.Action("FiltrarPorCategoria", "Producto", new { idCategoria = item.IdCategoria })">@item.Nombre</a></li>
+                                }
+
                             </ul>
                         </div>
                     </div>
@@ -284,7 +288,17 @@
         ga('send', 'pageview');
 
     </script>
+    <script>
+        $("#productoBuscar").keypress(function (event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            $("#fbuscar").submit();
+        }
+    });
+    </script>
     <script src="~/Content/js/index.js"></script>
     <script src="~/Scripts/ng_responsive_tables.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
+
 </body>
 </html>

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -25,7 +24,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="~/Content/images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
-   
+
 </head><!--/head-->
 
 <body>
@@ -40,7 +39,23 @@
             <h1><b>OPPS!</b> @UAIBay.WebSite.Resources.Recurso.NoPudimosEncontrarEsaPagina</h1>
             <p>@UAIBay.WebSite.Resources.Recurso.ErrorInesperado.</p>
             <p>@ViewBag.Error</p>
-            <h2><a href="/Home/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+
+            @if (Session["LogedUserID"] != null)
+            {
+                if (Session["LogedUserRol"].ToString() != "Administrador")
+                {
+                    <h2><a href="/Home/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+                }
+                else
+                {
+                    <h2><a href="/Admin/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+                }
+            }
+            else
+            {
+                <h2><a href="/Home/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+            }
+
         </div>
     </div>
 

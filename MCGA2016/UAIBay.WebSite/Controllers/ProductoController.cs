@@ -211,6 +211,9 @@ namespace UAIBay.WebSite.Controllers
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
             ViewBag.CategoriasSimple = categoriasViewmodel;
 
+            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4).Where(x => x.IdCategoria == productosVM.FirstOrDefault().IdCategoria);
+            ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
             var pageNumber = page ?? 1;
             return View(productosVM.ToPagedList(pageNumber, 9));
             //return View(productosVM);
@@ -243,6 +246,9 @@ namespace UAIBay.WebSite.Controllers
             }
 
             productosE = productosE.ToList();
+
+            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4).Where(x=> x.IdCategoria==productosE.FirstOrDefault().IdCategoria);
+            ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
 
             var pageNumber = page ?? 1; 
 

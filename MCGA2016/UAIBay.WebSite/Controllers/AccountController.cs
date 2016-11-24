@@ -29,6 +29,11 @@ namespace UAIBay.WebSite.Controllers
             return View(provincias);
         }
 
+        [HttpGet]
+        public ActionResult UsuarioNoLogeado()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult MisCompras(int? page)

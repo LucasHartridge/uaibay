@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="title text-center">Roles</h2>
 
 <p>
     @Html.ActionLink("Crear nuevo rol", "Create")
 </p>
-<table class="table">
+<table class="responsive">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -32,3 +32,17 @@
 }
 
 </table>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('table.responsive').ngResponsiveTables({
+                smallPaddingCharNo: 13,
+                mediumPaddingCharNo: 18,
+                largePaddingCharNo: 30
+            });
+        });
+    </script>
+}

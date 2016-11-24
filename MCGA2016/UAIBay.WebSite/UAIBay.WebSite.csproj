@@ -513,6 +513,8 @@
     <Content Include="Views\Home\EmailEnviado.cshtml" />
     <Content Include="Views\Producto\FiltrarPorCategoria.cshtml" />
     <Content Include="Views\Producto\BuscarProducto.cshtml" />
+    <Content Include="Views\Account\UsuarioNoLogeado.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -526,7 +528,6 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Direccion\" />
     <Folder Include="Views\Language\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Recurso.fr.resx">

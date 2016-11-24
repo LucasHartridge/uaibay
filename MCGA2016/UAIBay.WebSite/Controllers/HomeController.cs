@@ -28,6 +28,9 @@ namespace UAIBay.WebSite.Controllers
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
             ViewBag.Categorias = categoriasViewmodel;
 
+            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4);
+            ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+
             return View(productosTopDiez);
         }
         public ActionResult Contacto()

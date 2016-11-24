@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
 }
 <section id="slider">
     <!--slider-->
@@ -74,7 +77,7 @@
                         @foreach (UAIBay.WebSite.ViewModel.CategoriaViewModels item in ViewBag.Categorias)
                         {
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">@item.Nombre</a></h4>
+                                <h4 class="panel-title"><a href="@Url.Action("FiltrarPorCategoria", "Producto", new { idCategoria = item.IdCategoria })">@item.Nombre</a></h4>
                             </div>
                         }
                     </div>
@@ -101,12 +104,15 @@
             </div>
         </div>
 
+        @*CARGA DE PRODUCTOS*@
+
         <div class="col-sm-9 padding-right">
             <div class="features_items">
+
                 @if (Model.Count == 0)
                 {
                     <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
-                    <h5 class="colorNaranja">No hay productos disponibles para la categoria seleccionada</h5>
+                    <h5 class="colorNaranja">No hay productos disponibles.</h5>
                 }
                 else
                 {
@@ -114,6 +120,10 @@
                     <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.NuestrosUltimosProductos</h2>
                     foreach (var item in Model)
                     {
+
+
+
+
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -121,7 +131,7 @@
                                         <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" /></a>
                                         <h2>$@item.PrecioVenta</h2>
                                         <p>@item.Descripcion</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>@UAIBay.WebSite.Resources.Recurso.AgregarAlCarrito</a>
+                                        <a href="/Comprar/AgregarItem?codProducto=@item.CodProducto" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>@UAIBay.WebSite.Resources.Recurso.AgregarAlCarrito</a>
                                         <a href="#" class="btn btn-default add-to-cart" data-toggle="modal" data-target="#mail-@item.CodProducto"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
                                     </div>
@@ -130,6 +140,10 @@
                         </div>
 
 
+
+
+
+                        //FORMULARIO DE MAIL INICIO
                         <div class="modal fade" id="mail-@item.CodProducto" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -168,11 +182,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-
                                                 <label class="col-xs-3 control-label" style="color:#B4B1AB">CAPTCHA</label>
                                                 <div class="col-xs-5">
+                                                    <div id="@item.CodProducto"></div>
                                                     <div class="g-recaptcha" data-sitekey="6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH"></div>
-                                                    <span id="captcha" style="color:red" />
+                                                    @*<div class="g-recaptcha" data-sitekey="6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH"></div>*@
+                                                    @*<span id="captcha" style="color:red" />*@
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -187,176 +202,99 @@
                             </div>
                         </div>
 
+                        //FORMULARIO DE MAIL FIN
 
 
-                        <div class="modal fade" id="tips-@item.CodProducto" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content modal-lg">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
-                                    </div>
-                                    <div class="product-details">
-                                        <!--product-details-->
-                                        <div class="col-sm-5">
-                                            <div class="view-product">
-                                                <img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" />
-                                            </div>
+
+
+                        //POPUP DE PRODUCTO
+
+                        using (Html.BeginForm("AgregarItemPopUp", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            <div class="modal fade" id="tips-@item.CodProducto" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content modal-lg">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
                                         </div>
-                                        <div class="col-sm-7">
-                                            <div class="product-information" style="border:none">
-                                                <h2>@item.Descripcion</h2>
-                                                <span>
-                                                    <span>$@item.PrecioVenta por unidad</span>
-                                                    <label>Cantidad:</label>
-                                                    <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-                                                    <input type="text" id="cantidad" value="1" readonly="readonly" />
-                                                    <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-                                                    <button type="button" class="btn btn-fefault cart">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        Agregar al carrito
-                                                    </button>
-                                                </span>
-                                                <a href=""><img src="~/Content/images/product-details/share.png" class="share img-responsive" alt="Compartir" /></a>
+                                        <div class="product-details">
+                                            <!--product-details-->
+                                            <div class="col-sm-5">
+                                                <div class="view-product">
+                                                    <img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div id="similar-product" class="carousel slide" data-ride="carousel">
-                                                <center>
-                                                    <h2 class="title text-center">Productos relacionados</h2>
-                                                    <div class="carousel-inner">
-                                                        <div class="item active">
-                                                            <a href="#"><img src="~/Content/images/producto/conserva/salsati-pomarola-500gr.jpg" alt="Producto relacionado" /></a>
+                                            <div class="col-sm-7">
+                                                <div class="product-information" style="border:none">
+                                                    @Html.Hidden("codProducto", @item.CodProducto)
+                                                    <h2>@item.Descripcion</h2>
+                                                    <span>
+                                                        <span>$@item.PrecioVenta Por unidad</span>
+                                                        <label>Cantidad:</label>
+                                                        <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+                                                        <input type="text" id="cantidad" value="1" readonly="readonly" name="cantidad" />
+                                                        <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+                                                        <button type="submit" class="btn btn-fefault cart">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            Agregar al carrito
+                                                        </button>
+                                                    </span>
+                                                    <a href=""><img src="~/Content/images/product-details/share.png" class="share img-responsive" alt="Compartir" /></a>
+                                                </div>
+                                            </div>
+
+
+
+                                            @*PRODUCTOS ALEATORIOS*@
+                                            <div class="col-sm-12">
+                                                <div id="similar-product" class="carousel slide" data-ride="carousel">
+                                                    <center>
+                                                        <h2 class="title text-center">Otros productos</h2>
+
+
+                                                        <div class="carousel-inner">
+                                                            <div class="item active" style="width:248px;height:248px;">
+                                                                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" /></a>
+                                                            </div>
+
+
+                                                            @foreach (var pr in ViewBag.ProductosAleatorios)
+                                                            {
+
+                                                                <div class="item" style="width:248px;height:248px;">
+                                                                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" /></a>
+                                                                </div>
+                                                            }
+
+
                                                         </div>
-                                                        <div class="item">
-                                                            <a href="#"><img src="~/Content/images/producto/golosina/milka-legger.png" alt="Producto relacionado" /></a>
-                                                        </div>
-                                                        <div class="item">
-                                                            <a href="#"><img src="~/Content/images/producto/mermelada/campagnola-frutilla.png" alt="Producto relacionado" /></a>
-                                                        </div>
-                                                    </div>
-                                                </center>
-                                                <a class="left item-control" href="#similar-product" data-slide="prev">
-                                                    <i class="fa fa-angle-left"></i>
-                                                </a>
-                                                <a class="right item-control" href="#similar-product" data-slide="next">
-                                                    <i class="fa fa-angle-right"></i>
-                                                </a>
+
+                                                    </center>
+                                                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                                                        <i class="fa fa-angle-left"></i>
+                                                    </a>
+                                                    <a class="right item-control" href="#similar-product" data-slide="next">
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
+
                 }
-
-                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
-                            </div>
-                            <div class="modal-body">
-                                <form id="loginForm" method="post" class="form-horizontal" action="/Home/Email">
-                                    <div class=" form-group">
-                                        <label class="col-xs-3 control-label" style="color:#B4B1AB">E-mail</label>
-                                        <div class="col-xs-5">
-                                            <input type="email" class="form-control" name="txtemail" id="email" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-xs-3 control-label" style="color:#B4B1AB">Nombre</label>
-                                        <div class="col-xs-5">
-                                            <input type="text" class="form-control" name="txtnombre" required />
-
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-xs-3 control-label" style="color:#B4B1AB">Apellido</label>
-                                        <div class="col-xs-5">
-                                            <input type="text" class="form-control" name="txtapellido" required />
-
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-xs-3 control-label" style="color:#B4B1AB">Mensaje</label>
-                                        <div class="col-xs-5">
-                                            <textarea class="form-control" name="txtmensaje" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-xs-5 col-xs-offset-3">
-                                            <button type="submit" class="btn btn-default add-to-cart">Enviar</button>
-                                            <button type="button" class="btn btn-default add-to-cart" data-dismiss="modal">Cancelar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content modal-lg">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
-                            </div>
-                            <div class="product-details">
-                                <!--product-details-->
-                                <div class="col-sm-5">
-                                    <div class="view-product">
-                                        <img src="~/Content/images/producto/bebida/freeze-blue-evolution.jpg" alt="Producto" style="border:none;width:248px;height:248px;" />
-                                    </div>
-                                </div>
-
-
-
-                                @using (Html.BeginForm("AgregarItemPopUp", "Comprar", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-
-                                    <div class="col-sm-7">
-                                        <div class="product-information" style="border:none">
-                                            <h2>Freeze Blue Evolution 1L</h2>
-                                            <span>
-                                                <span>$49 por unidad</span>
-                                                <label>Cantidad:</label>
-                                                <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-                                                <input type="text" id="cantidad" value="1" readonly="readonly" />
-                                                <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
-                                                <button type="button" class="btn btn-fefault cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    Agregar al carrito
-                                                </button>
-                                            </span>
-                                            <a href=""><img src="~/Content/images/product-details/share.png" class="share img-responsive" alt="" /></a>
-                                        </div>
-                                    </div>
-
-                                }
-                            </div>
-                        </div>
-                    </div><!--features_items-->
-                </div>
             </div>
         </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -401,5 +339,3 @@
         });
     });
 </script>
-
-
