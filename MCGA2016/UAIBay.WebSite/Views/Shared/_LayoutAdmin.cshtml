@@ -24,12 +24,6 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
-    <!-- This demo uses the Chart.js graphing library and Moment.js to do date
-     formatting and manipulation. -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-
-
 </head>
 
 <body>
@@ -99,6 +93,9 @@
                             <li>
                                 <a href="~/Admin/Browser"><i class="fa fa-android"></i> Browsers</a>
                             </li>
+                            <li>
+                                <a href="~/Admin/Status"><i class="fa fa-star"></i>Estado</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -119,8 +116,10 @@
                                     <li>
                                         <a href="~/Producto/Index"><i class="fa fa-tablet"></i>Productos</a>
                                     </li>
+                                    <li>
+                                        <a href="~/Promocion/Index"><i class="fa fa-code-fork"></i>Promoción</a>
+                                    </li>
                                 </ul>
-
                             </li>
                         </ul>
                     </li>
@@ -143,9 +142,11 @@
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     @RenderSection("scripts", required: false)
-    <script src="~/Content/js/index.js"></script>
-    <script src="~/Scripts/ng_responsive_tables.js"></script>
-    <script src="~/Content/dashboard/js/jquery-1.10.2.js"></script>
+    <!-- Layout  -->
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/dasboard/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
     <!-- Bootstrap Js -->
     <script src="~/Content/dashboard/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->
@@ -164,6 +165,8 @@
         ga('send', 'pageview');
 
     </script>
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Scripts/ng_responsive_tables.js"></script>
 </body>
 
 </html>
