@@ -235,9 +235,19 @@
                                                     <span>
                                                         <span>$@item.PrecioVenta Por unidad</span>
                                                         <label>Cantidad:</label>
-                                                        <a href="#" class="btn btn-flat" id="restar"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
-                                                        <input type="text" id="cantidad" value="1" readonly="readonly" name="cantidad" />
-                                                        <a href="#" class="btn btn-flat" id="sumar"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+
+
+                                                        <a href="#" onclick="restar(@item.CodProducto)" class="restar btn btn-flat" id="@item.CodProducto"><i class="fa fa-minus-circle " style="margin:auto 0"></i></a>
+
+
+                                                        <input type="text" id="@string.Concat("cant",@item.CodProducto)" value="1" readonly="readonly" name="cantidad" />
+
+
+                                                        <a href="#" onclick="sumar(@item.CodProducto)" class="sumar btn btn-flat" id="@item.CodProducto"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
+
+
+
                                                         <button type="submit" class="btn btn-fefault cart">
                                                             <i class="fa fa-shopping-cart"></i>
                                                             Agregar al carrito
@@ -294,48 +304,53 @@
         </div>
     </div>
 </div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#restar').click(function () {
-            //get txtAmt value
-            var valorProducto = $('#cantidad').val();
-            valorProducto -= 1;
 
-            if (valorProducto < 1) {
 
+        function verificar() {
+            var rec = grecaptcha.getResponse();
+            if (rec == "") {
+                document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
             }
             else {
-                //change txtInterest% value
-                $('#cantidad').val(valorProducto);
+                document.contact - form.submit()
             }
+        };
 
-        });
+
+
+
+
+
     });
 
-    function verificar() {
-        var rec = grecaptcha.getResponse();
-        if (rec == "") {
-            document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-        }
-        else {
-            document.contact - form.submit()
-        }
+    function restar(b) {
+        changeQuantity(-1, b);
     };
 
 
-    $(document).ready(function () {
-        $('#sumar').click(function () {
-            //get txtAmt value
-            var valorProducto = $('#cantidad').val();
-            valorProducto = parseInt(1) + parseInt(valorProducto);
 
-            if (valorProducto > 9) { }
-            else {
-                //change txtInterest% value
-                $('#cantidad').val(valorProducto);
-            }
-        });
-    });
+    function sumar(b) {
+        changeQuantity(1, b);
+    };
+
+
+    function changeQuantity(num, obj) {
+        $(document).ready(function () {
+
+            var cod = obj;
+
+            var value_to_set = parseInt($('#cant' + cod.toString()).val()) + num;
+            if (value_to_set <= 1) { $('#cant' + cod.toString()).val(1); return; }
+            if (value_to_set > 9) { $('#cant' + cod.toString()).val(9); return; }
+            $('#cant' + cod.toString()).val(value_to_set);
+        })
+    };
+
 </script>
