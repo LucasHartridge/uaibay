@@ -8,7 +8,7 @@
 
 }
 
-<h3>Nueva promoción</h3>
+<h2 class="colorNaranja">Crear nueva promocion</h2>
 
 @using (Html.BeginForm())
 {
@@ -20,38 +20,49 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nro, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nro, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Nro, new { @readonly = "readonly", @Value = @codigo })
-
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Nro, new { @readonly = "readonly", @Value = @codigo, @class = "form-control" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Nro)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Descuento, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Descuento, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descuento) %
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.Descuento, new { @placeholder = "Descuento", @class = "form-control" }) 
+                </div>
                 @Html.ValidationMessageFor(model => model.Descuento)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaVencimiento, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaVencimiento, new { @class = "control-label col-md-2", @id = "colorNaranja" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaVencimiento)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    @Html.TextBoxFor(model => model.FechaVencimiento, new { @placeholder = "Fecha de vencimiento", @class = "form-control", @type = "date" })
+                </div>
                 @Html.ValidationMessageFor(model => model.FechaVencimiento)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Crear"><i class="fa fa-fw fa-check"></i></button>
+                <a href="@Url.Action("Index","Promocion")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>

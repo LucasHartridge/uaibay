@@ -36,6 +36,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult MisCompras(int? page)
         {
             var bll = new dtoUsuario();
@@ -57,6 +58,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Details(int id, int? page)
         {
             var bll = new dtoVenta();
@@ -70,6 +72,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Cuenta()
         {
             var bll = new dtoUsuario();
@@ -83,6 +86,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Cuenta(UsuarioViewModels usuario)
         {
             App_Start.AutoMapperWebConfiguration.Configure();

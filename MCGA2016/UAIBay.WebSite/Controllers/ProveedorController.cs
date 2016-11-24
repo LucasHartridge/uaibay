@@ -10,6 +10,7 @@ using PagedList;
 
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarAdmin]
     public class ProveedorController : Controller
     {
         //

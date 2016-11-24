@@ -12,9 +12,12 @@ namespace UAIBay.WebSite.Autorizaciones
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (HttpContext.Current.Session["LogedUserRol"] == "Administrador")
+            if (HttpContext.Current.Session["LogedUserID"] != null)
             {
-                return;
+                if (HttpContext.Current.Session["LogedUserRol"].ToString() == "Administrador")
+                {
+                    return;
+                }
             }
             filterContext.Result = new HttpUnauthorizedResult();
         }

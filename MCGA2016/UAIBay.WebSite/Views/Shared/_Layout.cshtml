@@ -19,14 +19,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Es una pagina de venta de productos que realiza envios a toda Argentina de manera gratuita y que ofrece un servicio de pago en cuotas. Posee multilenguaje(Español,Ingles y Frances)">
     <meta name="author" content="Los 4 fantasticos">
+    <meta name="language" content="Spanish">
+    <meta name="keywords" content="UAIBAY,Productos,Categorias,Proveedores,Promociones">
+
     <title>UAIBay</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        var ReCaptchaCallback = function () {
+            $('.g-recaptcha').each(function () {
+                var el = $(this);
+                grecaptcha.render(el.get(0), { 'sitekey': el.data("sitekey") });
+            });
+        };
+    </script>
+    
+    <script src="https://www.google.com/recaptcha/api.js?onload=ReCaptchaCallback&render=explicit" async defer></script>
     <script src="https://api.mondido.com/v1/mondido.js?rnd=1&merchant_id=3"> </script>
     <script src="https://s3-eu-west-1.amazonaws.com/mondido/www/js/validator.js"> </script>
     <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="~/Content/js/fileinput.min.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet" />
@@ -290,15 +303,14 @@
     </script>
     <script>
         $("#productoBuscar").keypress(function (event) {
-        if (event.which == 13) {
-            event.preventDefault();
-            $("#fbuscar").submit();
-        }
-    });
+            if (event.which == 13) {
+                event.preventDefault();
+                $("#fbuscar").submit();
+            }
+        });
     </script>
     <script src="~/Content/js/index.js"></script>
     <script src="~/Scripts/ng_responsive_tables.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
 
 </body>
 </html>
