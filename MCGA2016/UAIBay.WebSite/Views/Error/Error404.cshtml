@@ -39,14 +39,23 @@
             <h1><b>OPPS!</b> @UAIBay.WebSite.Resources.Recurso.NoPudimosEncontrarEsaPagina</h1>
             <p>@UAIBay.WebSite.Resources.Recurso.ErrorInesperado.</p>
             <p>@ViewBag.Error</p>
-            @if (Session["LogedUserRol"].ToString() == "Administrador")
+
+            @if (Session["LogedUserID"] != null)
             {
-                <h2><a href="/Admin/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+                if (Session["LogedUserRol"].ToString() != "Administrador")
+                {
+                    <h2><a href="/Home/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+                }
+                else
+                {
+                    <h2><a href="/Admin/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
+                }
             }
             else
             {
                 <h2><a href="/Home/Index">@UAIBay.WebSite.Resources.Recurso.IrAlInicio</a></h2>
             }
+
         </div>
     </div>
 

@@ -19,21 +19,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Es una pagina de venta de productos que realiza envios a toda Argentina de manera gratuita y que ofrece un servicio de pago en cuotas. Posee multilenguaje(Español,Ingles y Frances)">
     <meta name="author" content="Los 4 fantasticos">
-
     <title>UAIBay</title>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*@
-
     <script src="https://api.mondido.com/v1/mondido.js?rnd=1&merchant_id=3"> </script>
     <script src="https://s3-eu-west-1.amazonaws.com/mondido/www/js/validator.js"> </script>
     <script src="https://blueimp.github.io/JavaScript-MD5/js/md5.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
-
     <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="~/Content/js/fileinput.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
@@ -88,7 +83,6 @@
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
-
 
                                 @if (cookie != null)
                                 {
@@ -192,8 +186,7 @@
                             </ul>
                         </div>
                     </div>
-                    @*@if (Session["LogedUserID"] != null)
-                        {*@
+
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
                             @using (Html.BeginForm("BuscarProducto", "Producto", FormMethod.Get, new { id = "fbuscar" }))
@@ -202,7 +195,7 @@
                             }
                         </div>
                     </div>
-                    @*}*@
+
                 </div>
             </div>
         </div><!--/header-bottom-->
@@ -278,7 +271,7 @@
     </footer><!--/Footer-->
     @RenderSection("scripts", required: false)
     <script src="~/Content/js/jquery.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/dasboard/js/bootstrap.min.js"></script>
     <script src="~/Content/js/jquery.scrollUp.min.js"></script>
     <script src="~/Content/js/price-range.js"></script>
     <script src="~/Content/js/jquery.prettyPhoto.js"></script>
