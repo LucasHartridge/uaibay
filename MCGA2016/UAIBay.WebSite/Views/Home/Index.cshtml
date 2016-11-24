@@ -121,10 +121,10 @@
                     <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.NuestrosUltimosProductos</h2>
                     foreach (var item in Model)
                     {
-                        
-                        
-                        
-                        
+
+
+
+
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -298,29 +298,10 @@
                 }
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-                                }
-                            </div>
-                        </div>
-                    </div><!--features_items-->
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -340,15 +321,16 @@
         });
     });
 
-    //function verificar() {
-    //    var rec = grecaptcha.getResponse();
-    //    if (rec == "") {
-    //        document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-    //    }
-    //    else {
-    //        document.contact - form.submit()
-    //    }
-    //};
+    function verificar() {
+        var rec = grecaptcha.getResponse();
+        if (rec == "") {
+            document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
+        }
+        else {
+            document.contact - form.submit()
+        }
+    };
+
 
     $(document).ready(function () {
         $('#sumar').click(function () {
@@ -364,85 +346,3 @@
         });
     });
 </script>
-
-
-<script type="text/javascript">
-    //var CaptchaCallback = function () {
-    //    $('.g-recaptcha').each(function (index, el) {
-    //        grecaptcha.render(el, { 'sitekey': '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH' });
-    //    });
-    //};
-    var ReCaptchaCallback = function () {
-        $('.g-recaptcha').each(function () {
-            var el = $(this);
-            grecaptcha.render(el.get(0), { 'sitekey': el.data("6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH") });
-        });
-    };
-    @*var images = Model();
-
-    $.each
-
-    @foreach (var item in Model)
-	{
-        var CaptchaCallback = function () {
-            recaptcha.render(@item.CodProducto, {'sitekey' : '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH'});
-
-        };
-	}*@
-    @*var CaptchaCallback = function () {
-        $.each(@Model,function() {
-            grecaptcha.render('RecaptchaField1', {'sitekey' : '6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH'});
-        });
-
-    };*@
-</script>
-=======
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#restar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto -= 1;
-
-                    if (valorProducto < 1) {
-
-                    }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
-
-                });
-            });
-
-            function verificar() {
-                var rec = grecaptcha.getResponse();
-                if (rec == "") {
-                    document.getElementById('captcha').innerHTML = "Por favor complete el Captcha";
-                }
-                else {
-                    document.contact - form.submit()
-                }
-            };
-
-
-            $(document).ready(function () {
-                $('#sumar').click(function () {
-                    //get txtAmt value
-                    var valorProducto = $('#cantidad').val();
-                    valorProducto = parseInt(1) + parseInt(valorProducto);
-
-                    if (valorProducto > 9) { }
-                    else {
-                        //change txtInterest% value
-                        $('#cantidad').val(valorProducto);
-                    }
-                });
-            });
-        </script>
-
-
->>>>>>> premaster
