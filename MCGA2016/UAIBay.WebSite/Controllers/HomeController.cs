@@ -24,7 +24,7 @@ namespace UAIBay.WebSite.Controllers
             App_Start.AutoMapperWebConfiguration.Configure();
 
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
-            var productosTopDiez = productosVM.Take(10).ToList();
+            var productosTopDiez = productosVM.Take(9).ToList();
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
             ViewBag.Categorias = categoriasViewmodel;
 
