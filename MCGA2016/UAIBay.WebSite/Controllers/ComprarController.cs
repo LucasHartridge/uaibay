@@ -42,7 +42,6 @@ namespace UAIBay.WebSite.Controllers
             return View(productosVM.ToPagedList(pageNumber, 9));
         }
 
-        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Carrito()
         {
             if (Session["LogedUserID"] != null)
@@ -93,7 +92,6 @@ namespace UAIBay.WebSite.Controllers
 
         }
 
-        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult AgregarItem(int codProducto)
         {
             if (Session["LogedUserID"] != null)
@@ -124,7 +122,6 @@ namespace UAIBay.WebSite.Controllers
         }
 
 
-        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult AgregarItemPopUp(int codProducto, int cantidad)
         {
             if (Session["LogedUserID"] != null)

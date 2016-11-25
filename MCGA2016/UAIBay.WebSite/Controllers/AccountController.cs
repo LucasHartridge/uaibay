@@ -161,7 +161,7 @@ namespace UAIBay.WebSite.Controllers
 
                 try
                 {
-                    UAIBay.Servicios.CorreoElectronico.Bienvenida(usuarioVM.Email, (usuarioVM.Nombre + " " + usuarioVM.Apellido));
+                    //UAIBay.Servicios.CorreoElectronico.Bienvenida(usuarioVM.Email, (usuarioVM.Nombre + " " + usuarioVM.Apellido));
 
                     bll.Crear(DTO);
 
