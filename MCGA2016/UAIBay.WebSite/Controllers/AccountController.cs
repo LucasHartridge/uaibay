@@ -161,7 +161,7 @@ namespace UAIBay.WebSite.Controllers
 
                 try
                 {
-                    //UAIBay.Servicios.CorreoElectronico.Bienvenida(usuarioVM.Email, (usuarioVM.Nombre + " " + usuarioVM.Apellido));
+                    UAIBay.Servicios.CorreoElectronico.Bienvenida(usuarioVM.Email, (usuarioVM.Nombre + " " + usuarioVM.Apellido));
 
                     bll.Crear(DTO);
 
@@ -170,11 +170,9 @@ namespace UAIBay.WebSite.Controllers
                 catch (Exception)
                 {
 
-                    ModelState.AddModelError("email", "*El e-mail ingresado no es válido. ");
+                    bll.Crear(DTO);
 
-                    var provincias = LlenarComboProvincias();
-
-                    return View("Login", provincias);
+                    return RedirectToAction("Ingresar", "Account", new { user = email, pw = ViewBag.Password });
 
                 }
                 //}

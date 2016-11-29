@@ -4,6 +4,8 @@
 @{
     ViewBag.Title = "BuscarProducto";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    string up= ViewBag.UltimoBuscado;
 }
 
 <div class="container">
@@ -206,7 +208,7 @@
     </div>
 </div>
 <br />
-@Html.PagedListPager(Model, Page => Url.Action("BuscarProducto", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@Html.PagedListPager(Model, Page => Url.Action("BuscarProducto", new { productoBuscar=up, Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

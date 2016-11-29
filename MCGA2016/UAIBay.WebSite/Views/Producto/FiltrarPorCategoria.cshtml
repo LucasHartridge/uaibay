@@ -213,7 +213,7 @@
     </div>
 </div>
 <br />
-@Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page, idCategoria = codigoCategoria }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@Html.PagedListPager(Model, Page => Url.Action("FiltrarPorCategoria", new { Page = Page, idCategoria = codigoCategoria }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
