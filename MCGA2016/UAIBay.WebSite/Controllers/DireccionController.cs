@@ -11,6 +11,7 @@ using UAIBay.WebSite.ViewModel;
 
 namespace UAIBay.WebSite.Controllers
 {
+    [Autorizaciones.AutorizarUsuarioYAdmin]
     public class DireccionController : Controller
     {
 

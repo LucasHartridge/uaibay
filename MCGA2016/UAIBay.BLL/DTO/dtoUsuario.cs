@@ -23,9 +23,12 @@ namespace UAIBay.BLL.DTO
         public string Password { get; set; }
         public string PasswordHash { get; set; }
         public int AccessFailedCount { get; set; }
+        public int IdRol { get; set; }
 
         public void Crear(dtoUsuario usuario)
         {
+          
+
             BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
             var BIZ = Mapper.Map<dtoUsuario, bizUsuario>(usuario);
 
@@ -36,15 +39,15 @@ namespace UAIBay.BLL.DTO
             repository.Save();
 
 
-            var nuevoUsuario = repository.UltimoUsuario();
+            //var nuevoUsuario = repository.UltimoUsuario();
 
-            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
-            var bizDir = Mapper.Map<dtoDireccion, bizDireccion>(usuario.Direccion.FirstOrDefault());
+            //BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            //var bizDir = Mapper.Map<dtoDireccion, bizDireccion>(usuario.Direccion.FirstOrDefault());
 
-            bizDir.UserId = nuevoUsuario.UserId;
+            //bizDir.UserId = nuevoUsuario.UserId;
 
-            repositoryDir.Insertar(bizDir);
-            repositoryDir.Save();
+            //repositoryDir.Insertar(bizDir);
+            //repositoryDir.Save();
 
         }
 
@@ -109,7 +112,7 @@ namespace UAIBay.BLL.DTO
         //public virtual ICollection<History> History { get; set; }
         //public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }
         //public virtual ICollection<Venta> Venta { get; set; }
-        public virtual ICollection<dtoRoles> Roles { get; set; }
+        public virtual dtoRoles Roles { get; set; }
 
 
     }

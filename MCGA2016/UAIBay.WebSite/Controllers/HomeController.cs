@@ -24,7 +24,22 @@ namespace UAIBay.WebSite.Controllers
             App_Start.AutoMapperWebConfiguration.Configure();
 
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
-            var productosTopDiez = productosVM.Take(10).ToList();
+            //var productosTopDiez = productosVM.Take(9).ToList();
+
+            var productosTopDiez = productosVM.OrderBy(a => Guid.NewGuid()).Take(9).ToList();
+
+            foreach (var item in productosTopDiez)
+            {
+                if (item.Descripcion.Length>35)
+                {
+
+                    var texto = item.Descripcion.Substring(0, 35);
+
+                    item.Descripcion = texto;
+                    
+                }
+            }
+
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
             ViewBag.Categorias = categoriasViewmodel;
 

@@ -10,13 +10,18 @@ using PagedList;
 using System.IO;
 using System.Globalization;
 using System.Reflection;
+using System.Web.Caching;
 
 namespace UAIBay.WebSite.Controllers
 {
     public class ProductoController : Controller
     {
+
+        public string ultimoBuscado = null;
+
         //
         // GET: /Home/
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Index(int? page)
         {
             var bll = new dtoProducto();
@@ -39,6 +44,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Create()
         {
             var bll = new UAIBay.BLL.DTO.dtoCategoria();
@@ -53,6 +59,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Create(ProductoViewModels producto, HttpPostedFileBase file)
         {
             var bll = new dtoProducto();
@@ -112,6 +119,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Details(int id)
         {
             var bll = new dtoProducto();
@@ -124,6 +132,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Edit(int id)
         {
             var bll = new dtoProducto();
@@ -141,6 +150,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Edit(ProductoViewModels producto, HttpPostedFileBase file)
         {
 
@@ -158,6 +168,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Delete(int id)
         {
             var bll = new dtoProducto();
@@ -168,6 +179,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarAdmin]
         public ActionResult Delete(ProductoViewModels producto)
         {
             App_Start.AutoMapperWebConfiguration.Configure();
@@ -221,16 +233,19 @@ namespace UAIBay.WebSite.Controllers
 
         public ActionResult BuscarProducto(string productoBuscar, int? page)
         {
+
+            ViewBag.UltimoBuscado = productoBuscar;
+
             var bll = new dtoProducto();
             var productos = bll.TraerProductos();
 
             var bllcat = new UAIBay.BLL.DTO.dtoCategoria();
             var categoriasDTO = bllcat.TraerCategorias();
 
-             App_Start.AutoMapperWebConfiguration.Configure();
+            App_Start.AutoMapperWebConfiguration.Configure();
 
-             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
-             ViewBag.CategoriasSimple = categoriasViewmodel;
+            var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
+            ViewBag.CategoriasSimple = categoriasViewmodel;
 
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
             string palabraBeta = productoBuscar;
@@ -247,10 +262,10 @@ namespace UAIBay.WebSite.Controllers
 
             productosE = productosE.ToList();
 
-            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4).Where(x=> x.IdCategoria==productosE.FirstOrDefault().IdCategoria);
+            ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4).Where(x => x.IdCategoria == productosE.FirstOrDefault().IdCategoria);
             ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
 
-            var pageNumber = page ?? 1; 
+            var pageNumber = page ?? 1;
 
             return View(productosE.ToPagedList(pageNumber, 9));
         }

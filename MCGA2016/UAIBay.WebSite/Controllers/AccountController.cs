@@ -36,6 +36,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult MisCompras(int? page)
         {
             var bll = new dtoUsuario();
@@ -57,6 +58,7 @@ namespace UAIBay.WebSite.Controllers
 
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Details(int id, int? page)
         {
             var bll = new dtoVenta();
@@ -70,6 +72,7 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Cuenta()
         {
             var bll = new dtoUsuario();
@@ -83,12 +86,16 @@ namespace UAIBay.WebSite.Controllers
         }
 
         [HttpPost]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Cuenta(UsuarioViewModels usuario)
         {
             App_Start.AutoMapperWebConfiguration.Configure();
             dtoUsuario DTO = Mapper.Map<UsuarioViewModels, dtoUsuario>(usuario);
 
             var bll = new dtoUsuario();
+            DTO.Roles = null;
+            DTO.Direccion = null;
+
             bll.Actualizar(DTO);
 
             return RedirectToAction("Cuenta");
@@ -153,7 +160,7 @@ namespace UAIBay.WebSite.Controllers
                 App_Start.AutoMapperWebConfiguration.Configure();
                 var DTO = Mapper.Map<UsuarioViewModels, dtoUsuario>(usuarioVM);
 
-                DTO.Roles.Add(rolCliente);
+                DTO.IdRol = rolCliente.IdRol;
 
                 try
                 {
@@ -166,19 +173,20 @@ namespace UAIBay.WebSite.Controllers
                 catch (Exception)
                 {
 
-                    ModelState.AddModelError("email", "*El e-mail ingresado no es válido. ");
+                    bll.Crear(DTO);
 
-                    var provincias = LlenarComboProvincias();
-
-                    return View("Login", provincias);
+                    return RedirectToAction("Ingresar", "Account", new { user = email, pw = ViewBag.Password });
 
                 }
                 //}
 
             }
 
+            ModelState.AddModelError("contraseña", "*Las contraseñas ingresadas no coinciden.");
 
-            return RedirectToAction("Index");
+            var prov = LlenarComboProvincias();
+
+            return View("Login",prov);
         }
 
 
@@ -225,7 +233,7 @@ namespace UAIBay.WebSite.Controllers
                             Session["LogedUserID"] = usuario.UserId.ToString();
                             Session["LogedUserNombre"] = usuario.Nombre;
                             Session["LogedUserEmail"] = usuario.Email;
-                            Session["LogedUserRol"] = usuario.Roles.FirstOrDefault().Nombre;
+                            Session["LogedUserRol"] = usuario.Roles.Nombre;
                             return RedirectToAction("AfterLogin");
 
                         }

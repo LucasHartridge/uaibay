@@ -30,6 +30,7 @@
 
                 @Html.HiddenFor(model => model.Sexo)
 
+                @Html.HiddenFor(model => model.IdRol)
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.DNI, new { @class = "control-label col-md-2" })
@@ -38,7 +39,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-info"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.DNI, new { @placeholder = "DNI", @type = "number", @class = "form-control", required = "required" })
+                            @Html.TextBoxFor(x => x.DNI, new { @placeholder = "DNI", @type = "number", @class = "form-control", required = "required" , @readonly="readonly" })
                         </div>
                         @Html.ValidationMessageFor(model => model.DNI)
                     </div>
@@ -101,7 +102,7 @@
                     <div class="col-md-10">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="fa fa-info"></i>{´´}
+                                <i class="fa fa-info"></i>
                             </span>
                             @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly", @class = "form-control", required = "required" })
                         </div>

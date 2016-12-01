@@ -19,8 +19,8 @@ namespace UAIBay.Servicios
 
             msj.From = new MailAddress(e);
             msj.To.Add(new MailAddress(e));
-            msj.Subject = "¡Bienvenido a UAIBook " + nombre + "!";
-            msj.Body = "A partir de ahora podrás comenzar a utilizar todas las funcionalidades de la página. Esperamos que disfrutes de la gran variedad de libros que tenemos para tí.";
+            msj.Subject = "¡Bienvenido a UAIBay " + nombre + "!";
+            msj.Body = "A partir de ahora podrás comenzar a utilizar todas las funcionalidades de la página. Esperamos que disfrutes de la gran variedad de productos que tenemos para tí.";
             msj.IsBodyHtml = false;
 
             cli.Host = "smtp.gmail.com";

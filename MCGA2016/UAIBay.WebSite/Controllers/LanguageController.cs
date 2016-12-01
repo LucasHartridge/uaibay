@@ -30,7 +30,6 @@ namespace UAIBay.WebSite.Controllers
             cookie.Value = LanguageAbbreviation;
             Response.Cookies.Add(cookie);
 
-           
 
             return Redirect(Request.UrlReferrer.PathAndQuery);
         }

@@ -14,11 +14,17 @@ namespace UAIBay.WebSite.Autorizaciones
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (HttpContext.Current.Session["LogedUserRol"] == "Administrador" | HttpContext.Current.Session["LogedUserRol"] == "Cliente")
+            //if (HttpContext.Current.Session["LogedUserRol"].ToString() == "Administrador" | HttpContext.Current.Session["LogedUserRol"].ToString() == "Cliente")
+            //{
+            if (HttpContext.Current.Session["LogedUserID"] != null)
             {
                 return;
             }
-            throw new HttpException(403, "HTTPExcepcion403");
+            else
+            {
+                //}
+                throw new HttpException(403, "HTTPExcepcion403");
+            }
             //filterContext.Result = New HttpUnauthorizedResult()
         }
 
