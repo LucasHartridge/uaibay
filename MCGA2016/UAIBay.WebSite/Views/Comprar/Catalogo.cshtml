@@ -52,7 +52,7 @@
 
 
 
-                        //FORMULARIO DE MAIL INICIO
+                      //FORMULARIO DE MAIL INICIO
                         <div class="modal fade" id="mail-@item.CodProducto" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -91,9 +91,10 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-
                                                 <label class="col-xs-3 control-label" style="color:#B4B1AB">CAPTCHA</label>
                                                 <div class="col-xs-5">
+                                                    <div id="@item.CodProducto"></div>
+                                                    @*<div class="g-recaptcha" data-sitekey="6Lc8WQcUAAAAABQKSITdXbc6p9HISCQhZIJwm2Zw"></div>*@
                                                     <div class="g-recaptcha" data-sitekey="6Ld8qQwUAAAAAE81mzcrniXUbK-KUn2BTNirnzuH"></div>
                                                     <span id="captcha" style="color:red" />
                                                 </div>
@@ -214,6 +215,13 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
+
+    $('.form-horizontal').on('submit', function (e) {
+        if (grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            alert("Por favor robot complete el captcha");
+        }
+    });
 
     function restar(b) {
         changeQuantity(-1, b);

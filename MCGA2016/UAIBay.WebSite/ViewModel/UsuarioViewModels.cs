@@ -54,6 +54,7 @@ namespace UAIBay.WebSite.ViewModel
         public string Password { get; set; }
         public string PasswordHash { get; set; }
         public int AccessFailedCount { get; set; }
+        public int IdRol { get; set; }
 
         //public virtual ICollection<ActivityLogViewModels> ActivityLog { get; set; }
         //public virtual ICollection<DataLogViewModels> DataLog { get; set; }
@@ -62,6 +63,6 @@ namespace UAIBay.WebSite.ViewModel
         //public virtual ICollection<HistoryViewModels> History { get; set; }
         //public virtual ICollection<TarjetaCreditoViewModels> TarjetaCredito { get; set; }
         //public virtual ICollection<VentaViewModels> Venta { get; set; }
-        public virtual ICollection<RolesViewModels> Roles { get; set; }
+        public virtual RolesViewModels Roles { get; set; }
     }
 }

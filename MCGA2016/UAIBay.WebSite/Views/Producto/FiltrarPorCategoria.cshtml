@@ -224,7 +224,15 @@
         changeQuantity(-1, b);
     };
 
-
+    $('.form-horizontal').on('submit', function (e) {
+        if (grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            alert("Por favor robot complete el captcha");
+        }
+        //else {
+        //    alert("Gracias");
+        //}
+    });
 
     function sumar(b) {
         changeQuantity(1, b);

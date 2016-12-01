@@ -38,8 +38,8 @@
         <AssociationConnector Association="UAIBayModel.FK_ItemCarrito_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="UAIBayModel.FK_TarjetaCredito_Usuario1" ManuallyRouted="false" />
         <AssociationConnector Association="UAIBayModel.FK_Venta_Usuario1" ManuallyRouted="false" />
-        <AssociationConnector Association="UAIBayModel.UsuarioRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="UAIBayModel.Promocion" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="UAIBayModel.FK_Usuario_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

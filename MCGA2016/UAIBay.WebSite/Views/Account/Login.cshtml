@@ -43,7 +43,7 @@
                     @using (@Html.BeginForm("Registrar", "Account", FormMethod.Post))
                     {
                         @Html.ValidationMessage("email")
-                        
+                        @Html.ValidationMessage("contraseña")
 
                         <input type="number" placeholder="DNI" name="dni" required />
                         @Html.ValidationMessage("dni")

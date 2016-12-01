@@ -241,16 +241,9 @@
           <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PasswordHash" Type="varchar(max)" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
           <Property Name="DeleteOn" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsuarioRoles">
-          <Key>
-            <PropertyRef Name="IdRol" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="IdRol" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -436,27 +429,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsuarioRoles_Roles">
+        <Association Name="FK_Usuario_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="UsuarioRoles" Type="Self.UsuarioRoles" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
               <PropertyRef Name="IdRol" />
             </Principal>
-            <Dependent Role="UsuarioRoles">
+            <Dependent Role="Usuario">
               <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UsuarioRoles_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="UsuarioRoles" Type="Self.UsuarioRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UsuarioRoles">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -491,7 +472,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TarjetaCredito" EntityType="Self.TarjetaCredito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsuarioRoles" EntityType="Self.UsuarioRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ActivityLog_Usuario" Association="Self.FK_ActivityLog_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -549,13 +529,9 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="TarjetaCredito" EntitySet="TarjetaCredito" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsuarioRoles_Roles" Association="Self.FK_UsuarioRoles_Roles">
+          <AssociationSet Name="FK_Usuario_Roles" Association="Self.FK_Usuario_Roles">
             <End Role="Roles" EntitySet="Roles" />
-            <End Role="UsuarioRoles" EntitySet="UsuarioRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsuarioRoles_Usuario" Association="Self.FK_UsuarioRoles_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="UsuarioRoles" EntitySet="UsuarioRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Venta_Usuario1" Association="Self.FK_Venta_Usuario1">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -775,7 +751,7 @@
           </Key>
           <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.UsuarioRoles" FromRole="Roles" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="UAIBayModel.FK_Usuario_Roles" FromRole="Roles" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -824,7 +800,8 @@
           <NavigationProperty Name="History" Relationship="Self.FK_History_Usuario" FromRole="Usuario" ToRole="History" />
           <NavigationProperty Name="TarjetaCredito" Relationship="Self.FK_TarjetaCredito_Usuario1" FromRole="Usuario" ToRole="TarjetaCredito" />
           <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Usuario1" FromRole="Usuario" ToRole="Venta" />
-          <NavigationProperty Name="Roles" Relationship="Self.UsuarioRoles" FromRole="Usuario" ToRole="Roles" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="UAIBayModel.FK_Usuario_Roles" FromRole="Usuario" ToRole="Roles" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -1024,10 +1001,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="UsuarioRoles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="UAIBayAccess" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivityLog" EntityType="Self.ActivityLog" />
           <EntitySet Name="Carrito" EntityType="Self.Carrito" />
@@ -1107,11 +1080,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="UsuarioRoles" Association="Self.UsuarioRoles">
+          <EntitySet Name="Promocion" EntityType="UAIBayModel.Promocion" />
+          <AssociationSet Name="FK_Usuario_Roles" Association="UAIBayModel.FK_Usuario_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <EntitySet Name="Promocion" EntityType="UAIBayModel.Promocion" />
         </EntityContainer>
         <EntityType Name="Promocion">
           <Key>
@@ -1122,6 +1095,18 @@
           <Property Name="Descuento" Type="Int32" Nullable="false" />
           <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
+        <Association Name="FK_Usuario_Roles">
+          <End Type="UAIBayModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="UAIBayModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1354,6 +1339,7 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="UAIBayModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1388,14 +1374,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UsuarioRoles" TypeName="UAIBayModel.UsuarioRoles" StoreEntitySet="UsuarioRoles">
-            <EndProperty Name="Roles">
-              <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-            </EndProperty>
-            <EndProperty Name="Usuario">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Promocion">
             <EntityTypeMapping TypeName="UAIBayModel.Promocion">
               <MappingFragment StoreEntitySet="Promocion">

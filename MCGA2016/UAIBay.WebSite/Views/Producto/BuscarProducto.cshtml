@@ -215,6 +215,16 @@
 
 <script type="text/javascript">
 
+    $('.form-horizontal').on('submit', function (e) {
+        if (grecaptcha.getResponse() == "") {
+            e.preventDefault();
+            alert("Por favor robot complete el captcha");
+        }
+        //else {
+        //    alert("Gracias");
+        //}
+    });
+
     function restar(b) {
         changeQuantity(-1, b);
     };

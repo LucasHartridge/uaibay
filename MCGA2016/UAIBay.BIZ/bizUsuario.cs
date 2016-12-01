@@ -22,6 +22,7 @@ namespace UAIBay.BIZ
         public Nullable<int> AccessFailedCount { get; set; }
         public Nullable<System.DateTime> DeleteOn { get; set; }
         public bool IsDeleted { get; set; }
+        public int IdRol { get; set; }
 
         //public virtual ICollection<ActivityLog> ActivityLog { get; set; }
         //public virtual ICollection<DataLog> DataLog { get; set; }
@@ -30,6 +31,6 @@ namespace UAIBay.BIZ
         //public virtual ICollection<History> History { get; set; }
         //public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }
         //public virtual ICollection<Venta> Venta { get; set; }
-        public virtual ICollection<bizRoles> Roles { get; set; }
+        public virtual bizRoles Roles { get; set; }
     }
 }

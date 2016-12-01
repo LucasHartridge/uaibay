@@ -9,6 +9,7 @@ using UAIBay.WebSite.ViewModel;
 using System.IO;
 using UAIBay.Servicios;
 using PagedList;
+using System.Globalization;
 
 namespace UAIBay.WebSite.Controllers
 {

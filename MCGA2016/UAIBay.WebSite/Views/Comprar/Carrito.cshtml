@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Carrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    var en= System.Globalization.CultureInfo.GetCultureInfo("en");
 
     ViewBag.Items = Model;
 }
@@ -265,7 +267,7 @@
 
 
         $('#TablaCarrito .targetfields').each(function () {
-            var subtotal = parseInt($(this).find(".subtotal").val());
+            var subtotal = parseFloat($(this).find(".subtotal").val());
             total = total + subtotal;
         });
 

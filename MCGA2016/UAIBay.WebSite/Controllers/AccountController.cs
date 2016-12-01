@@ -93,6 +93,9 @@ namespace UAIBay.WebSite.Controllers
             dtoUsuario DTO = Mapper.Map<UsuarioViewModels, dtoUsuario>(usuario);
 
             var bll = new dtoUsuario();
+            DTO.Roles = null;
+            DTO.Direccion = null;
+
             bll.Actualizar(DTO);
 
             return RedirectToAction("Cuenta");
@@ -157,7 +160,7 @@ namespace UAIBay.WebSite.Controllers
                 App_Start.AutoMapperWebConfiguration.Configure();
                 var DTO = Mapper.Map<UsuarioViewModels, dtoUsuario>(usuarioVM);
 
-                DTO.Roles.Add(rolCliente);
+                DTO.IdRol = rolCliente.IdRol;
 
                 try
                 {
@@ -179,8 +182,11 @@ namespace UAIBay.WebSite.Controllers
 
             }
 
+            ModelState.AddModelError("contraseña", "*Las contraseñas ingresadas no coinciden.");
 
-            return RedirectToAction("Index");
+            var prov = LlenarComboProvincias();
+
+            return View("Login",prov);
         }
 
 
@@ -227,7 +233,7 @@ namespace UAIBay.WebSite.Controllers
                             Session["LogedUserID"] = usuario.UserId.ToString();
                             Session["LogedUserNombre"] = usuario.Nombre;
                             Session["LogedUserEmail"] = usuario.Email;
-                            Session["LogedUserRol"] = usuario.Roles.FirstOrDefault().Nombre;
+                            Session["LogedUserRol"] = usuario.Roles.Nombre;
                             return RedirectToAction("AfterLogin");
 
                         }

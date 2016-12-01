@@ -23,7 +23,6 @@ namespace UAIBay.ORM.Business
             this.History = new HashSet<History>();
             this.TarjetaCredito = new HashSet<TarjetaCredito>();
             this.Venta = new HashSet<Venta>();
-            this.Roles = new HashSet<Roles>();
         }
     
         public int UserId { get; set; }
@@ -40,6 +39,7 @@ namespace UAIBay.ORM.Business
         public Nullable<int> AccessFailedCount { get; set; }
         public Nullable<System.DateTime> DeleteOn { get; set; }
         public bool IsDeleted { get; set; }
+        public int IdRol { get; set; }
     
         public virtual ICollection<ActivityLog> ActivityLog { get; set; }
         public virtual ICollection<DataLog> DataLog { get; set; }
@@ -48,6 +48,6 @@ namespace UAIBay.ORM.Business
         public virtual ICollection<History> History { get; set; }
         public virtual ICollection<TarjetaCredito> TarjetaCredito { get; set; }
         public virtual ICollection<Venta> Venta { get; set; }
-        public virtual ICollection<Roles> Roles { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }
