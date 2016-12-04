@@ -14,15 +14,24 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
+<html itemscope itemtype="http://schema.org/WebSite">
+<head itemscope itemtype="og: http://ogp.me/ns#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Es una pagina de venta de productos que realiza envios a toda Argentina de manera gratuita y que ofrece un servicio de pago en cuotas. Posee multilenguaje(Español,Ingles y Frances)">
     <meta name="author" content="Los 4 fantasticos">
     <meta name="language" content="English">
     <meta name="keywords" content="UAIBAY,Productos,Categorias,Proveedores,Promociones">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="cache-control" content="private" />
+    <meta http-equiv="cache-control" content="no-store" />
+    <meta http-equiv="cache-control" content="must-revalidate" />
+    <meta http-equiv="cache-control" content="post-check=0" />
+    <meta http-equiv="cache-control" content="pre-check=0" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
     <title>UAIBay</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -34,7 +43,7 @@
             });
         };
     </script>
-    
+
     <script src="https://www.google.com/recaptcha/api.js?onload=ReCaptchaCallback&render=explicit" async defer></script>
     <script src="https://api.mondido.com/v1/mondido.js?rnd=1&merchant_id=3"> </script>
     <script src="https://s3-eu-west-1.amazonaws.com/mondido/www/js/validator.js"> </script>
@@ -49,7 +58,7 @@
     <link href="~/Content/prettyPhoto.css" rel="stylesheet" />
     <link href="~/Content/price-range.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    @*<link rel="shortcut icon" href="images/ico/favicon.ico">*@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/images/ico/apple-touch-icon-114-precomposed.png">
@@ -57,18 +66,18 @@
     <link rel="apple-touch-icon-precomposed" href="~/Content/images/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon32x32.ico" />
 </head>
-<body>
-    <header id="header">
+<body itemscope itemtype="http://schema.org/WebPage">
+    <header id="header" itemprop="hasPart" itemscope itemtype="http://schema.org/WPHeader">
         <!--header-->
         <div class="header_top">
             <!--header_top-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="contactinfo">
+                        <div class="contactinfo" itemscope itemtype="http://schema.org/Organization">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> 011 4661-6986</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> uaibay@hotmail.com</a></li>
+                                <li><a href="tel:011 4661-6986" itemprop="telephone"><i class="fa fa-phone"></i> 011 4661-6986</a></li>
+                                <li><a href="mailto:&#117;&#97;&#105;&#98;&#97;&#121;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" itemprop="email"><i class="fa fa-envelope"></i> Contáctenos</a></li>
                             </ul>
                         </div>
                     </div>
@@ -93,7 +102,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="/Home/Index"><img src="~/Content/images/home/Logo.Pequeño.png" alt="Logo" /></a>
+                            <a href="/Home/Index"><img src="~/Content/images/home/Logo.Pequeño.png" alt="Logo" itemprop="logo" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -219,12 +228,12 @@
             @RenderBody()
         </div>
     </section>
-    <footer id="footer">
+    <footer id="footer" itemprop="hasPart" itemscope itemtype="http://schema.org/WPFooter">
         <!--Footer-->
         <div class="footer-widget">
             <div class="container">
                 <div class="companyinfo">
-                    <h2><span>uai</span>-bay</h2>
+                    <h2 itemprop="text"><span>uai</span>-bay</h2>
                     <p></p>
                 </div>
                 <div class="row">
@@ -232,7 +241,7 @@
                     <div class="col-sm-3">
 
                         <div class="single-widget">
-                            <h2>@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
+                            <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 @foreach (UAIBay.WebSite.ViewModel.CategoriaViewModels item in ViewBag.CategoriasLayout)
                                 {
@@ -244,7 +253,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="single-widget">
-                            <h2>@UAIBay.WebSite.Resources.Recurso.AcercaDe</h2>
+                            <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.AcercaDe</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="/Home/NuestraInformacion">@UAIBay.WebSite.Resources.Recurso.Nuestrainformacion</a></li>
                                 <li><a href="/Home/FAQS">@UAIBay.WebSite.Resources.Recurso.FAQS</a></li>
@@ -254,16 +263,16 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="single-widget">
-                            <h2>@UAIBay.WebSite.Resources.Recurso.NuestrasNovedadesTitulo</h2>
+                            <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.NuestrasNovedadesTitulo</h2>
                             <form action="#" class="searchform">
                                 <input type="text" placeholder="Email" />
                                 <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                <p>@UAIBay.WebSite.Resources.Recurso.NuestrasNovedadesParrafo</p>
+                                <p itemprop="text">@UAIBay.WebSite.Resources.Recurso.NuestrasNovedadesParrafo</p>
                             </form>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="address">
+                        <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                             <img src="~/Content/images/home/map.png" alt="Mapa" />
                             <p>3550 Arias,Castelar,Buenos Aires,Argentina</p>
                         </div>
@@ -275,7 +284,7 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <div class="row">
+                <div class="row" itemprop="copyrightHolder">
                     <p class="pull-left">@UAIBay.WebSite.Resources.Recurso.Copyright</p>
                     <p class="pull-right">@UAIBay.WebSite.Resources.Recurso.Diseñado</p>
                 </div>

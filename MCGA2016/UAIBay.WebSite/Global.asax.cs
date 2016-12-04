@@ -7,6 +7,7 @@ using System.Web.Routing;
 using AutoMapper;
 using UAIBay.WebSite.App_Start;
 using UAIBay.WebSite.Controllers;
+using System.IO.Compression;
 
 
 namespace UAIBay.WebSite
@@ -19,11 +20,46 @@ namespace UAIBay.WebSite
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
-
-        protected void Application_BeginRequest(object sender,EventArgs e)
+        protected void Application_PreSendRequestHeaders()
         {
+            Response.Headers.Remove("Server");
+            Response.Headers.Remove("X-AspNet-Version");
+            Response.Headers.Remove("X-AspNetMvc-Version");
+        }
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            //if (!Context.Request.IsSecureConnection)
+            //{
+            //    Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+            //}
+     //       if (!Context.Request.IsSecureConnection &&
+     //!Request.Url.Host.Contains("localhost"))
+     //       {
+     //           Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+     //       }
+            // Implement HTTP compression
+            HttpApplication app = (HttpApplication)sender;
+            // Retrieve accepted encodings
+            string encodings = app.Request.Headers.Get("Accept-Encoding");
+            if (encodings != null)
+            {
+                // Check the browser accepts deflate or gzip (deflate takes preference)
+                encodings = encodings.ToLower();
+                if (encodings.Contains("deflate"))
+                {
+                    app.Response.Filter = new DeflateStream(app.Response.Filter, CompressionMode.Compress);
+                    app.Response.AppendHeader("Content-Encoding", "deflate");
+                }
+                else if (encodings.Contains("gzip"))
+                {
+                    app.Response.Filter = new GZipStream(app.Response.Filter, CompressionMode.Compress);
+                    app.Response.AppendHeader("Content-Encoding", "gzip");
+                }
+            }
+
+
             HttpCookie cookie = HttpContext.Current.Request.Cookies["Lenguaje"];
-            if(cookie !=null && cookie.Value != null)
+            if (cookie != null && cookie.Value != null)
             {
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cookie.Value);
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cookie.Value);

@@ -11,6 +11,9 @@ namespace UAIBay.WebSite
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.AppendTrailingSlash = true;
+            routes.LowercaseUrls = true;
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

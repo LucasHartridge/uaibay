@@ -13,6 +13,7 @@ namespace UAIBay.WebSite.Controllers
     {
         //
         // GET: /Home/
+        //[RequireHttps]
         public ActionResult Index()
         {
             var bll = new dtoProducto();
@@ -30,13 +31,13 @@ namespace UAIBay.WebSite.Controllers
 
             foreach (var item in productosTopDiez)
             {
-                if (item.Descripcion.Length>35)
+                if (item.Descripcion.Length > 35)
                 {
 
                     var texto = item.Descripcion.Substring(0, 35);
 
                     item.Descripcion = texto;
-                    
+
                 }
             }
 
@@ -77,5 +78,5 @@ namespace UAIBay.WebSite.Controllers
 
             return View("EmailEnviado");
         }
-	}
+    }
 }

@@ -22,33 +22,33 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>UAI</span>-BAY</h1>
-                                <h2>@UAIBay.WebSite.Resources.Recurso.BannerslideComunidadTitulo</h2>
-                                <p>@UAIBay.WebSite.Resources.Recurso.BannerslideComunidadParrafo</p>
+                                <h1 itemprop="text"><span>UAI</span>-BAY</h1>
+                                <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideComunidadTitulo</h2>
+                                <p itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideComunidadParrafo</p>
 
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/Content/images/index/slidder-cart.jpg" class="girl img-responsive" alt="Slider Carrito" />
+                                <img src="~/Content/images/index/slidder-cart.jpg" class="girl img-responsive" alt="Slider Carrito" itemprop="image" />
                             </div>
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>UAI</span>-BAY</h1>
-                                <h2>@UAIBay.WebSite.Resources.Recurso.BannerslideComprasTitulo</h2>
-                                <p>@UAIBay.WebSite.Resources.Recurso.BannerslideComprasTitulo</p>
+                                <h1 itemprop="text"><span>UAI</span>-BAY</h1>
+                                <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideComprasTitulo</h2>
+                                <p itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideComprasTitulo</p>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/Content/images/index/delivery.jpg" class="girl img-responsive" alt="Slider delivery" />
+                                <img src="~/Content/images/index/delivery.jpg" class="girl img-responsive" alt="Slider delivery" itemprop="image" />
                             </div>
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>UAI</span>-BAY</h1>
-                                <h2>@UAIBay.WebSite.Resources.Recurso.BannerslideCalidadParrafo</h2>
-                                <p>@UAIBay.WebSite.Resources.Recurso.BannerslideCalidadTitulo</p>
+                                <h1 itemprop="text"><span>UAI</span>-BAY</h1>
+                                <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideCalidadParrafo</h2>
+                                <p itemprop="text">@UAIBay.WebSite.Resources.Recurso.BannerslideCalidadTitulo</p>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/Content/images/index/fruta.jpg" class="girl img-responsive" alt="Slider" />
+                                <img src="~/Content/images/index/fruta.jpg" class="girl img-responsive" alt="Slider" itemprop="image" />
                             </div>
                         </div>
 
@@ -71,14 +71,14 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="left-sidebar">
-                <h2>@UAIBay.WebSite.Resources.Recurso.Categorias</h2>
+                <h2 itemprop="text">@UAIBay.WebSite.Resources.Recurso.Categorias</h2>
                 <div class="panel-group category-products" id="accordian">
                     <!--category-productsr-->
                     <div class="panel panel-default">
                         @foreach (UAIBay.WebSite.ViewModel.CategoriaViewModels item in ViewBag.Categorias)
                         {
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="@Url.Action("FiltrarPorCategoria", "Producto", new { idCategoria = item.IdCategoria })">@item.Nombre</a></h4>
+                            <div class="panel-heading" itemscope itemtype="http://schema.org/Product">
+                                <h4 class="panel-title" itemprop="category"><a href="@Url.Action("FiltrarPorCategoria", "Producto", new { idCategoria = item.IdCategoria })">@item.Nombre</a></h4>
                             </div>
                         }
                     </div>
@@ -88,11 +88,11 @@
                 <div class="shipping text-center">
                     <!--shipping-->
                     <div>
-                        <img src="~/Content/images/home/shipping.jpg" alt="Envios" />
+                        <img src="~/Content/images/home/shipping.jpg" alt="Envios" itemprop="image" />
                     </div>
                     <br />
                     <article>
-                        <h4 class="colorNaranja">¡Seguinos en Facebook!</h4>
+                        <h4 class="colorNaranja" itemprop="text">¡Seguinos en Facebook!</h4>
                         <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fuai.elfuturososvos%2F%3Fref%3Dsearch&tabs&width=196&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="196" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                     </article>
                     <br />
@@ -112,13 +112,13 @@
 
                 @if (Model.Count == 0)
                 {
-                    <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
-                    <h5 class="colorNaranja">No hay productos disponibles.</h5>
+                    <h2 class="title text-center" itemprop="text">@UAIBay.WebSite.Resources.Recurso.Catalogo</h2>
+                    <h5 class="colorNaranja" itemprop="text">No hay productos disponibles.</h5>
                 }
                 else
                 {
                 <!--features_items-->
-                    <h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.NuestrosUltimosProductos</h2>
+                    <h2 class="title text-center" itemprop="text">@UAIBay.WebSite.Resources.Recurso.NuestrosUltimosProductos</h2>
                     foreach (var item in Model)
                     {
 
@@ -127,11 +127,11 @@
 
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
-                                <div class="single-products">
+                                <div class="single-products" itemscope itemtype="http://schema.org/Product">
                                     <div class="productinfo text-center">
-                                        <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" /></a>
-                                        <h2>$@item.PrecioVenta</h2>
-                                        <p>@item.Descripcion</p>
+                                        <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" itemprop="image" /></a>
+                                        <h2 itemprop="price">$@item.PrecioVenta</h2>
+                                        <p itemprop="name">@item.Descripcion</p>
                                         <a href="/Comprar/AgregarItem?codProducto=@item.CodProducto" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>@UAIBay.WebSite.Resources.Recurso.AgregarAlCarrito</a>
                                         <a href="#" class="btn btn-default add-to-cart" data-toggle="modal" data-target="#mail-@item.CodProducto"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
 
@@ -221,19 +221,19 @@
                                             </button>
                                             <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
                                         </div>
-                                        <div class="product-details">
+                                        <div class="product-details" itemscope itemtype="http://schema.org/Product">
                                             <!--product-details-->
                                             <div class="col-sm-5">
                                                 <div class="view-product">
-                                                    <img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" />
+                                                    <img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" itemprop="image" />
                                                 </div>
                                             </div>
                                             <div class="col-sm-7">
                                                 <div class="product-information" style="border:none">
                                                     @Html.Hidden("codProducto", @item.CodProducto)
-                                                    <h2>@item.Descripcion</h2>
+                                                    <h2 itemprop="name">@item.Descripcion</h2>
                                                     <span>
-                                                        <span>$@item.PrecioVenta Por unidad</span>
+                                                        <span itemprop="price">$@item.PrecioVenta Por unidad</span>
                                                         <label>Cantidad:</label>
 
 
@@ -268,7 +268,7 @@
 
                                                         <div class="carousel-inner">
                                                             <div class="item active" style="width:248px;height:248px;">
-                                                                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" /></a>
+                                                                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" /></a>
                                                             </div>
 
 
@@ -276,7 +276,7 @@
                                                             {
 
                                                                 <div class="item" style="width:248px;height:248px;">
-                                                                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" /></a>
+                                                                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" /></a>
                                                                 </div>
                                                             }
 
