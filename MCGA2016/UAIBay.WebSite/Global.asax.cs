@@ -16,6 +16,7 @@ namespace UAIBay.WebSite
     {
         protected void Application_Start()
         {
+           
             AutoMapperWebConfiguration.Configure();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -28,10 +29,18 @@ namespace UAIBay.WebSite
         }
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            //if (!Context.Request.IsSecureConnection)
-            //{
-            //    Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
-            //}
+            if (!Request.Url.Host.StartsWith("www") && !Request.Url.IsLoopback)
+            {
+                UriBuilder builder = new UriBuilder(Request.Url);
+                builder.Host = "www." + Request.Url.Host;
+                Response.StatusCode = 301;
+                Response.AddHeader("Location", builder.ToString());
+                Response.End();
+            }
+     //       if (!Context.Request.IsSecureConnection)
+     //       {
+     //           Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+     //       }
      //       if (!Context.Request.IsSecureConnection &&
      //!Request.Url.Host.Contains("localhost"))
      //       {

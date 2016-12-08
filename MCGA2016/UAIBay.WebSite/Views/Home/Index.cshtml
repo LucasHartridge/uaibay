@@ -152,7 +152,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
+                                        @*<center>*@<h1 class="modal-title" style="color:#B4B1AB;font-family:abel;text-align:center;"><span style="color:#FE980F">UAI</span>-BAY</h1>@*</center>*@
                                     </div>
                                     <div class="modal-body">
                                         <form id="loginForm" method="post" class="form-horizontal" name="contact-form" action="/Home/Email">
@@ -219,7 +219,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
-                                            <center><h1 class="modal-title" style="color:#B4B1AB;font-family:abel"><span style="color:#FE980F">UAI</span>-BAY</h1></center>
+                                            @*<center>*@<h1 class="modal-title" style="color:#B4B1AB;font-family:abel;text-align:center"><span style="color:#FE980F">UAI</span>-BAY</h1>@*</center>*@
                                         </div>
                                         <div class="product-details" itemscope itemtype="http://schema.org/Product">
                                             <!--product-details-->
@@ -262,28 +262,30 @@
                                             @*PRODUCTOS ALEATORIOS*@
                                             <div class="col-sm-12">
                                                 <div id="similar-product" class="carousel slide" data-ride="carousel">
-                                                    <center>
-                                                        <h2 class="title text-center">Otros productos</h2>
+                                                    @*<center>*@
+                                                    <h2 class="title text-center">Otros productos</h2>
 
-
-                                                        <div class="carousel-inner">
-                                                            <div class="item active" style="width:248px;height:248px;">
-                                                                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" /></a>
-                                                            </div>
-
-
-                                                            @foreach (var pr in ViewBag.ProductosAleatorios)
-                                                            {
-
-                                                                <div class="item" style="width:248px;height:248px;">
-                                                                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" /></a>
-                                                                </div>
-                                                            }
-
-
+                                                    @*AGREGUE EL TEXT-ALIGH:CENTER Y EL MARGIN-RIGHT Y LEFT AUTO*@
+                                                    <div class="carousel-inner" style="text-align:center;">
+                                                        <div class="item active" style="width:248px;height:248px;margin-left:auto;margin-right:auto;">
+                                                            <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" /></a>
                                                         </div>
 
-                                                    </center>
+                                                        @*AGREGUE EL MARGIN-RIGHT Y LEFT AUTO*@
+                                                        @foreach (var pr in ViewBag.ProductosAleatorios)
+                                                        {
+
+                                                            <div class="item" style="width:248px;height:248px;margin-left:auto;margin-right:auto;">
+                                                                <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" /></a>
+                                                            </div>
+                                                        }
+
+
+                                                    </div>
+
+
+
+                                                    @*</center>*@
                                                     <a class="left item-control" href="#similar-product" data-slide="prev">
                                                         <i class="fa fa-angle-left"></i>
                                                     </a>
@@ -308,6 +310,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("center").remove();
+    });
+</script>
+
 
 
 
