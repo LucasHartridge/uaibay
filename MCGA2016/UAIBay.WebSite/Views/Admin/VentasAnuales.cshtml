@@ -16,11 +16,11 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
-  // Load the Visualization API and the piechart package.
- google.load('visualization', '1.0', {'packages':['corechart']});
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 
-  // Set a callback to run when the Google Visualization API is loaded.
- google.setOnLoadCallback(drawChartVentasMensuales);
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChartVentasMensuales);
 
     function drawChartVentasMensuales() {
         var data = new google.visualization.DataTable();
@@ -30,7 +30,8 @@
         data.addColumn('number', 'Cantidad de Ventas');
         // No Olvides que el GetChar debe ser JsonResult
         //Hacemos un for each creando cada row
-        $.getJSON("@Url.Action("GetChartVentasMensuales")", null, function (chartData) {
+        if ($(window).width() > 700) {
+            $.getJSON("@Url.Action("GetChartVentasMensuales")", null, function (chartData) {
             $.each(chartData, function (i, item) {
                 data.addRow([item.Fecha, item.Total, item.Cantidad ]);
             });
@@ -47,8 +48,33 @@
             chart.draw(data, options);
         });
 
+        }
+        else {
+           $.getJSON("@Url.Action("GetChartVentasMensualesResponsive")", null, function (chartData) {
+            $.each(chartData, function (i, item) {
+                data.addRow([item.Fecha, item.Total, item.Cantidad ]);
+            });
+
+            var options = {
+                bars: 'vertical',
+                vAxis: { format: 'decimal' },
+                height: 500,
+                colors: ['#1b9e77', '#d95f02', '#7570b3']
+            };
+
+            //Mandamos la Data al DIV
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_prodcat'));
+            chart.draw(data, options);
+        });
+        }
+
         window.addEventListener('resize', function () {
-            drawChartVentasMensuales(data)();
+            if ($(window).width() < 700 ) {
+                drawChartVentasMensuales();
+            }
+            else if ($(window).width() > 700 ) {
+                drawChartVentasMensuales();
+            }
         });
     }
 </script>
