@@ -37,6 +37,29 @@ namespace UAIBay.WebSite.ViewModel.Reportes
             return valorRetorno;
         }
 
+        public static List<VentasPorMesViewModels> ObtenerUltimos4Meses()
+        {
+            List<VentasPorMesViewModels> valorRetorno = new List<VentasPorMesViewModels>();
+            var restar = 0;
+            for (int i = 0; i < 4; i++)
+            {
+
+                var hoy = DateTime.Now;
+                var item = new VentasPorMesViewModels();
+
+                //Actualizo los Meses
+                var fechaActualizada = hoy.AddMonths(restar);
+
+                //Verifico el Año
+                var año = fechaActualizada.Year;
+                var mes = fechaActualizada.Month;
+
+                item.Fecha = new DateTime(año, mes, 1).ToShortDateString(); ;
+                valorRetorno.Add(item);
+                restar = restar - 1;
+            }
+            return valorRetorno;
+        }
         public static List<VentasPorMesViewModels> ObtenerReporteFinal(List<VentasPorMesViewModels> reporte)
         {
             var listaRetorno = new List<VentasPorMesViewModels>();

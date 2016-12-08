@@ -91,25 +91,52 @@
 
       // No Olvides que el GetChar debe ser JsonResult
       //Hacemos un for each creando cada row
-      $.getJSON("@Url.Action("GetChartProductosPocaCantidad")", null, function (chartData) {
-          $.each(chartData, function (i, item) {
-              data.addRow([item.Descripcion, item.Cantidad,item.PrecioVenta,item.PrecioCompra]);
+      if ($(window).width() > 700) {
+          $.getJSON("@Url.Action("GetChartProductosPocaCantidad")", null, function (chartData) {
+              $.each(chartData, function (i, item) {
+                  data.addRow([item.Descripcion, item.Cantidad,item.PrecioVenta,item.PrecioCompra]);
+              });
+
+              var options = {
+                  hAxis: { title:"Producto", titleTextStyle: { color: '#FF5733' } },
+                  vAxis: {  title: "Cantidad Disponible",titleTextStyle:{color: '#FF5733'} },
+                  height: 500,
+                  colors: ['#FF5733', '#25C6C1', '#900C3F']
+              };
+
+              //Mandamos la Data al DIV
+              var chart = new google.charts.Bar(document.getElementById('chart_div'));
+              chart.draw(data, options);
           });
+      }
+      else {
+          $.getJSON("@Url.Action("GetChartProductosPocaCantidadResponsive")", null, function (chartData) {
+              $.each(chartData, function (i, item) {
+                  data.addRow([item.Descripcion, item.Cantidad,item.PrecioVenta,item.PrecioCompra]);
+              });
 
-          var options = {
-              hAxis: { title:"Producto", titleTextStyle: { color: '#FF5733' } },
-              vAxis: {  title: "Cantidad Disponible",titleTextStyle:{color: '#FF5733'} },
-              height: 500,
-              colors: ['#FF5733', '#25C6C1', '#900C3F']
-          };
+              var options = {
+                  hAxis: { textColor: '#ffffff', title: "Producto", textStyle: { color: '#FFFFFF' } },
+                  vAxis: {  title: "Cant Disponible",titleTextStyle:{color: '#FF5733'} },
+                  height: 500,
+                  colors: ['#FF5733', '#25C6C1', '#900C3F']
+              };
 
-          //Mandamos la Data al DIV
-          var chart = new google.charts.Bar(document.getElementById('chart_div'));
-          chart.draw(data, options);
-      });
+              //Mandamos la Data al DIV
+              var chart = new google.charts.Bar(document.getElementById('chart_div'));
+              chart.draw(data, options);
+          });
+      }
+    
 
+      //LISTENER RESIZE
       window.addEventListener('resize', function () {
-          drawChart(data)();
+          if ($(window).width() < 700) {
+              drawChart();
+          }
+          else if ($(window).width() > 700) {
+              drawChart();
+          }
       });
       
   }
