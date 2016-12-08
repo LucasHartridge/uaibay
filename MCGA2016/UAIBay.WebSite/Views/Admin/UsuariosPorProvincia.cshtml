@@ -46,20 +46,37 @@
           data.addRow(['Tierra del Fuego', 63]);
           data.addRow(['Tucumán', 8]);
 
-        var options = {};
-        options['region'] = 'AR';
-        options['colors'] = [0x09EACB, 0xB2F7ED,0x0F8583];
-        options['height'] = 566;
-        options['width'] = 1000;
-        var container = document.getElementById('chart_div');
-        var geomap = new google.visualization.GeoMap(container);
+          if ($(window).width() > 750) {
+              var options = {};
+              options['region'] = 'AR';
+              options['colors'] = [0x09EACB, 0xB2F7ED, 0x0F8583];
+              options['height'] = 566;
+              options['width'] = 1000;
+              var container = document.getElementById('chart_div');
+              var geomap = new google.visualization.GeoMap(container);
 
-        geomap.draw(data, options);
+              geomap.draw(data, options);
+          } else {
+              var options = {};
+              options['region'] = 'AR';
+              options['colors'] = [0x09EACB, 0xB2F7ED, 0x0F8583];
+              options['height'] = 500;
+              options['width'] = 450;
+              var container = document.getElementById('chart_div');
+              var geomap = new google.visualization.GeoMap(container);
 
+              geomap.draw(data, options);
+          }
     };
 
-    window.addEventListener('resize', function () {
-        drawMap();
-    });
+
+        window.addEventListener('resize', function () {
+            if ($(window).width() < 750) {
+                drawMap();
+            }
+            else if ($(window).width() > 750) {
+                drawMap();
+            }
+        });
 
 </script>
