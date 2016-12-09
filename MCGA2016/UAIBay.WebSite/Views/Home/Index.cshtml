@@ -156,7 +156,7 @@
                                         @*<center>*@<h1 class="modal-title" style="color:#B4B1AB;font-family:abel;text-align:center;"><span style="color:#FE980F">UAI</span>-BAY</h1>@*</center>*@
                                     </div>
                                     <div class="modal-body">
-                                        <form id="loginForm" method="post" class="form-horizontal" name="contact-form" action="/Home/Email">
+                                        <form id="loginForm" method="post" class="form-horizontal" name="contact-form" action="/Home/Email" @*onsubmit="return checkCaptcha()"*@>
                                             <div class=" form-group">
                                                 <label class="col-xs-3 control-label" style="color:#B4B1AB">E-mail</label>
                                                 <div class="col-xs-5">
@@ -328,16 +328,31 @@
 
 <script type="text/javascript">
 
-    $('.form-horizontal').on('submit', function (e) {
-        if (grecaptcha.getResponse() == "") {
-            e.preventDefault();
-            alert("Por favor robot complete el captcha");
-        }
-        //else {
-        //    alert("Gracias");
-        //}
-    });
+    //$('.form-horizontal').on('submit', function (e) {
+    //    if (grecaptcha.getResponse() == "") {
+    //        e.preventDefault();
+    //        alert("Por favor robot complete el captcha");
+    //    }
+    //    //else {
+    //    //    alert("Gracias");
+    //    //}
+    //});
+    //function checkCaptcha() {
+    //    var captcha = document.getElementById('captcha ').value;
 
+    //    if (captcha == "" || captcha == " ") {
+    //        alert("please fill the captcha ");
+    //        return false;
+    //    }
+    //    else
+    //        if (captcha.length != 7) {
+    //            return false
+    //        } // and so on
+    //        else {
+    //            // if everything is ok you can submit
+    //            return true;
+    //        }
+    //}
 
     function restar(b) {
         changeQuantity(-1, b);

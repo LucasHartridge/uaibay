@@ -14,6 +14,7 @@ namespace UAIBay.WebSite
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+      
         protected void Application_Start()
         {
            
@@ -29,6 +30,8 @@ namespace UAIBay.WebSite
         }
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+           
+
             if (!Request.Url.Host.StartsWith("www") && !Request.Url.IsLoopback)
             {
                 UriBuilder builder = new UriBuilder(Request.Url);

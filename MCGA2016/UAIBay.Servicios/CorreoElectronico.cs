@@ -50,6 +50,7 @@ namespace UAIBay.Servicios
             cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
             cli.EnableSsl = true; 
             cli.Send(msj);
+
         }
 
         public static void RecuperarContraseña(string e, string newpw)
