@@ -129,6 +129,7 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products" itemscope itemtype="http://schema.org/Product">
                                     <div class="productinfo text-center">
+
                                         <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;" itemprop="image" /></a>
                                         <h2 itemprop="price">$@item.PrecioVenta</h2>
                                         <p itemprop="name">@item.Descripcion</p>
@@ -261,22 +262,26 @@
 
                                             @*PRODUCTOS ALEATORIOS*@
                                             <div class="col-sm-12">
-                                                <div id="similar-product" class="carousel slide" data-ride="carousel">
+                                                <div id="sa" class="carousel slide similar-product" data-ride="carousel" style="margin-top: 40px;">
                                                     @*<center>*@
                                                     <h2 class="title text-center">Otros productos</h2>
 
                                                     @*AGREGUE EL TEXT-ALIGH:CENTER Y EL MARGIN-RIGHT Y LEFT AUTO*@
                                                     <div class="carousel-inner" style="text-align:center;">
-                                                        <div class="item active" style="width:248px;height:248px;margin-left:auto;margin-right:auto;">
-                                                            <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" /></a>
+                                                        <div class="item active" style="width: 248px; height: 248px; margin-left: auto; margin-right: auto; padding-left: 0px;">
+                                                            <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion">
+                                                                <img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" style=" display: inline-block;
+        margin-left: 15px;" />
+                                                            </a>
                                                         </div>
 
                                                         @*AGREGUE EL MARGIN-RIGHT Y LEFT AUTO*@
                                                         @foreach (var pr in ViewBag.ProductosAleatorios)
                                                         {
 
-                                                            <div class="item" style="width:248px;height:248px;margin-left:auto;margin-right:auto;">
-                                                                <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" /></a>
+                                                            <div class="item" style="width: 248px; height: 248px; margin-left: auto; margin-right: auto; padding-left: 0px;">
+                                                                <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" style=" display: inline-block;
+        margin-left: 15px;" /></a>
                                                             </div>
                                                         }
 
@@ -286,10 +291,10 @@
 
 
                                                     @*</center>*@
-                                                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                                                    <a class="left item-control" href=".similar-product" data-slide="prev">
                                                         <i class="fa fa-angle-left"></i>
                                                     </a>
-                                                    <a class="right item-control" href="#similar-product" data-slide="next">
+                                                    <a class="right item-control" href=".similar-product" data-slide="next">
                                                         <i class="fa fa-angle-right"></i>
                                                     </a>
                                                 </div>
