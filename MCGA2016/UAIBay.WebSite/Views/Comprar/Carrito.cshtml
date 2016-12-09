@@ -268,7 +268,7 @@
 
         $('#TablaCarrito .targetfields').each(function () {
             var subtotal = parseFloat($(this).find(".subtotal").val());
-            total = total + subtotal;
+            total = total + subtotal.toFixed(2);
         });
 
         $('#subtotalcarrito').val(total);
@@ -282,7 +282,7 @@
 
         $('#TablaCarritoHidden .targetfields').each(function () {
             var subtotal = parseInt($(this).find(".subtotalHidden").val());
-            total = total + subtotal;
+            total = total + subtotal.toFixed(2);
         });
 
     }
@@ -310,7 +310,7 @@
         var subtotal = $tr.find("td").eq(4).find('.subtotal').val();
         var quantity = parseInt($(obj).parent().parent().find('.cantidad').val());
         var subtotalactualizado = precio * quantity;
-        $tr.find("td").eq(4).find('.subtotal').val(subtotalactualizado);
+        $tr.find("td").eq(4).find('.subtotal').val(subtotalactualizado.toFixed(2));
     }
 
     function changeSubTotalHidden(obj) {
@@ -319,7 +319,7 @@
         var subtotal = $tr.find("td").eq(4).find('.subtotalHidden').val();
         var quantity = parseInt($(obj).parent().parent().find('.cantidadHidden').val());
         var subtotalactualizado = precio * quantity;
-        $tr.find("td").eq(4).find('.subtotalHidden').val(subtotalactualizado);
+        $tr.find("td").eq(4).find('.subtotalHidden').val(subtotalactualizado.toFixed(2));
 
     }
 
@@ -328,7 +328,7 @@
         var total = 0;
         $('#TablaCarrito .targetfields').each(function () {
             var subtotal = parseInt($(this).find(".subtotal").val());
-            total = total + subtotal;
+            total = total + subtotal.toFixed(2);
         });
         //$('#TablaCarritoHidden .targetfields').each(function () {
         //    var subtotal = $(this).find(".subtotalHidden").val();

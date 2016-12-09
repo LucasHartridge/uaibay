@@ -25,7 +25,7 @@ namespace UAIBay.Servicios
 
             cli.Host = "smtp.gmail.com";
             cli.Port = 587;
-            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "lppa2016");
+            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
             cli.EnableSsl = true;
             cli.Send(msj);
         }
@@ -46,7 +46,7 @@ namespace UAIBay.Servicios
 
             cli.Host = "smtp.gmail.com";
             cli.Port = 587;
-            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "lppa2016");
+            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
             cli.EnableSsl = true; cli.Send(msj);
         }
 
@@ -65,7 +65,7 @@ namespace UAIBay.Servicios
 
             cli.Host = "smtp.gmail.com";
             cli.Port = 587;
-            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "lppa2016");
+            cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
             cli.EnableSsl = true; cli.Send(msj);
         }
     }

@@ -1005,7 +1005,7 @@ body {
 }
 
 #subtotalcarrito {
-    width: 40px;
+    width: 90px;
     background: #E6E4DF;
     text-align: center;
     border: none;
@@ -1052,7 +1052,7 @@ textarea.textarea {
 }
 
 #totalcarrito {
-    width: 40px;
+    width: 90px;
     background: #E6E4DF;
     text-align: center;
     border: none;
@@ -1067,7 +1067,7 @@ textarea.textarea {
 }
 
 #subtotal {
-    width: 40px;
+    width: 90px;
     text-align: center;
     border: none;
     color: #FE980F;
