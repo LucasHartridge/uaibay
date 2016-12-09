@@ -24,6 +24,7 @@ namespace UAIBay.Servicios
             msj.IsBodyHtml = false;
 
             cli.Host = "smtp.gmail.com";
+            cli.DeliveryMethod = SmtpDeliveryMethod.Network;
             cli.Port = 587;
             cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
             cli.EnableSsl = true;
@@ -47,7 +48,9 @@ namespace UAIBay.Servicios
             cli.Host = "smtp.gmail.com";
             cli.Port = 587;
             cli.Credentials = new NetworkCredential("uaibooklppa@gmail.com", "mcga2016");
-            cli.EnableSsl = true; cli.Send(msj);
+            cli.EnableSsl = true; 
+            cli.Send(msj);
+
         }
 
         public static void RecuperarContraseña(string e, string newpw)

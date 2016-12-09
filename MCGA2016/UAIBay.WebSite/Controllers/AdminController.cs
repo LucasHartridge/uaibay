@@ -36,6 +36,21 @@ namespace UAIBay.WebSite.Controllers
 
             return Json(productosFiltrados.Select(p => new { p.Descripcion, p.Cantidad, p.PrecioCompra, p.PrecioVenta }), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetChartProductosPocaCantidadResponsive()
+        {
+            var bll = new dtoProducto();
+            var productos = bll.TraerProductos();
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
+
+            var productosFiltrados = (from q in productosVM
+                                      orderby q.Cantidad ascending
+                                      select q).Take(3);
+
+            return Json(productosFiltrados.Select(p => new { p.Descripcion, p.Cantidad, p.PrecioCompra, p.PrecioVenta }), JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region Chart Compracion Precio Venta vs Precio Compra
@@ -57,6 +72,22 @@ namespace UAIBay.WebSite.Controllers
             var productosFiltrados = (from q in productosVM
                                       orderby q.PrecioVenta descending
                                       select q).Take(10);
+
+            return Json(productosFiltrados.Select(p => new { p.Descripcion, p.PrecioVenta, p.PrecioCompra }), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetChartComparacionPrecioProductoResponsive()
+        {
+            var bll = new dtoProducto();
+            var productos = bll.TraerProductos();
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
+
+            var productosFiltrados = (from q in productosVM
+                                      orderby q.PrecioVenta descending
+                                      select q).Take(4);
 
             return Json(productosFiltrados.Select(p => new { p.Descripcion, p.PrecioVenta, p.PrecioCompra }), JsonRequestBehavior.AllowGet);
         }
@@ -92,6 +123,59 @@ namespace UAIBay.WebSite.Controllers
 
             //FILTRO X MES
             var list = VentasPorMesViewModels.ObtenerUltimos12Meses();
+            var reporte = new List<VentasPorMesViewModels>();
+
+            foreach (var mes in list)
+            {
+
+                var totalXMes = new VentasPorMesViewModels();
+                totalXMes.Fecha = mes.Fecha;
+                totalXMes.Cantidad = 0;
+                totalXMes.Total = 0;
+
+                foreach (var item in ventasDto)
+                {
+                    if (item.Fecha.Month == Convert.ToDateTime(mes.Fecha).Month && item.Fecha.Year == Convert.ToDateTime(mes.Fecha).Year)
+                    {
+                        totalXMes.Total += item.Total;
+                        totalXMes.Cantidad += 1;
+                    }
+                }
+
+                reporte.Add(totalXMes);
+            }
+
+
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            var reporteFinal = VentasPorMesViewModels.ObtenerReporteFinal(reporte);
+            return Json(reporte.Select(p => new { p.Cantidad, p.Fecha, p.Total }), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetChartVentasMensualesResponsive()
+        {
+            var bll = new dtoVenta();
+            var ventasbll = bll.TraerVentas();
+            App_Start.AutoMapperWebConfiguration.Configure();
+            var ventas = Mapper.Map<List<VentaViewModels>>(ventasbll);
+            //OBTENGO LAS VENTAS DEL ULTIMO AÑO
+            var ventasUltimoAño = from x in ventas
+                                  where (x.Fecha <= DateTime.Now && x.Fecha >= DateTime.Now.AddYears(-1))
+                                  select x;
+
+            //MAPEO A ENTIDAD CONOCIDA
+            List<dtoVenta> ventasDto = new List<dtoVenta>();
+            foreach (var item in ventasUltimoAño)
+            {
+                dtoVenta unaVenta = new dtoVenta();
+                unaVenta.Fecha = item.Fecha;
+                unaVenta.Total = item.Total;
+                ventasDto.Add(unaVenta);
+            }
+
+            //FILTRO X MES
+            var list = VentasPorMesViewModels.ObtenerUltimos4Meses();
             var reporte = new List<VentasPorMesViewModels>();
 
             foreach (var mes in list)

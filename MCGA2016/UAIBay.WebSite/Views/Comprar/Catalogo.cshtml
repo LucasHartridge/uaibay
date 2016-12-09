@@ -40,8 +40,9 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="" style="width:248px;height:248px;" /></a>
-                                        <h2 style="display:inline-block;">$</h2><h2 style="display:inline-block">@item.PrecioVenta</h2>
+
+                                        <a href="#" data-toggle="modal" data-target="#tips-@item.CodProducto"><img src="~/ImgProductos/@item.Imagen" alt="Producto" style="width:248px;height:248px;"/></a>
+                                        <h2>$@item.PrecioVenta</h2>
                                         <p>@item.Descripcion</p>
                                         <a href="/Comprar/AgregarItem?codProducto=@item.CodProducto" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>@UAIBay.WebSite.Resources.Recurso.AgregarAlCarrito</a>
                                         <a href="#" data-toggle="modal" class="btn btn-default add-to-cart" data-target="#mail-@item.CodProducto"><i class="fa fa-plus-circle" style="margin:auto 0"></i></a>
@@ -162,40 +163,48 @@
                                             </div>
 
 
-                                            @*INICIA POPUP*@
-                                            <div class="col-sm-12">
-                                                <div id="similar-product" class="carousel slide" data-ride="carousel">
-                                                    <center>
-                                                        <h2 class="title text-center">Productos relacionados</h2>
-                                                        <div class="carousel-inner">
+                                           @*PRODUCTOS ALEATORIOS*@
+<div class="col-sm-12">
+    <div id="sa" class="carousel slide similar-product" data-ride="carousel" style="margin-top: 40px;">
+        @*<center>*@
+        <h2 class="title text-center">Otros productos</h2>
+
+        @*AGREGUE EL TEXT-ALIGH:CENTER Y EL MARGIN-RIGHT Y LEFT AUTO*@
+        <div class="carousel-inner" style="text-align:center;">
+            <div class="item active" style="width: 248px; height: 248px; margin-left: auto; margin-right: auto; padding-left: 0px;">
+                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion">
+                    <img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" itemprop="image" style=" display: inline-block;
+        margin-left: 15px;" />
+                </a>
+            </div>
+
+            @*AGREGUE EL MARGIN-RIGHT Y LEFT AUTO*@
+            @foreach (var pr in ViewBag.ProductosAleatorios)
+            {
+
+                <div class="item" style="width: 248px; height: 248px; margin-left: auto; margin-right: auto; padding-left: 0px;">
+                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion">
+                        <img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" itemprop="image" style=" display: inline-block;
+        margin-left: 15px;" />
+                    </a>
+                </div>
+            }
 
 
-                                                            <div class="item active" style="width:248px;height:248px;">
-                                                                <a href="/Producto/BuscarProducto?productoBuscar=@ViewBag.PrimerProducto.Descripcion"><img src="~/ImgProductos/@ViewBag.PrimerProducto.Imagen" alt="@ViewBag.PrimerProducto.Descripcion" /></a>
-                                                            </div>
-
-
-                                                            @foreach (var pr in ViewBag.ProductosAleatorios)
-                                                            {
-
-                                                                <div class="item" style="width:248px;height:248px;">
-                                                                    <a href="/Producto/BuscarProducto?productoBuscar=@pr.Descripcion"><img src="~/ImgProductos/@pr.Imagen" alt="@pr.Descripcion" /></a>
-                                                                </div>
-                                                            }
+        </div>
 
 
 
+        @*</center>*@
+        <a class="left item-control" href=".similar-product" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right item-control" href=".similar-product" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
 
-                                                        </div>
-                                                    </center>
-                                                    <a class="left item-control" href="#similar-product" data-slide="prev">
-                                                        <i class="fa fa-angle-left"></i>
-                                                    </a>
-                                                    <a class="right item-control" href="#similar-product" data-slide="next">
-                                                        <i class="fa fa-angle-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -33,6 +33,18 @@ namespace UAIBay.WebSite.Controllers
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
 
+            foreach (var item in productosVM)
+            {
+                if (item.Descripcion.Length > 35)
+                {
+
+                    var texto = item.Descripcion.Substring(0, 35);
+
+                    item.Descripcion = texto;
+
+                }
+            }
+
             ViewBag.CategoriasSimple = categoriasViewmodel;
             ViewBag.Categorias = categoriasViewmodel.Select(x => new SelectListItem { Text = x.Nombre, Value = x.IdCategoria.ToString() }).ToList();
 
