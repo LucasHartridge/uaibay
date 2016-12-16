@@ -706,6 +706,9 @@
     <Content Include="Views\Admin\Browser.cshtml" />
     <Content Include="Views\Admin\Status.cshtml" />
     <Content Include="Views\Home\EmailCaptchaInvalido.cshtml" />
+    <Content Include="Views\Account\MisDirecciones.cshtml" />
+    <Content Include="Views\Direccion\CreateDir.cshtml" />
+    <Content Include="Views\Direccion\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -717,7 +720,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\dashboard\img\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Direccion\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>

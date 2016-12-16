@@ -21,7 +21,6 @@ namespace UAIBay.Repository
 
         public List<bizProducto> ObtenerTodos()
         {
-
             var orm = contexto.Productos.Where(x => x.IsDeleted == false).ToList();
 
             Mapeador.AutoMapperORMConfiguration.Configure();

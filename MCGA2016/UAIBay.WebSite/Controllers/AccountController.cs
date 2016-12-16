@@ -73,6 +73,23 @@ namespace UAIBay.WebSite.Controllers
 
         [HttpGet]
         [Autorizaciones.AutorizarUsuarioYAdmin]
+        public ActionResult MisDirecciones(int? page)
+        {
+            var bll = new dtoUsuario();
+            var usuario = bll.BuscarCuenta(Convert.ToInt32(Session["LogedUserID"]));
+
+            App_Start.AutoMapperWebConfiguration.Configure();
+
+            var usuarioVM = Mapper.Map<dtoUsuario, UsuarioViewModels>(usuario);
+
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+
+            return View(usuarioVM.Direccion.ToPagedList(pageNumber, 9));
+
+        }
+
+        [HttpGet]
+        [Autorizaciones.AutorizarUsuarioYAdmin]
         public ActionResult Cuenta()
         {
             var bll = new dtoUsuario();

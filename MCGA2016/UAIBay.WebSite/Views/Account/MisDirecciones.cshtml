@@ -1,0 +1,79 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<UAIBay.WebSite.ViewModel.DireccionViewModels>
+
+@{
+    ViewBag.Title = "MisDirecciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="title text-center">@UAIBay.WebSite.Resources.Recurso.Direcciones</h2>
+
+<p>
+    <a href="@Url.Action("CreateDir", "Direccion")" class="btn btn-primary" id="botonCrear"><i class="fa fa-fw fa-plus-square"></i> @UAIBay.WebSite.Resources.Recurso.AgregueUnaNuevaDireccion</a>
+</p>
+
+
+<table class="responsive">
+    <tr>
+        <th>
+            @Html.DisplayName("Domicilio")
+        </th>
+        <th>
+            @Html.DisplayName("Localidad")
+        </th>
+        <th>
+            @Html.DisplayName("Provincia")
+        </th>
+        <th>
+            @Html.DisplayName("Codigo Postal")
+        </th>
+        <th></th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @Html.HiddenFor(modelItem => item.IDDireccion)
+
+            @Html.HiddenFor(modelItem => item.UserId)
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Domicilio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provincia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPostal)
+            </td>
+            <td>
+                @if (Model.Count == 1)
+                {
+                    <a href="@Url.Action("Edit", "Direccion", new { id = item.IDDireccion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Edit", "Direccion", new { id = item.IDDireccion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-pencil-square-o fa-lg" style="color:#FFBE69"></i></a>
+                    <a href="@Url.Action("Delete", "Direccion", new { id = item.IDDireccion })" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Eliminar"><i class="fa fa-fw fa-minus-square fa-lg" style="color:#FFBE69"></i></a>
+                }
+
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
+<br />
+@Html.PagedListPager(Model, Page => Url.Action("MisDirecciones", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+<a href="@Url.Action("Cuenta","Account")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>

@@ -37,5 +37,29 @@ namespace UAIBay.BLL.DTO
             repositoryDir.Save();
           
         }
+
+        public void Eliminar(dtoDireccion dir)
+        {
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+
+            var BIZ = Mapper.Map<dtoDireccion, bizDireccion>(dir);
+
+            var repo = new DireccionRepository();
+            repo.Eliminar(BIZ);
+            repo.Save();
+        }
+
+
+        public void Actualizar(dtoDireccion dir)
+        {
+            BLL.Mapeador.AutoMapperBLLConfiguration.Configure();
+            var BIZ = Mapper.Map<dtoDireccion, bizDireccion>(dir);
+
+            var repo = new DireccionRepository();
+            repo.Actualizar(BIZ);
+            repo.Save();
+        }
+
+
     }
 }
