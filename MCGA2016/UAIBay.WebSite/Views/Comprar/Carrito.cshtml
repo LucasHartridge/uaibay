@@ -15,7 +15,7 @@
     </div>
 
     <div class="table-responsive cart_info">
-        <table class="table table-condensed" id="TablaCarrito">
+        <table class="Table table-condensed"  id="TablaCarrito">
             <thead>
                 <tr class="cart_menu">
                     <th>
@@ -46,7 +46,7 @@
                             @Html.HiddenFor(modelItem => modelItem[i].CodProducto)
                         </td>
                         <td>
-                            <h4> @Html.DisplayFor(modelItem => modelItem[i].Producto.Descripcion)</h4>
+                            <h5> @Html.DisplayFor(modelItem => modelItem[i].Producto.Descripcion)</h5>
 
                         </td>
                         <td>
@@ -60,10 +60,10 @@
 
                         </td>
                         <td>
-                            $ @Html.TextBoxFor(modelItem => modelItem[i].Precio, new { @class = "precio", @readonly = true, id = "precio" })
+                            $@Html.TextBoxFor(modelItem => modelItem[i].Precio, new { @class = "precio", @readonly = true, id = "precio" })
                         </td>
                         <td class="tdsubtotal">
-                            $ @Html.TextBoxFor(modelItem => modelItem[i].Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
+                            $@Html.TextBoxFor(modelItem => modelItem[i].Subtotal, new { @class = "subtotal", @readonly = true, id = "subtotal" })
                         </td>
 
                         <td>
@@ -83,7 +83,7 @@
     <div class="container">
         <div class="heading">
             <h3>@UAIBay.WebSite.Resources.Recurso.ConfirmeSuCompra</h3>
-            <p>@UAIBay.WebSite.Resources.Recurso.RecuerdeEnviosZonaOeste.</p>
+            @*<p>@UAIBay.WebSite.Resources.Recurso.RecuerdeEnviosZonaOeste.</p>*@
         </div>
         <div class="row">
             <div class="col-sm-6">
@@ -96,7 +96,6 @@
                         </ul>*@
                     <ul class="user_option">
                         <li class="user_info">
-                            <label>@UAIBay.WebSite.Resources.Recurso.SeleccioneSuDireccion</label>
                             @Html.DropDownList("Direcciones", ViewBag.Direcciones as List<SelectListItem>, new { @class = "form-control" })
                         </li>
                     </ul>
@@ -217,9 +216,9 @@
 
 
                         <ul>
-                            <li>@UAIBay.WebSite.Resources.Recurso.SubTotal <span>$<input type="text" id="subtotalcarrito" value="1" readonly="readonly" /></span></li>
-                            <li>@UAIBay.WebSite.Resources.Recurso.CostoDeEnvio <span id="enviogratis">@UAIBay.WebSite.Resources.Recurso.Gratis</span></li>
-                            <li>@UAIBay.WebSite.Resources.Recurso.Total <span>$<input value="0" readonly="readonly" id="totalcarrito" name="totalcarrito" /></span></li>
+                            <li>@UAIBay.WebSite.Resources.Recurso.SubTotal <span>$<input type="number" id="subtotalcarrito" value="1" readonly="readonly"  style="width:90px"  /></span></li>
+                            <li>@UAIBay.WebSite.Resources.Recurso.CostoDeEnvio <span style="width:90px;text-align:center;" id="enviogratis">@UAIBay.WebSite.Resources.Recurso.Gratis</span></li>
+                            <li>@UAIBay.WebSite.Resources.Recurso.Total <span>$<input type="number" value="0" readonly="readonly" id="totalcarrito" name="totalcarrito" style="width:90px" /></span></li>
                         </ul>
 
 
@@ -246,8 +245,6 @@
                         @*<a href='' class="btn btn-default update">@UAIBay.WebSite.Resources.Recurso.Comprar</a>*@
 
 
-
-
                     }
 
 
@@ -261,14 +258,17 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<script type="text/javascript" id="copy.setAttribute('.Subtotal', 'TablaCarritoHidden');">
+@*<script type="text/javascript" id="copy.setAttribute('.Subtotal', 'TablaCarritoHidden');">*@
+<script type="text/javascript">
+
+
     function calcularTotal() {
         var total = 0;
 
-
         $('#TablaCarrito .targetfields').each(function () {
             var subtotal = parseFloat($(this).find(".subtotal").val());
-            total = total + subtotal.toFixed(2);
+            total = total + subtotal;
+            total = parseFloat(total.toFixed(2));
         });
 
         $('#subtotalcarrito').val(total);
@@ -282,7 +282,8 @@
 
         $('#TablaCarritoHidden .targetfields').each(function () {
             var subtotal = parseInt($(this).find(".subtotalHidden").val());
-            total = total + subtotal.toFixed(2);
+            total = total + subtotal;
+            //total = Math.round(total * 100) / 100;
         });
 
     }
@@ -296,13 +297,6 @@
         $('#TablaCarritoHidden .targetfields').parent().find('.cantidadHidden').val(value_to_set);
 
     }
-
-    //function changeQuantityHidden(num, obj) {
-    //    var value_to_set = parseInt($(obj).parent().find('.cantidadHidden').val()) + num;
-    //    if (value_to_set <= 1) { $(obj).parent().find('.cantidadHidden').val(1); return; }
-    //    if (value_to_set > 9) { $(obj).parent().find('.cantidadHidden').val(9); return; }
-    //    $(obj).parent().find('.cantidadHidden').val(value_to_set);
-    //}
 
     function changeSubTotal(obj) {
         var $tr = $(obj).parents("tr");
@@ -325,54 +319,34 @@
 
 
     $().ready(function () {
-        var total = 0;
-        $('#TablaCarrito .targetfields').each(function () {
-            var subtotal = parseInt($(this).find(".subtotal").val());
-            total = total + subtotal.toFixed(2);
-        });
-        //$('#TablaCarritoHidden .targetfields').each(function () {
-        //    var subtotal = $(this).find(".subtotalHidden").val();
-        //    var cantidad = $(this).find(".cantidadHidden").val();
 
-        //});
+        var total = 0;
+
+        $('#TablaCarrito .targetfields').each(function () {
+            var subtotal = parseFloat($(this).find(".subtotal").val());
+            total = total + subtotal;
+            total = parseFloat(total.toFixed(2));
+        });
+
         $('#subtotalcarrito').val(total);
         $('#totalcarrito').val(total);
-        //$('.subtotalHidden').val(total);
 
         $(".restar").click(function () {
             changeQuantity(-1, this);
-            //changeQuantityHidden(-1, this);
             changeSubTotal(this);
-            //changeSubTotalHidden(this);
             calcularTotal();
             $("#TablaCarritoHidden > tbody").html("");
             $(".targetfields").clone().appendTo("#TablaCarritoHidden");
-
-            //calcularTotalHidden();
         });
 
         $(".sumar").click(function () {
             changeQuantity(1, this);
             changeSubTotal(this);
-            //changeQuantityHidden(1, this);
-            //changeSubTotalHidden(this);
             calcularTotal();
             $("#TablaCarritoHidden > tbody").html("");
             $(".targetfields").clone().appendTo("#TablaCarritoHidden");
-            //calcularTotalHidden();
 
         })
-
-
-
-        //var source = document.getElementById('TablaCarrito');
-        //var destination = document.getElementById('TablaCarritoHidden');
-        //var copy = source.cloneNode(true);
-        //copy.setAttribute('.cart-menu', 'TablaCarritoHidden');
-        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
-        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
-        //copy.setAttribute('.Subtotal', 'TablaCarritoHidden');
-        //destination.parentNode.replaceChild(copy, destination);
 
     });
 

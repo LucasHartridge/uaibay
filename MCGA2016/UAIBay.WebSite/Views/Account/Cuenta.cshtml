@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Cuenta";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <aside class="profile-card">
@@ -91,7 +92,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            @Html.TextBoxFor(x => x.FechaNacimiento, new { @placeholder = "Fecha de nacimiento", @class = "form-control", @type = "date", required = "required" })
+                            @Html.TextBoxFor(x => x.FechaNacimiento, new { @placeholder = "Fecha de nacimiento", @class = "form-control", @type = "date", required = "required", @Value = @Model.FechaNacimiento.ToString("yyyy-MM-dd") })
                         </div>
                         @Html.ValidationMessageFor(model => model.FechaNacimiento)
                     </div>
@@ -113,7 +114,7 @@
                     <center>
                         <div class="col-md-offset-2 col-md-10">
                             <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Editar"><i class="fa fa-fw fa-edit"></i></button>
-                            <a href="@Url.Action("Index","Home")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.AgregueUnaNuevaDireccion"><i class="fa fa-fw fa-home"></i></a>
+                            <a href="@Url.Action("MisDirecciones", "Account")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Direcciones"><i class="fa fa-fw fa-home"></i></a>
                             <a href="@Url.Action("Index","Home")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
                         </div>
                     </center>
