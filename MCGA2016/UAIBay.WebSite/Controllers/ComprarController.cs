@@ -118,7 +118,8 @@ namespace UAIBay.WebSite.Controllers
 
                     bll.AgregarProducto(codProducto, idCarrito);
 
-                    return RedirectToAction("Carrito", new { userId = idCarrito });
+                    //return RedirectToAction("Carrito", new { userId = idCarrito });
+                    return RedirectToAction("Carrito");
                 }
                 catch (Exception)
                 {
@@ -147,7 +148,7 @@ namespace UAIBay.WebSite.Controllers
 
                     bll.AgregarProducto(codProducto, idCarrito, cantidad);
 
-                    return RedirectToAction("Carrito", new { userId = idCarrito });
+                    return RedirectToAction("Carrito");
                 }
                 catch (Exception)
                 {
@@ -172,7 +173,7 @@ namespace UAIBay.WebSite.Controllers
 
             bll.QuitarProducto(codProducto, nroCarrito);
 
-            return RedirectToAction("Carrito", new { userId = nroCarrito });
+            return RedirectToAction("Carrito");
         }
 
         [Autorizaciones.AutorizarUsuarioYAdmin]
