@@ -556,6 +556,15 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mis direcciones.
+        /// </summary>
+        public static string Direcciones {
+            get {
+                return ResourceManager.GetString("Direcciones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Diseñado por los 4 Fantasticos.
         /// </summary>
         public static string Diseñado {
@@ -1231,7 +1240,7 @@ namespace UAIBay.WebSite.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a SubTotal.
+        ///   Busca una cadena traducida similar a Subtotal.
         /// </summary>
         public static string SubTotal {
             get {

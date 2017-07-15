@@ -1,0 +1,71 @@
+﻿@model UAIBay.WebSite.ViewModel.DireccionViewModels
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="colorNaranja">@UAIBay.WebSite.Resources.Recurso.Dirección</h2>
+
+@using (Html.BeginForm("Edit", "Direccion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.IDDireccion)
+                @Html.ValidationMessageFor(model => model.IDDireccion)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.UserId)
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Domicilio, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Domicilio, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Domicilio, @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Domicilio)
+        </div>
+
+        <div class="form-group">
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Localidad, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Localidad, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.Localidad, @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Localidad)
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.Provincia, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                @Html.DropDownList("provincia", ViewBag.Provincia as List<SelectListItem>, null, new { @class = "form-control", @required = "required", @name = "provincia", @selected = Model.Provincia })
+                @Html.ValidationMessageFor(model => model.Provincia)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(@UAIBay.WebSite.Resources.Recurso.CodigoPostal, new { @class = "control-label col-md-2", @id = "colorNaranja" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CodigoPostal, new { @placeholder = @UAIBay.WebSite.Resources.Recurso.CodigoPostal, @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CodigoPostal)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Guardar"><i class="fa fa-fw fa-check"></i></button>
+                <a href="@Url.Action("MisDirecciones","Account")" class="btn btn-default add-to-cart" data-toggle="tooltip" title="@UAIBay.WebSite.Resources.Recurso.Volver"><i class="fa fa-fw fa-arrow-left"></i></a>
+            </div>
+        </div>
+
+    </div>
+}

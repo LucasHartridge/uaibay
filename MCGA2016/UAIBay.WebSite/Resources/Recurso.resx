@@ -523,7 +523,7 @@
     <value>Seleccione su dirección</value>
   </data>
   <data name="SubTotal" xml:space="preserve">
-    <value>SubTotal</value>
+    <value>Subtotal</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
@@ -542,5 +542,8 @@
   </data>
   <data name="Usuarios" xml:space="preserve">
     <value>Usuarios</value>
+  </data>
+  <data name="Direcciones" xml:space="preserve">
+    <value>Mis direcciones</value>
   </data>
 </root>

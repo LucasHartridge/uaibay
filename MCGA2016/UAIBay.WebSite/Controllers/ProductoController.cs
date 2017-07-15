@@ -220,6 +220,21 @@ namespace UAIBay.WebSite.Controllers
             var productosVM = Mapper.Map<List<ProductoViewModels>>(productos);
             productosVM = productosVM.Where(x => x.IdCategoria == idCategoria).ToList();
 
+
+
+            foreach (var item in productosVM)
+            {
+                if (item.Descripcion.Length > 35)
+                {
+
+                    var texto = item.Descripcion.Substring(0, 35);
+
+                    item.Descripcion = texto;
+
+                }
+            }
+
+
             var categoriasViewmodel = Mapper.Map<List<CategoriaViewModels>>(categoriasDTO);
             ViewBag.CategoriasSimple = categoriasViewmodel;
 
@@ -261,6 +276,18 @@ namespace UAIBay.WebSite.Controllers
             }
 
             productosE = productosE.ToList();
+
+            foreach (var item in productosE)
+            {
+                if (item.Descripcion.Length > 35)
+                {
+
+                    var texto = item.Descripcion.Substring(0, 35);
+
+                    item.Descripcion = texto;
+
+                }
+            }
 
             ViewBag.ProductosAleatorios = productosVM.OrderBy(a => Guid.NewGuid()).Take(4).Where(x => x.IdCategoria == productosE.FirstOrDefault().IdCategoria);
             ViewBag.PrimerProducto = productosVM.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();

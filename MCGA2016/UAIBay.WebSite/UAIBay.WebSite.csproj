@@ -518,6 +518,7 @@
     <Content Include="Content\dashboard\analytics\js\embed-api\components\date-range-selector.js.map" />
     <Content Include="Content\dashboard\analytics\js\embed-api\components\view-selector2.js.map" />
     <Content Include="ImgProductos\web.config" />
+    <Content Include="Content\images\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -704,6 +705,10 @@
     <Content Include="Views\Admin\Sesiones.cshtml" />
     <Content Include="Views\Admin\Browser.cshtml" />
     <Content Include="Views\Admin\Status.cshtml" />
+    <Content Include="Views\Home\EmailCaptchaInvalido.cshtml" />
+    <Content Include="Views\Account\MisDirecciones.cshtml" />
+    <Content Include="Views\Direccion\CreateDir.cshtml" />
+    <Content Include="Views\Direccion\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -715,7 +720,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\dashboard\img\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Direccion\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>

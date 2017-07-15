@@ -1,29 +1,26 @@
-﻿@{
-    ViewBag.Title = "EmailEnviado";
+﻿
+@{
+    ViewBag.Title = "EmailCaptchaInvalido";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/Content/main.css" rel="stylesheet" />
 }
-
-
 <div id="crear" class="cd-popup" role="alert" style="z-index:99;">
     <div id="form" class=" cd-popup-container">
 
         <h2 class="colorNaranja">Información</h2>
 
-        <h5>El e-mail ha sido enviado correctamente, pronto recibirá noticias sobre el producto consultado.</h5>
+        <h5>Antes de enviar el mensaje se debe confirmar que no es un robot.</h5>
 
         <div style="float: left; width: 100%; padding-top: 25px; padding-bottom: 25px; ">
-            <img src="~/Content/images/index/compraFinalizada.png" />
-
+            <img src="~/Content/images/home/no-robots.jpg" />
         </div>
 
         <ul class="cd-buttons" style="padding:0;margin:0;">
-            <li><a href="/Comprar/Catalogo" style="background-color: #FFBE69;">IR A CATÁLOGO</a></li>
-            <li><a href="/Home/Index">IR AL INICIO </a></li>
+            <li style="width: 100%;"><a href="/Home/Index" class="cerrar" style="background: #fc7169;">VOLVER</a></li>
         </ul>
         <a href="/Home/Index" class="cd-popup-close img-replace">Close</a>
     </div> <!-- cd-popup-container -->
-</div> <!-- cd-popup -->
+</div>
+
 @section Scripts{
     <script src="~/Scripts/jquery.js"></script>
 
@@ -60,3 +57,7 @@
         });
     </script>
 }
+
+
+
+
